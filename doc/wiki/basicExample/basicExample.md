@@ -43,7 +43,7 @@ For that, navigate into the OAISYS repo and execute the following lines (with yo
 
 If you have not blender installed yet or not the correct version, it will take a while to download the correct blender version. After the installation you will be greeted by OAISYS:
 
-![Welcome splash screen of OAISYS](https://rmc-github.robotic.dlr.de/moro/TerrainStageSimulator/blob/master/doc/wiki/figures/BasicTutorial/oaisys_start_screen.jpg)
+![Welcome splash screen of OAISYS](../figures/BasicTutorial/oaisys_start_screen.jpg)
 
 After that you find multiple outputs of OAISYS, which gives you information about the processing of the default cfg file. Wait till this process is completed, that will take a moment depending on your working machine, since also some images are rendered by default.
 
@@ -56,15 +56,15 @@ The `sensor_1` folder contains all images, which where rendered for _sensor_1_ f
 
 | rgb  | semantic 01 | semantic 02 | instance |
 | ------------- | ------------- | ------------- | ------------- |
-| ![](https://rmc-github.robotic.dlr.de/moro/TerrainStageSimulator/blob/master/doc/wiki/figures/BasicTutorial/0002sensor_1_rgb_00.png) | ![](https://rmc-github.robotic.dlr.de/moro/TerrainStageSimulator/blob/master/doc/wiki/figures/BasicTutorial/0002sensor_1_semantic_label_00.png) | ![](https://rmc-github.robotic.dlr.de/moro/TerrainStageSimulator/blob/master/doc/wiki/figures/BasicTutorial/0002sensor_1_semantic_label_01.png) | ![](https://rmc-github.robotic.dlr.de/moro/TerrainStageSimulator/blob/master/doc/wiki/figures/BasicTutorial/0002sensor_1_instance_label_00.png) |
+| ![](../figures/BasicTutorial/0002sensor_1_rgb_00.png) | ![](../figures/BasicTutorial/0002sensor_1_semantic_label_00.png) | ![](../figures/BasicTutorial/0002sensor_1_semantic_label_01.png) | ![](../figures/BasicTutorial/0002sensor_1_instance_label_00.png) |
 
 Note that your OAISYS render output will look different, since the generation process contains multiple random parameters.
 
 OAISYS also saves the blender file it created and used to simulate the scene. This is particular useful, if you want to adjust parameters for your assets, since you can use it as a reference file. Furthermore, it is very useful, when you create your own OAISYS module.
 
-![Screenshot of Blender File](https://rmc-github.robotic.dlr.de/moro/TerrainStageSimulator/blob/master/doc/wiki/figures/BasicTutorial/oaisys_blender_file_preview.jpg)
+![Screenshot of Blender File](../figures/BasicTutorial/oaisys_blender_file_preview.jpg)
 
-Let us now have a look at the default cfg, which can be found here: [default cfg file](https://rmc-github.robotic.dlr.de/moro/TerrainStageSimulator/blob/master/cfgExamples/OAISYS_default_cfg.json)
+Let us now have a look at the default cfg, which can be found here: [default cfg file](../../../cfgExamples/OAISYS_default_cfg.json)
 
 Note that the cfg file is a json file and contains of a dictionary. The dictionary has the following main entries: _SIMULATION_SETUP_, _RENDER_SETUP_, _RENDER_POST_PROCESSING_EFFECTS_SETUP_, _SENSOR_SETUP_, _ENVIRONMENT_EFFECTS_SETUP_, _ASSET_SETUP_.
 
