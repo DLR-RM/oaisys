@@ -1,0 +1,47 @@
+{
+											"general": {"minNumMixTerrains":2,
+														"maxNumMixTerrains":2,
+														"hardLabelBorders":true,
+														"withReplacement":false,
+														"dispMidLevel":0.0,
+														"dispScale":1.0,
+														"normalStrength":1.0,
+														"mergingNoise": {
+															"Scale": [3.0,7.0],
+															"Detail": [1.0,3.0],
+															"Roughness": [0.2,0.5],
+															"Distortion": [0.0,0.6]
+														}},
+											"terrainTextureList": [
+														{
+															"templatePath": "oaisys_data/examples/assets/materials/rock_ground/rock_ground.json",
+															"passParams": 	{ "rgb": {},
+																			  "semantic_label": {"labelIDVec": [[30,500,5,2]]},
+																			  "instance_label": {}
+																			},
+															"colorAdjustment": 	{
+																"cColorPoints": [[0.70758,0.30417]],
+																"rColorPoints": [[0.50909,0.48750]],
+																"gColorPoints": [[0.5,0.5]],
+																"bColorPoints": [[0.5,0.48750]]
+															},
+															"size": 120.0,
+															"dispStrength": 0.03
+														},
+														{
+															"templatePath": "oaisys_data/examples/assets/materials/dry_ground_01/dry_ground_01.json",
+															"passParams": 	{ "rgb": {},
+																			  "semantic_label": {"labelIDVec": [[30,500,5,2]]},
+																			  "instance_label": {}
+																			},
+															"colorAdjustment": 	{
+																"cColorPoints": [[0.70758,0.30417]],
+																"rColorPoints": [[0.50909,0.48750]],
+																"gColorPoints": [[0.5,0.5]],
+																"bColorPoints": [[0.5,0.48750]]
+															},
+															"size": 120.0,
+															"dispStrength": 0.03
+														}
+														]
+								}

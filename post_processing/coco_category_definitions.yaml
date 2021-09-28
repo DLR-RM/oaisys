@@ -1,0 +1,3 @@
+# is_crowd: defines if annotations describe single object(False) or a crowd/areas(True); single objects are encoded using with polygon, while crowds are encoded using column-major RLE (Run Length Encoding)
+1: {"name":"stone", "is_crowd":False}
+2: {"name":"tree", "is_crowd":False}

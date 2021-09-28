@@ -1,0 +1,8 @@
+{
+	"stageName": "landscape",
+	"stageSizeX": 200,
+	"stageLandscapePreset": "another_noise",
+	"assetMaterial": "terrain_01",
+	"landscapeParams": {"random_seed":[0,1000]}
+					 	
+}

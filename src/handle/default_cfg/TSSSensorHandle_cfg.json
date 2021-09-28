@@ -1,0 +1,25 @@
+{
+"GENERAL": {
+			"sensorMovementType":"randomEuclideanTarget",
+			"hoverBaseModeEnabled": true,
+			"hoverBaseStage":"landscape01",
+			"hoverBaseDistance":1.5,
+			"hoverBaseDistanceNoise": 0.5,
+			"hoverTargetModeEnabled": true,
+			"hoverTargetStage":"landscape01",
+			"hoverTargetDistance":0.0,
+			"positionOffsetEnabled":true,
+			"randomEuclideanPosMin": [-8.0,-8.0,0.0],
+			"randomEuclideanPosMax": [8.0,8.0,5.0],
+			"randomEuclideanEulerMin": [0,0,0],
+			"randomEuclideanEulerMax": [0,0,0],
+			"randomTargetPosMin": [-2.0,-2.0,-3.0],
+			"randomTargetPosMax": [2.0,2.0,-0.2],
+			"randomTargetEulerMin": [0,0,0],
+			"randomTargetEulerMax": [0,0,0],
+			"randomTargetRollDeg": [-10.0,10.0],
+			"targetObjectActive":true,
+			"tragetObjectMovementType":"random"
+			},
+"SENSORS": []
+}

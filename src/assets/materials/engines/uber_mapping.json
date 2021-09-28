@@ -1,0 +1,3764 @@
+{
+    "defaults": [
+        {
+            "node": "Mix",
+            "socket": "Fac",
+            "socket_id": "Fac",
+            "value": 1.0
+        },
+        {
+            "node": "Mix",
+            "socket": "Color1",
+            "socket_id": "Color1",
+            "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+            ]
+        },
+        {
+            "node": "Mix",
+            "socket": "Color2",
+            "socket_id": "Color2",
+            "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+            ]
+        },
+        {
+            "node": "Combine XYZ.004",
+            "socket": "X",
+            "socket_id": "X",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ.004",
+            "socket": "Y",
+            "socket_id": "Y",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ.004",
+            "socket": "Z",
+            "socket_id": "Z",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ.001",
+            "socket": "X",
+            "socket_id": "X",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ.001",
+            "socket": "Y",
+            "socket_id": "Y",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ.001",
+            "socket": "Z",
+            "socket_id": "Z",
+            "value": 0.0
+        },
+        {
+            "node": "Vector Math",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.5,
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "node": "Vector Math",
+            "socket": "Vector",
+            "socket_id": "Vector_001",
+            "value": [
+                0.5,
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "node": "Math.014",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.014",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 10.0
+        },
+        {
+            "node": "Math.011",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.011",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 10.0
+        },
+        {
+            "node": "Math.010",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.4000000059604645
+        },
+        {
+            "node": "Math.010",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 1.0
+        },
+        {
+            "node": "Math.013",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.013",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 10.0
+        },
+        {
+            "node": "Math.009",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.009",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 10.0
+        },
+        {
+            "node": "Math.012",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.012",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 10.0
+        },
+        {
+            "node": "Math.015",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.015",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 10.0
+        },
+        {
+            "node": "Math",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 1.0
+        },
+        {
+            "node": "Math.005",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.005",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 1.0
+        },
+        {
+            "node": "Math.008",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.4000000059604645
+        },
+        {
+            "node": "Math.008",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 1.0
+        },
+        {
+            "node": "Combine XYZ.005",
+            "socket": "X",
+            "socket_id": "X",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ.005",
+            "socket": "Y",
+            "socket_id": "Y",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ.005",
+            "socket": "Z",
+            "socket_id": "Z",
+            "value": 0.0
+        },
+        {
+            "node": "Math.021",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.021",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 0.5
+        },
+        {
+            "node": "Math.019",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.019",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 0.5
+        },
+        {
+            "node": "Separate XYZ.001",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "Checker Texture.001",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "Checker Texture.001",
+            "socket": "Color1",
+            "socket_id": "Color1",
+            "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        {
+            "node": "Checker Texture.001",
+            "socket": "Color2",
+            "socket_id": "Color2",
+            "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "node": "Checker Texture.001",
+            "socket": "Scale",
+            "socket_id": "Scale",
+            "value": 1.0
+        },
+        {
+            "node": "Checker Texture.002",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "Checker Texture.002",
+            "socket": "Color1",
+            "socket_id": "Color1",
+            "value": [
+                0.010022825561463833,
+                0.010022825561463833,
+                0.010022825561463833,
+                1.0
+            ]
+        },
+        {
+            "node": "Checker Texture.002",
+            "socket": "Color2",
+            "socket_id": "Color2",
+            "value": [
+                0.7874122262001038,
+                0.7874122262001038,
+                0.7874122262001038,
+                1.0
+            ]
+        },
+        {
+            "node": "Checker Texture.002",
+            "socket": "Scale",
+            "socket_id": "Scale",
+            "value": 4.0
+        },
+        {
+            "node": "Mix.001",
+            "socket": "Fac",
+            "socket_id": "Fac",
+            "value": 1.0
+        },
+        {
+            "node": "Mix.001",
+            "socket": "Color1",
+            "socket_id": "Color1",
+            "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+            ]
+        },
+        {
+            "node": "Mix.001",
+            "socket": "Color2",
+            "socket_id": "Color2",
+            "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+            ]
+        },
+        {
+            "node": "Math.004",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.004",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 0.49999991059303284
+        },
+        {
+            "node": "Math.003",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.003",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 0.49999991059303284
+        },
+        {
+            "node": "Math.016",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.016",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 14.19999885559082
+        },
+        {
+            "node": "Musgrave Texture.002",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "Musgrave Texture.002",
+            "socket": "Scale",
+            "socket_id": "Scale",
+            "value": 9.399999618530273
+        },
+        {
+            "node": "Musgrave Texture.002",
+            "socket": "Detail",
+            "socket_id": "Detail",
+            "value": 5.0
+        },
+        {
+            "node": "Musgrave Texture.002",
+            "socket": "Dimension",
+            "socket_id": "Dimension",
+            "value": 4.0
+        },
+        {
+            "node": "Musgrave Texture.002",
+            "socket": "Lacunarity",
+            "socket_id": "Lacunarity",
+            "value": 2.5
+        },
+        {
+            "node": "Musgrave Texture.002",
+            "socket": "Offset",
+            "socket_id": "Offset",
+            "value": 0.9999999403953552
+        },
+        {
+            "node": "Musgrave Texture.002",
+            "socket": "Gain",
+            "socket_id": "Gain",
+            "value": 1.0
+        },
+        {
+            "node": "Musgrave Texture",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "Musgrave Texture",
+            "socket": "Scale",
+            "socket_id": "Scale",
+            "value": 9.399999618530273
+        },
+        {
+            "node": "Musgrave Texture",
+            "socket": "Detail",
+            "socket_id": "Detail",
+            "value": 5.0
+        },
+        {
+            "node": "Musgrave Texture",
+            "socket": "Dimension",
+            "socket_id": "Dimension",
+            "value": 4.0
+        },
+        {
+            "node": "Musgrave Texture",
+            "socket": "Lacunarity",
+            "socket_id": "Lacunarity",
+            "value": 2.5
+        },
+        {
+            "node": "Musgrave Texture",
+            "socket": "Offset",
+            "socket_id": "Offset",
+            "value": 0.9999999403953552
+        },
+        {
+            "node": "Musgrave Texture",
+            "socket": "Gain",
+            "socket_id": "Gain",
+            "value": 1.0
+        },
+        {
+            "node": "Math.007",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.007",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 10.0
+        },
+        {
+            "node": "Math.006",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.006",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 10.0
+        },
+        {
+            "node": "Musgrave Texture.001",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "Musgrave Texture.001",
+            "socket": "Scale",
+            "socket_id": "Scale",
+            "value": 9.399999618530273
+        },
+        {
+            "node": "Musgrave Texture.001",
+            "socket": "Detail",
+            "socket_id": "Detail",
+            "value": 5.0
+        },
+        {
+            "node": "Musgrave Texture.001",
+            "socket": "Dimension",
+            "socket_id": "Dimension",
+            "value": 4.0
+        },
+        {
+            "node": "Musgrave Texture.001",
+            "socket": "Lacunarity",
+            "socket_id": "Lacunarity",
+            "value": 2.5
+        },
+        {
+            "node": "Musgrave Texture.001",
+            "socket": "Offset",
+            "socket_id": "Offset",
+            "value": 1.0
+        },
+        {
+            "node": "Musgrave Texture.001",
+            "socket": "Gain",
+            "socket_id": "Gain",
+            "value": 1.0
+        },
+        {
+            "node": "Combine XYZ.002",
+            "socket": "X",
+            "socket_id": "X",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ.002",
+            "socket": "Y",
+            "socket_id": "Y",
+            "value": 0.30000001192092896
+        },
+        {
+            "node": "Combine XYZ.002",
+            "socket": "Z",
+            "socket_id": "Z",
+            "value": 16.399999618530273
+        },
+        {
+            "node": "Combine XYZ.003",
+            "socket": "X",
+            "socket_id": "X",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ.003",
+            "socket": "Y",
+            "socket_id": "Y",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ.003",
+            "socket": "Z",
+            "socket_id": "Z",
+            "value": 8.09999942779541
+        },
+        {
+            "node": "Combine XYZ",
+            "socket": "X",
+            "socket_id": "X",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ",
+            "socket": "Y",
+            "socket_id": "Y",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ",
+            "socket": "Z",
+            "socket_id": "Z",
+            "value": 0.19999998807907104
+        },
+        {
+            "node": "Mix.003",
+            "socket": "Fac",
+            "socket_id": "Fac",
+            "value": 0.0
+        },
+        {
+            "node": "Mix.003",
+            "socket": "Color1",
+            "socket_id": "Color1",
+            "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+            ]
+        },
+        {
+            "node": "Mix.003",
+            "socket": "Color2",
+            "socket_id": "Color2",
+            "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+            ]
+        },
+        {
+            "node": "Mix.002",
+            "socket": "Fac",
+            "socket_id": "Fac",
+            "value": 0.0
+        },
+        {
+            "node": "Mix.002",
+            "socket": "Color1",
+            "socket_id": "Color1",
+            "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+            ]
+        },
+        {
+            "node": "Mix.002",
+            "socket": "Color2",
+            "socket_id": "Color2",
+            "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+            ]
+        },
+        {
+            "node": "Math.002",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.002",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 1.2999999523162842
+        },
+        {
+            "node": "Math.001",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.001",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 1.2999999523162842
+        },
+        {
+            "node": "Noise Texture",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "Noise Texture",
+            "socket": "Scale",
+            "socket_id": "Scale",
+            "value": 5.0
+        },
+
+        {
+            "node": "Noise Texture",
+            "socket": "Roughness",
+            "socket_id": "Roughness",
+            "value": 1.0
+        },
+        {
+            "node": "Noise Texture",
+            "socket": "Detail",
+            "socket_id": "Detail",
+            "value": 10.0
+        },
+        {
+            "node": "Noise Texture",
+            "socket": "Distortion",
+            "socket_id": "Distortion",
+            "value": 0.0
+        },
+        {
+            "node": "Math.029",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.029",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 0.5
+        },
+        {
+            "node": "Separate XYZ.002",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "Math.022",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.022",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 3.1410000324249268
+        },
+        {
+            "node": "Math.025",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.025",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 1.0
+        },
+        {
+            "node": "Math.024",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.024",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 1.0
+        },
+        {
+            "node": "Math.030",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.030",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 0.5
+        },
+        {
+            "node": "Math.031",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.031",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 0.5
+        },
+        {
+            "node": "Math.027",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.027",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 0.5
+        },
+        {
+            "node": "Math.026",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.026",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 0.5
+        },
+        {
+            "node": "Math.028",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.028",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 0.5
+        },
+        {
+            "node": "Combine XYZ.006",
+            "socket": "X",
+            "socket_id": "X",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ.006",
+            "socket": "Y",
+            "socket_id": "Y",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ.006",
+            "socket": "Z",
+            "socket_id": "Z",
+            "value": 0.0
+        },
+        {
+            "node": "Group Output",
+            "socket": "UV",
+            "socket_id": "Output_17",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "Group Output",
+            "socket": "GridView",
+            "socket_id": "Output_19",
+            "value": 0.0
+        },
+        {
+            "node": "Separate XYZ.003",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "Combine XYZ.007",
+            "socket": "X",
+            "socket_id": "X",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ.007",
+            "socket": "Y",
+            "socket_id": "Y",
+            "value": 0.0
+        },
+        {
+            "node": "Combine XYZ.007",
+            "socket": "Z",
+            "socket_id": "Z",
+            "value": 0.0
+        },
+        {
+            "node": "Separate XYZ",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "Math.017",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.017",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 10.0
+        },
+        {
+            "node": "Math.018",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.018",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 10.0
+        },
+        {
+            "node": "Math.033",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.033",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 180.0
+        },
+        {
+            "node": "Math.032",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.032",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 3.1415927410125732
+        },
+        {
+            "node": "Math.023",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.023",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 180.0
+        },
+        {
+            "node": "Math.020",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Math.020",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 1.0
+        }
+    ],
+    "inputs": [
+        {
+            "default": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "max": 3.4028234663852886e+38,
+            "min": -3.4028234663852886e+38,
+            "name": "UV",
+            "type": "VECTOR"
+        },
+        {
+            "default": 1.0,
+            "max": 3.4028234663852886e+38,
+            "min": 0.0,
+            "name": "Scale",
+            "type": "VALUE"
+        },
+        {
+            "default": 1.0,
+            "max": 3.4028234663852886e+38,
+            "min": 0.0,
+            "name": "Aspect Ratio",
+            "type": "VALUE"
+        },
+        {
+            "default": 0.0,
+            "max": 3.4028234663852886e+38,
+            "min": -3.4028234663852886e+38,
+            "name": "Translate X",
+            "type": "VALUE"
+        },
+        {
+            "default": 0.0,
+            "max": 3.4028234663852886e+38,
+            "min": -3.4028234663852886e+38,
+            "name": "Translate Y",
+            "type": "VALUE"
+        },
+        {
+            "default": 0.0,
+            "max": 3.4028234663852886e+38,
+            "min": -3.4028234663852886e+38,
+            "name": "Global Rotation",
+            "type": "VALUE"
+        },
+        {
+            "default": 0.0,
+            "max": 90.0,
+            "min": 0.0,
+            "name": "Mosaic Rotation",
+            "type": "VALUE"
+        },
+        {
+            "default": 0.0,
+            "max": 1.0,
+            "min": 0.0,
+            "name": "Mosaic Noise",
+            "type": "VALUE"
+        }
+    ],
+    "links": [
+        {
+            "from": "Separate XYZ",
+            "from_id": "X",
+            "from_socket": "X",
+            "to": "Math.017",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Separate XYZ",
+            "from_id": "Y",
+            "from_socket": "Y",
+            "to": "Math.018",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Combine XYZ.001",
+            "from_id": "Vector",
+            "from_socket": "Vector",
+            "to": "Vector Math",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Math.006",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Combine XYZ.004",
+            "to_id": "X",
+            "to_socket": "X"
+        },
+        {
+            "from": "Math.007",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Combine XYZ.004",
+            "to_id": "Y",
+            "to_socket": "Y"
+        },
+        {
+            "from": "Reroute",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Separate XYZ",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Reroute.013",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.006",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.015",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.016",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.001",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Combine XYZ",
+            "to_id": "X",
+            "to_socket": "X"
+        },
+        {
+            "from": "Math.002",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Combine XYZ",
+            "to_id": "Y",
+            "to_socket": "Y"
+        },
+        {
+            "from": "Math.003",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Mix.002",
+            "to_id": "Color1",
+            "to_socket": "Color1"
+        },
+        {
+            "from": "Math.001",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Combine XYZ.002",
+            "to_id": "X",
+            "to_socket": "X"
+        },
+        {
+            "from": "Math.002",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Combine XYZ.002",
+            "to_id": "Y",
+            "to_socket": "Y"
+        },
+        {
+            "from": "Combine XYZ.002",
+            "from_id": "Vector",
+            "from_socket": "Vector",
+            "to": "Musgrave Texture.001",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Math.001",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Combine XYZ.003",
+            "to_id": "X",
+            "to_socket": "X"
+        },
+        {
+            "from": "Math.002",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Combine XYZ.003",
+            "to_id": "Y",
+            "to_socket": "Y"
+        },
+        {
+            "from": "Combine XYZ",
+            "from_id": "Vector",
+            "from_socket": "Vector",
+            "to": "Musgrave Texture",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Combine XYZ.003",
+            "from_id": "Vector",
+            "from_socket": "Vector",
+            "to": "Musgrave Texture.002",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Math.017",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.003",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.018",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.004",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.016",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.016",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.021",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.006",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.019",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.007",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.009",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.008",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.009",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.010",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.011",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.005",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.011",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.013",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.010",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.013",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.008",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.014",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.005",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.014",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.013",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.012",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.014",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.012",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.009",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.015",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.011",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.015",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.016",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.008",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.034",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.036",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.005",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.016",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.010",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.012",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Combine XYZ.001",
+            "to_id": "X",
+            "to_socket": "X"
+        },
+        {
+            "from": "Math.015",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Combine XYZ.001",
+            "to_id": "Y",
+            "to_socket": "Y"
+        },
+        {
+            "from": "Combine XYZ.004",
+            "from_id": "Vector",
+            "from_socket": "Vector",
+            "to": "Mix",
+            "to_id": "Color1",
+            "to_socket": "Color1"
+        },
+        {
+            "from": "Mix",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Vector Math",
+            "to_id": "Vector_001",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Reroute.022",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Mix",
+            "to_id": "Color2",
+            "to_socket": "Color2"
+        },
+        {
+            "from": "Reroute.009",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Vector Math",
+            "from_id": "Vector",
+            "from_socket": "Vector",
+            "to": "Separate XYZ.001",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Separate XYZ.001",
+            "from_id": "X",
+            "from_socket": "X",
+            "to": "Math.019",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Separate XYZ.001",
+            "from_id": "Y",
+            "from_socket": "Y",
+            "to": "Math.021",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.019",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Combine XYZ.005",
+            "to_id": "X",
+            "to_socket": "X"
+        },
+        {
+            "from": "Math.021",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Combine XYZ.005",
+            "to_id": "Y",
+            "to_socket": "Y"
+        },
+        {
+            "from": "Reroute.032",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.019",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.030",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.021",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.022",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.023",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.023",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.024",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.023",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.025",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.053",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.026",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.025",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.026",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.054",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.027",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.024",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.027",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.026",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.028",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.027",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.028",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.028",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Combine XYZ.006",
+            "to_id": "X",
+            "to_socket": "X"
+        },
+        {
+            "from": "Math.024",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.029",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.025",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.030",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.029",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.031",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.030",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.031",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Combine XYZ.005",
+            "from_id": "Vector",
+            "from_socket": "Vector",
+            "to": "Separate XYZ.002",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Reroute.041",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Checker Texture.001",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Reroute.039",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.022",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.001",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Reroute",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Group Input",
+            "from_id": "Input_1",
+            "from_socket": "UV",
+            "to": "Reroute.001",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Group Input",
+            "from_id": "Input_3",
+            "from_socket": "Scale",
+            "to": "Reroute.002",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.002",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.004",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.003",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.017",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.005",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.003",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.004",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.005",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.014",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.010",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.044",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.011",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.004",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.012",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.011",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.014",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.006",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.013",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.007",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.009",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.014",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.006",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.006",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.007",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.010",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.007",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.007",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.005",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.008",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.015",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.017",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.016",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Musgrave Texture",
+            "from_id": "Fac",
+            "from_socket": "Fac",
+            "to": "Reroute.017",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Musgrave Texture.002",
+            "from_id": "Fac",
+            "from_socket": "Fac",
+            "to": "Reroute.018",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.018",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.019",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Musgrave Texture.001",
+            "from_id": "Fac",
+            "from_socket": "Fac",
+            "to": "Reroute.020",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.020",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.021",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.023",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.022",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.008",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.023",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.025",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.024",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Group Input",
+            "from_id": "Input_13",
+            "from_socket": "Mosaic Rotation",
+            "to": "Reroute.025",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Group Input",
+            "from_id": "Input_7",
+            "from_socket": "Translate X",
+            "to": "Reroute.026",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.026",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.027",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Group Input",
+            "from_id": "Input_9",
+            "from_socket": "Translate Y",
+            "to": "Reroute.028",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.028",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.029",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.031",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.030",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.029",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.031",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.033",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.032",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.027",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.033",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Math.017",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Reroute.034",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Math.018",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Reroute.035",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.035",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.036",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Group Input",
+            "from_id": "Input_11",
+            "from_socket": "Global Rotation",
+            "to": "Reroute.037",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.037",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.038",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.040",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.039",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.038",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.040",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.041",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Checker Texture.002",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Checker Texture.001",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Mix.001",
+            "to_id": "Color1",
+            "to_socket": "Color1"
+        },
+        {
+            "from": "Checker Texture.002",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Mix.001",
+            "to_id": "Color2",
+            "to_socket": "Color2"
+        },
+        {
+            "from": "Mix.001",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Group Output",
+            "to_id": "Output_19",
+            "to_socket": "GridView"
+        },
+        {
+            "from": "Combine XYZ.006",
+            "from_id": "Vector",
+            "from_socket": "Vector",
+            "to": "Reroute.041",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Math.004",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Mix.003",
+            "to_id": "Color1",
+            "to_socket": "Color1"
+        },
+        {
+            "from": "Reroute.042",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Noise Texture",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Reroute.043",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Reroute.042",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.001",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Reroute.043",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Mix.002",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Math.001",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Mix.003",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Math.002",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.012",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.044",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Noise Texture",
+            "from_id": "Fac",
+            "from_socket": "Fac",
+            "to": "Reroute.045",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.052",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.046",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.046",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Mix.002",
+            "to_id": "Color2",
+            "to_socket": "Color2"
+        },
+        {
+            "from": "Reroute.005",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.018",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.050",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Mix.002",
+            "to_id": "Fac",
+            "to_socket": "Fac"
+        },
+        {
+            "from": "Group Input",
+            "from_id": "Input_15",
+            "from_socket": "Mosaic Noise",
+            "to": "Reroute.047",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.047",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.048",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.048",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.049",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.051",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.050",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.049",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.051",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.051",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Mix.003",
+            "to_id": "Fac",
+            "to_socket": "Fac"
+        },
+        {
+            "from": "Reroute.045",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.052",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.052",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Mix.003",
+            "to_id": "Color2",
+            "to_socket": "Color2"
+        },
+        {
+            "from": "Reroute.044",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Noise Texture",
+            "to_id": "Scale",
+            "to_socket": "Scale"
+        },
+        {
+            "from": "Reroute.053",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.029",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Separate XYZ.002",
+            "from_id": "X",
+            "from_socket": "X",
+            "to": "Reroute.053",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.054",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.030",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Separate XYZ.002",
+            "from_id": "Y",
+            "from_socket": "Y",
+            "to": "Reroute.054",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Math.031",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Combine XYZ.006",
+            "to_id": "Y",
+            "to_socket": "Y"
+        },
+        {
+            "from": "Combine XYZ.006",
+            "from_id": "Vector",
+            "from_socket": "Vector",
+            "to": "Separate XYZ.003",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Separate XYZ.003",
+            "from_id": "X",
+            "from_socket": "X",
+            "to": "Combine XYZ.007",
+            "to_id": "X",
+            "to_socket": "X"
+        },
+        {
+            "from": "Separate XYZ.003",
+            "from_id": "Y",
+            "from_socket": "Y",
+            "to": "Math.020",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Separate XYZ.003",
+            "from_id": "Z",
+            "from_socket": "Z",
+            "to": "Combine XYZ.007",
+            "to_id": "Z",
+            "to_socket": "Z"
+        },
+        {
+            "from": "Combine XYZ.007",
+            "from_id": "Vector",
+            "from_socket": "Vector",
+            "to": "Group Output",
+            "to_id": "Output_17",
+            "to_socket": "UV"
+        },
+        {
+            "from": "Math.020",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Combine XYZ.007",
+            "to_id": "Y",
+            "to_socket": "Y"
+        },
+        {
+            "from": "Group Input",
+            "from_id": "Input_5",
+            "from_socket": "Aspect Ratio",
+            "to": "Reroute.058",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Math.032",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Math.033",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Math.033",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Reroute.008",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.024",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.032",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.055",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Math.020",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.056",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.055",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.057",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.056",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.058",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.057",
+            "to_id": "input",
+            "to_socket": "Input"
+        }
+    ],
+    "nodes": {
+        "Checker Texture.001": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -4083,
+                -217
+            ],
+            "parent": "Frame.004",
+            "type": "TEX_CHECKER",
+            "type_id": "ShaderNodeTexChecker"
+        },
+        "Checker Texture.002": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -4086,
+                -389
+            ],
+            "parent": "Frame.004",
+            "type": "TEX_CHECKER",
+            "type_id": "ShaderNodeTexChecker"
+        },
+        "Combine XYZ": {
+            "hide": true,
+            "label": "",
+            "location": [
+                728,
+                -859
+            ],
+            "parent": "Frame.002",
+            "type": "COMBXYZ",
+            "type_id": "ShaderNodeCombineXYZ"
+        },
+        "Combine XYZ.001": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -1334,
+                -1160
+            ],
+            "parent": "Frame.003",
+            "type": "COMBXYZ",
+            "type_id": "ShaderNodeCombineXYZ"
+        },
+        "Combine XYZ.002": {
+            "hide": true,
+            "label": "",
+            "location": [
+                635,
+                -958
+            ],
+            "parent": "Frame.002",
+            "type": "COMBXYZ",
+            "type_id": "ShaderNodeCombineXYZ"
+        },
+        "Combine XYZ.003": {
+            "hide": true,
+            "label": "",
+            "location": [
+                641,
+                -775
+            ],
+            "parent": "Frame.002",
+            "type": "COMBXYZ",
+            "type_id": "ShaderNodeCombineXYZ"
+        },
+        "Combine XYZ.004": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -1498,
+                -1235
+            ],
+            "parent": "Frame.003",
+            "type": "COMBXYZ",
+            "type_id": "ShaderNodeCombineXYZ"
+        },
+        "Combine XYZ.005": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1246,
+                -1092
+            ],
+            "parent": "Frame.006",
+            "type": "COMBXYZ",
+            "type_id": "ShaderNodeCombineXYZ"
+        },
+        "Combine XYZ.006": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -2251,
+                -1244
+            ],
+            "parent": "Frame.005",
+            "type": "COMBXYZ",
+            "type_id": "ShaderNodeCombineXYZ"
+        },
+        "Combine XYZ.007": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -3636,
+                -986
+            ],
+            "parent": "Frame.008",
+            "type": "COMBXYZ",
+            "type_id": "ShaderNodeCombineXYZ"
+        },
+        "Frame": {
+            "height": 169.0,
+            "hide": false,
+            "label": "Scale",
+            "label_size": 64,
+            "location": [
+                -3604,
+                2028
+            ],
+            "shrink": true,
+            "type": "FRAME",
+            "type_id": "NodeFrame",
+            "width": 403.0
+        },
+        "Frame.001": {
+            "height": 355.0,
+            "hide": false,
+            "label": "Mosaic Rotation",
+            "label_size": 64,
+            "location": [
+                280,
+                1906
+            ],
+            "shrink": true,
+            "type": "FRAME",
+            "type_id": "NodeFrame",
+            "width": 671.0
+        },
+        "Frame.002": {
+            "height": 287.0,
+            "hide": false,
+            "label": "Mosaic Noise",
+            "label_size": 64,
+            "location": [
+                -1090,
+                1436
+            ],
+            "shrink": true,
+            "type": "FRAME",
+            "type_id": "NodeFrame",
+            "width": 1456.0
+        },
+        "Frame.003": {
+            "height": 196.0,
+            "hide": false,
+            "label": "Combine",
+            "label_size": 64,
+            "location": [
+                2508,
+                1734
+            ],
+            "shrink": true,
+            "type": "FRAME",
+            "type_id": "NodeFrame",
+            "width": 518.0
+        },
+        "Frame.004": {
+            "height": 395.0,
+            "hide": false,
+            "label": "GridView",
+            "label_size": 64,
+            "location": [
+                7736,
+                714
+            ],
+            "shrink": true,
+            "type": "FRAME",
+            "type_id": "NodeFrame",
+            "width": 489.0
+        },
+        "Frame.005": {
+            "height": 342.0,
+            "hide": false,
+            "label": "Rotation",
+            "label_size": 64,
+            "location": [
+                5634,
+                1828
+            ],
+            "shrink": true,
+            "type": "FRAME",
+            "type_id": "NodeFrame",
+            "width": 1308.0
+        },
+        "Frame.006": {
+            "height": 381.0,
+            "hide": false,
+            "label": "Translation",
+            "label_size": 64,
+            "location": [
+                3296,
+                1664
+            ],
+            "shrink": true,
+            "type": "FRAME",
+            "type_id": "NodeFrame",
+            "width": 695.0
+        },
+        "Frame.007": {
+            "height": 90.0,
+            "hide": false,
+            "label": "Degree to Radian",
+            "label_size": 64,
+            "location": [
+                -3721,
+                1506
+            ],
+            "shrink": true,
+            "type": "FRAME",
+            "type_id": "NodeFrame",
+            "width": 408.8978271484375
+        },
+        "Frame.008": {
+            "height": 311.0,
+            "hide": false,
+            "label": "Aspect Ratio",
+            "label_size": 64,
+            "location": [
+                7742,
+                1748
+            ],
+            "shrink": true,
+            "type": "FRAME",
+            "type_id": "NodeFrame",
+            "width": 689.0
+        },
+        "Group Input": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -2148,
+                639
+            ],
+            "type": "GROUP_INPUT",
+            "type_id": "NodeGroupInput"
+        },
+        "Group Output": {
+            "hide": false,
+            "label": "",
+            "location": [
+                4444,
+                580
+            ],
+            "type": "GROUP_OUTPUT",
+            "type_id": "NodeGroupOutput"
+        },
+        "Math": {
+            "hide": true,
+            "label": "",
+            "location": [
+                7,
+                -1085
+            ],
+            "operation": "MODULO",
+            "parent": "Frame.001",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.001": {
+            "hide": true,
+            "label": "",
+            "location": [
+                415,
+                -779
+            ],
+            "operation": "ROUND",
+            "parent": "Frame.002",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.002": {
+            "hide": true,
+            "label": "",
+            "location": [
+                327,
+                -863
+            ],
+            "operation": "ROUND",
+            "parent": "Frame.002",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.003": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -110,
+                -793
+            ],
+            "operation": "SUBTRACT",
+            "parent": "Frame.002",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.004": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -112,
+                -858
+            ],
+            "operation": "SUBTRACT",
+            "parent": "Frame.002",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.005": {
+            "hide": true,
+            "label": "",
+            "location": [
+                27,
+                -1342
+            ],
+            "operation": "MODULO",
+            "parent": "Frame.001",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.006": {
+            "hide": true,
+            "label": "",
+            "location": [
+                1060,
+                -885
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame.002",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.007": {
+            "hide": true,
+            "label": "",
+            "location": [
+                1059,
+                -935
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame.002",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.008": {
+            "hide": true,
+            "label": "",
+            "location": [
+                61,
+                -1184
+            ],
+            "operation": "SINE",
+            "parent": "Frame.001",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.009": {
+            "hide": true,
+            "label": "",
+            "location": [
+                265,
+                -1113
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame.001",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.010": {
+            "hide": true,
+            "label": "",
+            "location": [
+                62,
+                -1258
+            ],
+            "operation": "COSINE",
+            "parent": "Frame.001",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.011": {
+            "hide": true,
+            "label": "",
+            "location": [
+                262,
+                -1287
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame.001",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.012": {
+            "hide": true,
+            "label": "",
+            "location": [
+                478,
+                -1191
+            ],
+            "operation": "SUBTRACT",
+            "parent": "Frame.001",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.013": {
+            "hide": true,
+            "label": "",
+            "location": [
+                259,
+                -1208
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame.001",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.014": {
+            "hide": true,
+            "label": "",
+            "location": [
+                264,
+                -1350
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame.001",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.015": {
+            "hide": true,
+            "label": "",
+            "location": [
+                471,
+                -1309
+            ],
+            "operation": "ADD",
+            "parent": "Frame.001",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.016": {
+            "hide": true,
+            "label": "",
+            "location": [
+                1144,
+                -779
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame.002",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.017": {
+            "hide": true,
+            "label": "",
+            "location": [
+                2097,
+                -1277
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.018": {
+            "hide": true,
+            "label": "",
+            "location": [
+                2100,
+                -1316
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.019": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1500,
+                -1068
+            ],
+            "operation": "ADD",
+            "parent": "Frame.006",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.020": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -3871,
+                -878
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame.008",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.021": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1508,
+                -1237
+            ],
+            "operation": "ADD",
+            "parent": "Frame.006",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.022": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -3166,
+                -1363
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame.005",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.023": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -2995,
+                -1367
+            ],
+            "operation": "DIVIDE",
+            "parent": "Frame.005",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.024": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -2817,
+                -1332
+            ],
+            "operation": "SINE",
+            "parent": "Frame.005",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.025": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -2817,
+                -1377
+            ],
+            "operation": "COSINE",
+            "parent": "Frame.005",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.026": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -2615,
+                -1235
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame.005",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.027": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -2611,
+                -1313
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame.005",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.028": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -2451,
+                -1277
+            ],
+            "operation": "SUBTRACT",
+            "parent": "Frame.005",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.029": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -2602,
+                -1386
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame.005",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.030": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -2607,
+                -1487
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame.005",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.031": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -2443,
+                -1437
+            ],
+            "operation": "ADD",
+            "parent": "Frame.005",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.032": {
+            "hide": true,
+            "label": "\u03c0",
+            "location": [
+                1891,
+                -1238
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Frame.007",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Math.033": {
+            "hide": true,
+            "label": "div 180",
+            "location": [
+                2093,
+                -1238
+            ],
+            "operation": "DIVIDE",
+            "parent": "Frame.007",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Mix": {
+            "blend_type": "MULTIPLY",
+            "hide": true,
+            "label": "",
+            "location": [
+                -1331,
+                -1262
+            ],
+            "parent": "Frame.003",
+            "type": "MIX_RGB",
+            "type_id": "ShaderNodeMixRGB"
+        },
+        "Mix.001": {
+            "blend_type": "DIFFERENCE",
+            "hide": false,
+            "label": "",
+            "location": [
+                -3837,
+                -256
+            ],
+            "parent": "Frame.004",
+            "type": "MIX_RGB",
+            "type_id": "ShaderNodeMixRGB"
+        },
+        "Mix.002": {
+            "blend_type": "DIFFERENCE",
+            "hide": true,
+            "label": "",
+            "location": [
+                244,
+                -777
+            ],
+            "parent": "Frame.002",
+            "type": "MIX_RGB",
+            "type_id": "ShaderNodeMixRGB"
+        },
+        "Mix.003": {
+            "blend_type": "DIFFERENCE",
+            "hide": true,
+            "label": "",
+            "location": [
+                152,
+                -860
+            ],
+            "parent": "Frame.002",
+            "type": "MIX_RGB",
+            "type_id": "ShaderNodeMixRGB"
+        },
+        "Musgrave Texture": {
+            "hide": true,
+            "label": "",
+            "location": [
+                914,
+                -866
+            ],
+            "musgrave_type": "HETERO_TERRAIN",
+            "parent": "Frame.002",
+            "type": "TEX_MUSGRAVE",
+            "type_id": "ShaderNodeTexMusgrave"
+        },
+        "Musgrave Texture.001": {
+            "hide": true,
+            "label": "",
+            "location": [
+                821,
+                -960
+            ],
+            "musgrave_type": "HETERO_TERRAIN",
+            "parent": "Frame.002",
+            "type": "TEX_MUSGRAVE",
+            "type_id": "ShaderNodeTexMusgrave"
+        },
+        "Musgrave Texture.002": {
+            "hide": true,
+            "label": "",
+            "location": [
+                822,
+                -792
+            ],
+            "musgrave_type": "HETERO_TERRAIN",
+            "parent": "Frame.002",
+            "type": "TEX_MUSGRAVE",
+            "type_id": "ShaderNodeTexMusgrave"
+        },
+        "Noise Texture": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -98,
+                -922
+            ],
+            "parent": "Frame.002",
+            "type": "TEX_NOISE",
+            "type_id": "ShaderNodeTexNoise"
+        },
+        "Reroute": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1754,
+                781
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.001": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1756,
+                607
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.002": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1714,
+                583
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.003": {
+            "hide": false,
+            "label": "",
+            "location": [
+                2067,
+                -1295
+            ],
+            "parent": "Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.004": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1539,
+                583
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.005": {
+            "hide": false,
+            "label": "",
+            "location": [
+                2066,
+                -1333
+            ],
+            "parent": "Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.006": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -69,
+                481
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.007": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1240,
+                -881
+            ],
+            "parent": "Frame.002",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.008": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -57,
+                251
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.009": {
+            "hide": false,
+            "label": "",
+            "location": [
+                147,
+                803
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.010": {
+            "hide": false,
+            "label": "",
+            "location": [
+                152,
+                280
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.011": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1283,
+                280
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.012": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1283,
+                583
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.013": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1020,
+                -903
+            ],
+            "parent": "Frame.002",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.014": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -69,
+                280
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.015": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1035,
+                -796
+            ],
+            "parent": "Frame.002",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.016": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1109,
+                -782
+            ],
+            "parent": "Frame.002",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.017": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1109,
+                -889
+            ],
+            "parent": "Frame.002",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.018": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1008,
+                -816
+            ],
+            "parent": "Frame.002",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.019": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1008,
+                -933
+            ],
+            "parent": "Frame.002",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.020": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1045,
+                -983
+            ],
+            "parent": "Frame.002",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.021": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1045,
+                -887
+            ],
+            "parent": "Frame.002",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.022": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1358,
+                -1283
+            ],
+            "parent": "Frame.003",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.023": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1063,
+                244
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.024": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1879,
+                263
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.025": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1878,
+                472
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.026": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1328,
+                537
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.027": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1328,
+                232
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.028": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1355,
+                516
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.029": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1355,
+                207
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.030": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1541,
+                -1372
+            ],
+            "parent": "Frame.006",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.031": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1667,
+                195
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.032": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1571,
+                -1203
+            ],
+            "parent": "Frame.006",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.033": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1641,
+                222
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.034": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1290,
+                813
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.035": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1285,
+                776
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.036": {
+            "hide": false,
+            "label": "",
+            "location": [
+                109,
+                777
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.037": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1377,
+                497
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.038": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1377,
+                175
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.039": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -3207,
+                -1367
+            ],
+            "parent": "Frame.005",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.040": {
+            "hide": false,
+            "label": "",
+            "location": [
+                2330,
+                149
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.041": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -4118,
+                -374
+            ],
+            "parent": "Frame.004",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.042": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1255,
+                514
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.043": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1255,
+                609
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.044": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1283,
+                505
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.045": {
+            "hide": false,
+            "label": "",
+            "location": [
+                185,
+                -938
+            ],
+            "parent": "Frame.002",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.046": {
+            "hide": false,
+            "label": "",
+            "location": [
+                186,
+                -799
+            ],
+            "parent": "Frame.002",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.047": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1394,
+                449
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.048": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1394,
+                149
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.049": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -976,
+                148
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.050": {
+            "hide": false,
+            "label": "",
+            "location": [
+                112,
+                -776
+            ],
+            "parent": "Frame.002",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.051": {
+            "hide": false,
+            "label": "",
+            "location": [
+                112,
+                -859
+            ],
+            "parent": "Frame.002",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.052": {
+            "hide": false,
+            "label": "",
+            "location": [
+                185,
+                -881
+            ],
+            "parent": "Frame.002",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.053": {
+            "hide": false,
+            "label": "",
+            "location": [
+                2791,
+                577
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.054": {
+            "hide": false,
+            "label": "",
+            "location": [
+                2635,
+                528
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.055": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1024,
+                733
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.056": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1024,
+                897
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.057": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1808,
+                877
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.058": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1808,
+                559
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Separate XYZ": {
+            "hide": true,
+            "label": "",
+            "location": [
+                1897,
+                -1237
+            ],
+            "parent": "Frame",
+            "type": "SEPXYZ",
+            "type_id": "ShaderNodeSeparateXYZ"
+        },
+        "Separate XYZ.001": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -1741,
+                -1123
+            ],
+            "parent": "Frame.006",
+            "type": "SEPXYZ",
+            "type_id": "ShaderNodeSeparateXYZ"
+        },
+        "Separate XYZ.002": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -3359,
+                -1234
+            ],
+            "parent": "Frame.005",
+            "type": "SEPXYZ",
+            "type_id": "ShaderNodeSeparateXYZ"
+        },
+        "Separate XYZ.003": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -4125,
+                -1010
+            ],
+            "parent": "Frame.008",
+            "type": "SEPXYZ",
+            "type_id": "ShaderNodeSeparateXYZ"
+        },
+        "Vector Math": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -1180,
+                -1220
+            ],
+            "parent": "Frame.003",
+            "type": "VECT_MATH",
+            "type_id": "ShaderNodeVectorMath"
+        }
+    },
+    "outputs": [
+        {
+            "default": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "max": 3.4028234663852886e+38,
+            "min": -3.4028234663852886e+38,
+            "name": "UV",
+            "type": "VECTOR"
+        },
+        {
+            "default": 0.0,
+            "max": 3.4028234663852886e+38,
+            "min": -3.4028234663852886e+38,
+            "name": "GridView",
+            "type": "VALUE"
+        }
+    ],
+    "render_engines": [
+        "CYCLES",
+        "BLENDER_EEVEE"
+    ]
+}

@@ -1,0 +1,33 @@
+{
+							"numberInstances": [300,500],
+							"randomSwitchOnOff": false,
+							"instanceLabelActive": true,
+							"useDensityMap": true,
+							"densityMapSettings": {
+								"numberInstances": [13000,15000],
+								"randomSwitchOnOff": false,
+								"densityMap": {
+									"noiseType": "VORONOI",
+									"intensity": 1.2,
+									"size": 0.2,
+									"colorStopPosition_0":0.6,
+									"colorStopColor_0":[0,0,0,1],
+									"colorStopPosition_1":1.0,
+									"colorStopColor_1":[1,1,1,1]
+								}
+							},
+							"refreshFreq": 3,
+							"defaultSize": 1.0,
+							"strengthRandomScale": 1.0,
+							"randomRotationEnabled": true,
+							"rotationOptionMode":"NOR",
+							"rotationOptionFactor":0.4,
+							"rotationOptionPhase":0.3,
+							"rotationOptionPhaseRandom":0.7,
+							"meshEmitter":"STAGE",
+							"appliedOnStage":"landscape01",
+							"passParams": 	{ 	"rgb": {},
+												"semantic_label": {"labelIDVec": [[60,200,0,200]]},
+												"instance_label": {}
+											}
+}

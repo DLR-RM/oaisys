@@ -1,0 +1,16 @@
+{
+	"path":"oaisys_data/examples/assets/materials/dry_ground_01/",
+	"diffuse":true,
+	"ref":true,
+	"spec":true,
+	"normal":true,
+	"displacement":true,
+	"normalStrength":1.0,
+	"dispColorStopPosition_0":0.0,
+	"dispColorStopColor_0":[0,0,0,1],
+	"dispColorStopPosition_1":1.0,
+	"dispColorStopColor_1":[0.2,0.2,0.2,1],
+	"size": 60.0,
+	"mosaicRotation": 360.0,
+	"mosaicNoise": 0.8
+}

@@ -1,0 +1,6 @@
+{
+	"numIter": 1,
+	"renderDepthActive": true,
+	"renderSamples":128,
+	"lightPathesMaxBounces": 6
+}

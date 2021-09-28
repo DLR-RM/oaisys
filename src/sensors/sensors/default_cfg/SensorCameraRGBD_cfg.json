@@ -1,0 +1,13 @@
+{
+"outputBaseName":"dummy",
+"imageResolution": [800,500],
+"cameraFocalLength": 70,
+"cameraFOVHorizontal": 10,
+"cameraFOVVertical": 10,
+"cameraSensorWidth": 0.1,
+"cameraPrinciplePointU": -1,
+"cameraPrinciplePointV": -1,
+"stereoBaseLine": 0.1,
+"transformation": [1.0,0,0,1.0,0.0,0,0],
+"triggerInterval": 1
+}

@@ -1,0 +1,34 @@
+{
+	"stepIntervalOption": "GLOBAL",
+	"stepInterval": 1,
+	"selectionOption":2,
+	"HDRIList": [{
+					"filePath": "oaisys_data/examples/assets/hdris/kloppenheim_06_8k_clean.hdr",
+					"strength": [0.5,1.0],
+					"labelIDVec": [500,{"filePath": "oaisys_data/examples/assets/hdris/kloppenheim_06_8k_label_map.png", "mappingTable": {"1": [[238,236,37],[500]], "2": [[224,74,0],[800]]}}]
+				},
+				{
+					"filePath": "oaisys_data/examples/assets/hdris/kloppenheim_01_4k.exr",
+					"strength": [0.5,1.0],
+					"labelIDVec": [500,500]
+				},
+				{
+					"filePath": "oaisys_data/examples/assets/hdris/kloppenheim_03_4k.exr",
+					"strength": [0.5,1.0],
+					"labelIDVec": [500,500]
+				},
+				{
+					"filePath": "oaisys_data/examples/assets/hdris/quarry_03_4k.exr",
+					"strength": [0.5,1.0],
+					"labelIDVec": [500,500]
+				},
+				{
+					"filePath": "oaisys_data/examples/assets/hdris/qwantani_4k.exr",
+					"strength": [0.5,1.0],
+					"labelIDVec": [500,500]
+				}],
+				"passParams": 	{ 	"RGBDPass": {"rgbIDVec": [1,-1,-1,-1]},
+									"SemanticPass": {"semanticIDVec": [500,500,500,500]},
+									"InstancePass": {"instanceIDVec": [-1]}
+								}
+}

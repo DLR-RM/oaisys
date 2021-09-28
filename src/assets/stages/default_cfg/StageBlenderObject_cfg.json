@@ -1,0 +1,11 @@
+{
+	"stageFilePath":"oaisys_data/blender_files/stages/simple_plane_200x200.blend",
+	"meshInstanceName": "simple_plane_200x200",
+	"stageDisplacementActive": true,
+	"stageDisplacementMidLevel": 1.0,
+	"stageDisplacementStrength": 10.0,
+	"stageDisplacementNoiseType": "MUSGRAVE",
+	"stagedDicingActive": true,
+	"stagedDicingScale": 2.0,
+	"assetMaterial": "terrain_01"
+}

@@ -1,0 +1,17 @@
+{
+	"stepIntervalOption": "GLOBAL",
+	"stepInterval": 1,
+	"SunSize": [0.545],
+	"SunIntensity": [1.0],
+	"SunElevation": [15.0,90.0],
+	"SunRotation": [0.0,360.0],
+	"SunAltitude": [3000.0,3350.0],
+	"AirDensity": [1.0,2.0],
+	"DustDensity": [0.0,10.0],
+	"OzoneDensity": [0.0,5.0],
+	"SunStrength": [0.0001,0.1],
+	"passParams": 	{ 	"RGBDPass": {"rgbIDVec": [1,-1,-1,-1]},
+						"SemanticPass": {"semanticIDVec": [500,500,500,500]},
+						 "InstancePass": {"instanceIDVec": [-1]}
+					}
+}

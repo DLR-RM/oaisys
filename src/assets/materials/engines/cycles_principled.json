@@ -1,0 +1,2178 @@
+{
+    "defaults": [
+        {
+            "node": "Roughness",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.0
+        },
+        {
+            "node": "Roughness",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 1.0
+        },
+        {
+            "node": "Roughness Fix",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Roughness Fix",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 0.5
+        },
+        {
+            "node": "Disp Fix Invert",
+            "socket": "Fac",
+            "socket_id": "Fac",
+            "value": 1.0
+        },
+        {
+            "node": "Disp Fix Invert",
+            "socket": "Color",
+            "socket_id": "Color",
+            "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        {
+            "node": "DISPLACEMENT Adjust",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "DISPLACEMENT Adjust",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 1.0
+        },
+        {
+            "node": "Disp Fix Mult",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Disp Fix Mult",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 0.5
+        },
+        {
+            "node": "DISPLACEMENT Height",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "DISPLACEMENT Height",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 0.0
+        },
+        {
+            "node": "ROUGHNESS Fix Pre",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "ROUGHNESS Fix Pre",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 1.0
+        },
+        {
+            "node": "Bright/Contrast",
+            "socket": "Color",
+            "socket_id": "Color",
+            "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "node": "Bright/Contrast",
+            "socket": "Bright",
+            "socket_id": "Bright",
+            "value": 0.0
+        },
+        {
+            "node": "Bright/Contrast",
+            "socket": "Contrast",
+            "socket_id": "Contrast",
+            "value": 0.0
+        },
+        {
+            "node": "Disp Fix",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "Disp Fix",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 0.5
+        },
+        {
+            "node": "ROUGHNESS Multiply",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 0.5
+        },
+        {
+            "node": "ROUGHNESS Multiply",
+            "socket": "Value",
+            "socket_id": "Value_001",
+            "value": 2.0
+        },
+        {
+            "node": "COLOR Adjust",
+            "socket": "Hue",
+            "socket_id": "Hue",
+            "value": 0.5
+        },
+        {
+            "node": "COLOR Adjust",
+            "socket": "Saturation",
+            "socket_id": "Saturation",
+            "value": 1.0
+        },
+        {
+            "node": "COLOR Adjust",
+            "socket": "Value",
+            "socket_id": "Value",
+            "value": 1.0
+        },
+        {
+            "node": "COLOR Adjust",
+            "socket": "Fac",
+            "socket_id": "Fac",
+            "value": 1.0
+        },
+        {
+            "node": "COLOR Adjust",
+            "socket": "Color",
+            "socket_id": "Color",
+            "value": [
+                0.800000011920929,
+                0.800000011920929,
+                0.800000011920929,
+                1.0
+            ]
+        },
+        {
+            "node": "Normal Map",
+            "socket": "Strength",
+            "socket_id": "Strength",
+            "value": 1.0
+        },
+        {
+            "node": "Normal Map",
+            "socket": "Color",
+            "socket_id": "Color",
+            "value": [
+                0.5,
+                0.5,
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "node": "Group Output",
+            "socket": "Base Color",
+            "socket_id": "Output_1",
+            "value": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "Group Output",
+            "socket": "SSS Color",
+            "socket_id": "Output_53",
+            "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        {
+            "node": "Group Output",
+            "socket": "Metallic",
+            "socket_id": "Output_49",
+            "value": 0.0
+        },
+        {
+            "node": "Group Output",
+            "socket": "Roughness",
+            "socket_id": "Output_11",
+            "value": 0.0
+        },
+        {
+            "node": "Group Output",
+            "socket": "Transmission",
+            "socket_id": "Output_55",
+            "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        {
+            "node": "Group Output",
+            "socket": "Alpha",
+            "socket_id": "Output_51",
+            "value": 0.0
+        },
+        {
+            "node": "Group Output",
+            "socket": "Normal",
+            "socket_id": "Output_9",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "Group Output",
+            "socket": "Displacement",
+            "socket_id": "Output_13",
+            "value": 0.0
+        },
+        {
+            "node": "InvertGloss",
+            "socket": "Fac",
+            "socket_id": "Fac",
+            "value": 1.0
+        },
+        {
+            "node": "InvertGloss",
+            "socket": "Color",
+            "socket_id": "Color",
+            "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        {
+            "node": "NORMAL",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "DISPLACEMENT",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "TRANSMISSION",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "ROUGHNESS",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "GLOSS",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "METALNESS",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "ALPHA",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "SSS",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "COLOR",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "AO",
+            "socket": "Vector",
+            "socket_id": "Vector",
+            "value": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "node": "AO + COLOR (Multiply)",
+            "socket": "Fac",
+            "socket_id": "Fac",
+            "value": 1.0
+        },
+        {
+            "node": "AO + COLOR (Multiply)",
+            "socket": "Color1",
+            "socket_id": "Color1",
+            "value": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "node": "AO + COLOR (Multiply)",
+            "socket": "Color2",
+            "socket_id": "Color2",
+            "value": [
+                0.5,
+                0.5,
+                0.5,
+                1.0
+            ]
+        }
+    ],
+    "inputs": [
+        {
+            "default": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "max": 3.4028234663852886e+38,
+            "min": -3.4028234663852886e+38,
+            "name": "Vector",
+            "type": "VECTOR"
+        },
+        {
+            "default": 0.0,
+            "max": 1.0,
+            "min": -1.0,
+            "name": "Roughness Adj.",
+            "type": "VALUE"
+        },
+        {
+            "default": 1.0,
+            "max": 1.0,
+            "min": 0.0,
+            "name": "AO Strength",
+            "type": "VALUE"
+        },
+        {
+            "default": 1.0,
+            "max": 1.0,
+            "min": 0.0,
+            "name": "Normal Strength",
+            "type": "VALUE"
+        },
+        {
+            "default": 0.0,
+            "max": 2.0,
+            "min": 0.0,
+            "name": "Displacement Strength",
+            "type": "VALUE"
+        },
+        {
+            "default": 0.0,
+            "max": 1.0,
+            "min": -1.0,
+            "name": "Displacement Mid-Level",
+            "type": "VALUE"
+        }
+    ],
+    "links": [
+        {
+            "from": "AO",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "AO + COLOR (Multiply)",
+            "to_id": "Color2",
+            "to_socket": "Color2"
+        },
+        {
+            "from": "Reroute.AO_MULT",
+            "from_id": "Output",
+            "from_socket": "Output",
+            "to": "AO + COLOR (Multiply)",
+            "to_id": "Color1",
+            "to_socket": "Color1"
+        },
+        {
+            "from": "GLOSS",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "InvertGloss",
+            "to_id": "Color",
+            "to_socket": "Color"
+        },
+        {
+            "from": "Reroute.113",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Group Output",
+            "to_id": "Output_9",
+            "to_socket": "Normal"
+        },
+        {
+            "from": "DISPLACEMENT Adjust",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "DISPLACEMENT Height",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.011",
+            "from_id": "Output",
+            "from_socket": "Output",
+            "to": "Bright/Contrast",
+            "to_id": "Color",
+            "to_socket": "Color"
+        },
+        {
+            "from": "DISPLACEMENT Height",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Disp Fix",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.062",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "DISPLACEMENT Height",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "AO + COLOR (Multiply)",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Reroute.color_adj_input",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.030",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Normal Map",
+            "to_id": "Color",
+            "to_socket": "Color"
+        },
+        {
+            "from": "Reroute.032",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "DISPLACEMENT Adjust",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.038",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Group Output",
+            "to_id": "Output_11",
+            "to_socket": "Roughness"
+        },
+        {
+            "from": "Reroute.112",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Group Output",
+            "to_id": "Output_13",
+            "to_socket": "Displacement"
+        },
+        {
+            "from": "Disp Fix Invert",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Disp Fix Mult",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Disp Fix Mult",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Disp Fix",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.068",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.001",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.035",
+            "from_id": "Output",
+            "from_socket": "Output",
+            "to": "Group Output",
+            "to_id": "Output_1",
+            "to_socket": "Base Color"
+        },
+        {
+            "from": "Reroute.110",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Normal Map",
+            "to_id": "Strength",
+            "to_socket": "Strength"
+        },
+        {
+            "from": "COLOR Adjust",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Reroute.010",
+            "to_id": "Input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.010",
+            "from_id": "Output",
+            "from_socket": "Output",
+            "to": "Reroute.011",
+            "to_id": "Input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.COLOR",
+            "from_id": "Output",
+            "from_socket": "Output",
+            "to": "Reroute.AO_MULT",
+            "to_id": "Input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "DISPLACEMENT",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Reroute.032",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.036",
+            "from_id": "Output",
+            "from_socket": "Output",
+            "to": "Reroute.035",
+            "to_id": "Input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Bright/Contrast",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Reroute.036",
+            "to_id": "Input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.037",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.038",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Disp Fix",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Reroute.039",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.063",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.062",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.065",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.063",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.066",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.065",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Group Input",
+            "from_id": "Input_33",
+            "from_socket": "Displacement Mid-Level",
+            "to": "Reroute.066",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.069",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.068",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.071",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.069",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Group Input",
+            "from_id": "Input_21",
+            "from_socket": "Displacement Strength",
+            "to": "Reroute.070",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.070",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.071",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Group Input",
+            "from_id": "Input_19",
+            "from_socket": "AO Strength",
+            "to": "Reroute.083",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.108",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.106",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Group Input",
+            "from_id": "Input_45",
+            "from_socket": "Normal Strength",
+            "to": "Reroute.107",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.107",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.108",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Group Input",
+            "from_id": "Input_7",
+            "from_socket": "Vector",
+            "to": "Reroute.109",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.091",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.109",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.091",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.106",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.110",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Normal Map",
+            "from_id": "Normal",
+            "from_socket": "Normal",
+            "to": "Reroute.111",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.039",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.112",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.111",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.113",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.119",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "AO + COLOR (Multiply)",
+            "to_id": "Fac",
+            "to_socket": "Fac"
+        },
+        {
+            "from": "Reroute.083",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.119",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "ROUGHNESS Multiply",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Roughness Fix",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "ROUGHNESS Fix Pre",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Roughness Fix",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.026",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Roughness",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.004",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "ROUGHNESS Fix Pre",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.ROUGH",
+            "from_id": "Output",
+            "from_socket": "Output",
+            "to": "ROUGHNESS Multiply",
+            "to_id": "Value",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Roughness Fix",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Reroute.037",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.024",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.004",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Roughness",
+            "from_id": "Value",
+            "from_socket": "Value",
+            "to": "Reroute.028",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.024",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "ROUGHNESS Multiply",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.027",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.026",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Group Input",
+            "from_id": "Input_23",
+            "from_socket": "Roughness Adj.",
+            "to": "Reroute.027",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "GLOSS",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "METALNESS",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Reroute.metal.2",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.metal.2",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Reroute.metal.1",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.metal.1",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Group Output",
+            "to_id": "Output_49",
+            "to_socket": "Metallic"
+        },
+        {
+            "from": "Reroute",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "AO",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Reroute",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "COLOR",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Reroute",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "SSS",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Reroute",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "METALNESS",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Reroute",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "NORMAL",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Reroute",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "DISPLACEMENT",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "SSS",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Reroute.sss_color.1",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.sss_color.1",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Reroute.sss_color.2",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "ROUGHNESS",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "InvertGloss",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Reroute.ROUGH",
+            "to_id": "Input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "NORMAL",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Reroute.030",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.001",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "DISPLACEMENT Adjust",
+            "to_id": "Value_001",
+            "to_socket": "Value"
+        },
+        {
+            "from": "Reroute.068",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Disp Fix Invert",
+            "to_id": "Color",
+            "to_socket": "Color"
+        },
+        {
+            "from": "COLOR",
+            "from_id": "Alpha",
+            "from_socket": "Alpha",
+            "to": "Reroute.Alpha",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.Alpha",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.079",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.079",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.080",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.080",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.081",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.081",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Group Output",
+            "to_id": "Output_51",
+            "to_socket": "Alpha"
+        },
+        {
+            "from": "Reroute",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "ALPHA",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "Reroute",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "TRANSMISSION",
+            "to_id": "Vector",
+            "to_socket": "Vector"
+        },
+        {
+            "from": "TRANSMISSION",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Reroute.082",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.082",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Reroute.086",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.084",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Reroute.085",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.085",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Group Output",
+            "to_id": "Output_55",
+            "to_socket": "Transmission"
+        },
+        {
+            "from": "Reroute.086",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Reroute.084",
+            "to_id": "input.001",
+            "to_socket": "Input"
+        },
+        {
+            "from": "COLOR",
+            "from_id": "Color",
+            "from_socket": "Color",
+            "to": "Reroute.COLOR",
+            "to_id": "Input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.028",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.029",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.029",
+            "from_id": "output",
+            "from_socket": "Output",
+            "to": "Reroute.024",
+            "to_id": "input",
+            "to_socket": "Input"
+        },
+        {
+            "from": "Reroute.sss_color.2",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "Group Output",
+            "to_id": "Output_53",
+            "to_socket": "SSS Color"
+        },
+        {
+            "from": "Reroute.color_adj_input",
+            "from_id": "output.001",
+            "from_socket": "Output",
+            "to": "COLOR Adjust",
+            "to_id": "Color",
+            "to_socket": "Color"
+        }
+    ],
+    "nodes": {
+        "ALPHA": {
+            "color_space": "sRGB",
+            "hide": true,
+            "label": "ALPHA",
+            "location": [
+                -281,
+                -325
+            ],
+            "parent": "MapsFrame",
+            "type": "TEX_IMAGE",
+            "type_id": "ShaderNodeTexImage"
+        },
+        "AO": {
+            "color_space": "Non-Color",
+            "hide": true,
+            "label": "AO",
+            "location": [
+                -281,
+                -231
+            ],
+            "parent": "MapsFrame",
+            "type": "TEX_IMAGE",
+            "type_id": "ShaderNodeTexImage"
+        },
+        "AO + COLOR (Multiply)": {
+            "blend_type": "MULTIPLY",
+            "hide": true,
+            "label": "AO + COLOR (Multiply)",
+            "location": [
+                296,
+                -193
+            ],
+            "parent": "MapsFrame",
+            "type": "MIX_RGB",
+            "type_id": "ShaderNodeMixRGB"
+        },
+        "Basic Adjustments Frame": {
+            "height": 760.8700561523438,
+            "hide": false,
+            "label": "Basic Adjustments",
+            "label_size": 50,
+            "location": [
+                1072,
+                497
+            ],
+            "shrink": true,
+            "type": "FRAME",
+            "type_id": "NodeFrame",
+            "width": 665.645751953125
+        },
+        "Bright/Contrast": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -37,
+                -7
+            ],
+            "parent": "Basic Adjustments Frame",
+            "type": "BRIGHTCONTRAST",
+            "type_id": "ShaderNodeBrightContrast"
+        },
+        "COLOR": {
+            "color_space": "sRGB",
+            "hide": true,
+            "label": "COLOR",
+            "location": [
+                -281,
+                -155
+            ],
+            "parent": "MapsFrame",
+            "type": "TEX_IMAGE",
+            "type_id": "ShaderNodeTexImage"
+        },
+        "COLOR Adjust": {
+            "hide": false,
+            "label": "COLOR Adjust",
+            "location": [
+                -268,
+                16
+            ],
+            "parent": "Basic Adjustments Frame",
+            "type": "HUE_SAT",
+            "type_id": "ShaderNodeHueSaturation"
+        },
+        "DISPLACEMENT": {
+            "color_space": "Non-Color",
+            "hide": true,
+            "label": "DISPLACEMENT",
+            "location": [
+                -284,
+                -558
+            ],
+            "parent": "MapsFrame",
+            "type": "TEX_IMAGE",
+            "type_id": "ShaderNodeTexImage"
+        },
+        "DISPLACEMENT Adjust": {
+            "hide": false,
+            "label": "DISPLACEMENT Adjust",
+            "location": [
+                -252,
+                -365
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Basic Adjustments Frame",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "DISPLACEMENT Height": {
+            "hide": false,
+            "label": "DISPLACEMENT Height",
+            "location": [
+                -73,
+                -320
+            ],
+            "operation": "ADD",
+            "parent": "Basic Adjustments Frame",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Disp Fix": {
+            "hide": false,
+            "label": "Disp Fix",
+            "location": [
+                96,
+                -387
+            ],
+            "operation": "ADD",
+            "parent": "Basic Adjustments Frame",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Disp Fix Invert": {
+            "hide": false,
+            "label": "Disp Fix Invert",
+            "location": [
+                -250,
+                -588
+            ],
+            "parent": "Basic Adjustments Frame",
+            "type": "INVERT",
+            "type_id": "ShaderNodeInvert"
+        },
+        "Disp Fix Mult": {
+            "hide": false,
+            "label": "Disp Fix Mult",
+            "location": [
+                -74,
+                -508
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Basic Adjustments Frame",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "GLOSS": {
+            "color_space": "Non-Color",
+            "hide": true,
+            "label": "GLOSS",
+            "location": [
+                -281,
+                -424
+            ],
+            "parent": "MapsFrame",
+            "type": "TEX_IMAGE",
+            "type_id": "ShaderNodeTexImage"
+        },
+        "Group Input": {
+            "hide": false,
+            "label": "Group Input",
+            "location": [
+                -891,
+                113
+            ],
+            "type": "GROUP_INPUT",
+            "type_id": "NodeGroupInput"
+        },
+        "Group Output": {
+            "hide": false,
+            "label": "Group Output",
+            "location": [
+                321,
+                -143
+            ],
+            "parent": "Output Frame",
+            "type": "GROUP_OUTPUT",
+            "type_id": "NodeGroupOutput"
+        },
+        "Input Adj. Frame": {
+            "height": 90.0,
+            "hide": false,
+            "label": "Input Adj.",
+            "label_size": 50,
+            "location": [
+                -525,
+                657
+            ],
+            "shrink": true,
+            "type": "FRAME",
+            "type_id": "NodeFrame",
+            "width": 200.0
+        },
+        "InvertGloss": {
+            "hide": true,
+            "label": "InvertGloss",
+            "location": [
+                41,
+                -408
+            ],
+            "parent": "MapsFrame",
+            "type": "INVERT",
+            "type_id": "ShaderNodeInvert"
+        },
+        "METALNESS": {
+            "color_space": "Non-Color",
+            "hide": true,
+            "label": "METALNESS",
+            "location": [
+                -281,
+                -372
+            ],
+            "parent": "MapsFrame",
+            "type": "TEX_IMAGE",
+            "type_id": "ShaderNodeTexImage"
+        },
+        "MapsFrame": {
+            "height": 541.4238891601562,
+            "hide": false,
+            "label": "Maps",
+            "label_size": 50,
+            "location": [
+                -64,
+                566
+            ],
+            "shrink": true,
+            "type": "FRAME",
+            "type_id": "NodeFrame",
+            "width": 889.624755859375
+        },
+        "NORMAL": {
+            "color_space": "Non-Color",
+            "hide": true,
+            "label": "NORMAL",
+            "location": [
+                -281,
+                -606
+            ],
+            "parent": "MapsFrame",
+            "type": "TEX_IMAGE",
+            "type_id": "ShaderNodeTexImage"
+        },
+        "Normal Map": {
+            "hide": false,
+            "label": "Normal Map",
+            "location": [
+                -14,
+                -184
+            ],
+            "parent": "Output Frame",
+            "space": "TANGENT",
+            "type": "NORMAL_MAP",
+            "type_id": "ShaderNodeNormalMap"
+        },
+        "Output Frame": {
+            "height": 276.7370910644531,
+            "hide": false,
+            "label": "Output",
+            "label_size": 50,
+            "location": [
+                1540,
+                248
+            ],
+            "shrink": true,
+            "type": "FRAME",
+            "type_id": "NodeFrame",
+            "width": 573.056884765625
+        },
+        "Poliigon Mapping Node Frame": {
+            "height": 705.7086181640625,
+            "hide": false,
+            "label": "Poliigon Mapping Node",
+            "label_size": 50,
+            "location": [
+                -494,
+                1345
+            ],
+            "shrink": false,
+            "text": "\nThis nodeGroup contains all the PBR maps required for the downloaded material. It allows you to customise the material as well as alter the amount of displacement used.\n\nHere is the link to an article that covers it's usage.\nhttps://help.poliigon.com/en/articles/2540839-poliigon-material-converter-addon-for-blender \n\n",
+            "type": "FRAME",
+            "type_id": "NodeFrame",
+            "width": 1864.0
+        },
+        "ROUGHNESS": {
+            "color_space": "Non-Color",
+            "hide": true,
+            "label": "ROUGHNESS",
+            "location": [
+                -281,
+                -468
+            ],
+            "parent": "MapsFrame",
+            "type": "TEX_IMAGE",
+            "type_id": "ShaderNodeTexImage"
+        },
+        "ROUGHNESS Fix Pre": {
+            "hide": true,
+            "label": "ROUGHNESS Fix Pre",
+            "location": [
+                -41,
+                -234
+            ],
+            "operation": "SUBTRACT",
+            "parent": "Basic Adjustments Frame",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "ROUGHNESS Multiply": {
+            "hide": true,
+            "label": "ROUGHNESS Multiply",
+            "location": [
+                -43,
+                -160
+            ],
+            "operation": "MULTIPLY",
+            "parent": "Basic Adjustments Frame",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Reroute": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -384,
+                -433
+            ],
+            "parent": "MapsFrame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.001": {
+            "hide": true,
+            "label": "",
+            "location": [
+                -338,
+                -503
+            ],
+            "parent": "Basic Adjustments Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.004": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -107,
+                -237
+            ],
+            "parent": "Basic Adjustments Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.010": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -92,
+                -18
+            ],
+            "parent": "Basic Adjustments Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.011": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -92,
+                -68
+            ],
+            "parent": "Basic Adjustments Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.024": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -107,
+                -178
+            ],
+            "parent": "Basic Adjustments Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.026": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -600,
+                527
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.027": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -601,
+                57
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.028": {
+            "hide": false,
+            "label": "",
+            "location": [
+                547,
+                522
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.029": {
+            "hide": false,
+            "label": "",
+            "location": [
+                547,
+                317
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.030": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -43,
+                -321
+            ],
+            "parent": "Output Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.032": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -335,
+                -482
+            ],
+            "parent": "Basic Adjustments Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.035": {
+            "hide": true,
+            "label": "",
+            "location": [
+                281,
+                -173
+            ],
+            "parent": "Output Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.036": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1822,
+                458
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.037": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1759,
+                253
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.038": {
+            "hide": false,
+            "label": "",
+            "location": [
+                219,
+                -241
+            ],
+            "parent": "Output Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.039": {
+            "hide": false,
+            "label": "",
+            "location": [
+                165,
+                -173
+            ],
+            "parent": "Output Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.062": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -92,
+                -457
+            ],
+            "parent": "Basic Adjustments Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.063": {
+            "hide": false,
+            "label": "",
+            "location": [
+                978,
+                -341
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.065": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -725,
+                -341
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.066": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -725,
+                -31
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.068": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -336,
+                -670
+            ],
+            "parent": "Basic Adjustments Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.069": {
+            "hide": false,
+            "label": "",
+            "location": [
+                736,
+                -316
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.070": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -700,
+                -8
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.071": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -700,
+                -316
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.079": {
+            "hide": false,
+            "label": "",
+            "location": [
+                482,
+                -367
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.080": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1759,
+                -367
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.081": {
+            "hide": false,
+            "label": "",
+            "location": [
+                219,
+                -284
+            ],
+            "parent": "Output Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.082": {
+            "hide": false,
+            "label": "",
+            "location": [
+                509,
+                51
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.083": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -642,
+                33
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.084": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1782,
+                -391
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.085": {
+            "hide": false,
+            "label": "",
+            "location": [
+                241,
+                -262
+            ],
+            "parent": "Output Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.086": {
+            "hide": false,
+            "label": "",
+            "location": [
+                509,
+                -391
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.091": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -620,
+                132
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.106": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1509,
+                -256
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.107": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -532,
+                13
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.108": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -533,
+                -253
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.109": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -620,
+                78
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.110": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -29,
+                -299
+            ],
+            "parent": "Output Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.111": {
+            "hide": false,
+            "label": "",
+            "location": [
+                185,
+                -220
+            ],
+            "parent": "Output Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.112": {
+            "hide": false,
+            "label": "",
+            "location": [
+                165,
+                -325
+            ],
+            "parent": "Output Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.113": {
+            "hide": false,
+            "label": "",
+            "location": [
+                185,
+                -304
+            ],
+            "parent": "Output Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.119": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -642,
+                374
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.AO_MULT": {
+            "hide": false,
+            "label": "",
+            "location": [
+                266,
+                -203
+            ],
+            "parent": "MapsFrame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.Alpha": {
+            "hide": false,
+            "label": "",
+            "location": [
+                482,
+                393
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.COLOR": {
+            "hide": false,
+            "label": "",
+            "location": [
+                266,
+                -158
+            ],
+            "parent": "MapsFrame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.ROUGH": {
+            "hide": false,
+            "label": "",
+            "location": [
+                370,
+                -232
+            ],
+            "parent": "MapsFrame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.color_adj_input": {
+            "hide": false,
+            "label": "",
+            "location": [
+                -331,
+                -132
+            ],
+            "parent": "Basic Adjustments Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.metal.1": {
+            "hide": false,
+            "label": "",
+            "location": [
+                241,
+                -219
+            ],
+            "parent": "Output Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.metal.2": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1782,
+                184
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.sss_color.1": {
+            "hide": false,
+            "label": "",
+            "location": [
+                1801,
+                285
+            ],
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Reroute.sss_color.2": {
+            "hide": false,
+            "label": "",
+            "location": [
+                260,
+                -196
+            ],
+            "parent": "Output Frame",
+            "type": "REROUTE",
+            "type_id": "NodeReroute"
+        },
+        "Roughness": {
+            "hide": true,
+            "label": "Roughness",
+            "location": [
+                69,
+                -126
+            ],
+            "operation": "ADD",
+            "parent": "Input Adj. Frame",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "Roughness Fix": {
+            "hide": true,
+            "label": "Roughness Fix",
+            "location": [
+                119,
+                -232
+            ],
+            "operation": "ADD",
+            "parent": "Basic Adjustments Frame",
+            "type": "MATH",
+            "type_id": "ShaderNodeMath"
+        },
+        "SSS": {
+            "color_space": "Non-Color",
+            "hide": true,
+            "label": "SSS",
+            "location": [
+                -281,
+                -278
+            ],
+            "parent": "MapsFrame",
+            "type": "TEX_IMAGE",
+            "type_id": "ShaderNodeTexImage"
+        },
+        "TRANSMISSION": {
+            "color_space": "Non-Color",
+            "hide": true,
+            "label": "TRANSMISSION",
+            "location": [
+                -281,
+                -513
+            ],
+            "parent": "MapsFrame",
+            "type": "TEX_IMAGE",
+            "type_id": "ShaderNodeTexImage"
+        }
+    },
+    "outputs": [
+        {
+            "default": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "name": "Base Color",
+            "type": "RGBA"
+        },
+        {
+            "default": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "name": "SSS Color",
+            "type": "RGBA"
+        },
+        {
+            "default": 0.0,
+            "name": "Metallic",
+            "type": "VALUE"
+        },
+        {
+            "default": 0.0,
+            "name": "Roughness",
+            "type": "VALUE"
+        },
+        {
+            "default": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "name": "Transmission",
+            "type": "RGBA"
+        },
+        {
+            "default": 0.0,
+            "name": "Alpha",
+            "type": "VALUE"
+        },
+        {
+            "default": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "name": "Normal",
+            "type": "VECTOR"
+        },
+        {
+            "default": 0.0,
+            "name": "Displacement",
+            "type": "VALUE"
+        }
+    ],
+    "render_engines": [
+        "CYCLES",
+        "BLENDER_EEVEE"
+    ]
+}
