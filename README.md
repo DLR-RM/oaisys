@@ -4,7 +4,7 @@
 
 OAISYS (**O**utdoor **A**rtificial **I**ntelligent **SY**stems **S**imulator) is a simulator for unstrucutred outdoor environments that sepcifically considers the requirements of planetary robotics. The simulator is capable of generating large varieties of (planetary) outdoor scenes with rich generation of meta data, such as multi-level  semantic  and  instance  annotations. OAISYS is built upon the open source engine Blender, without requiring expert knowledge in rendering pipelines. For further information on how OAISYS works, we refer to the following presentation and the corresponding IROS21 conference paper "A Photorealistic Terrain Simulation Pipeline for Unstructured Outdoor Environments".
 
-To get started with OAISYS we recommand you to watch the following video and complete the ![Basic Tutorial](doc/wiki/basicExample/basicExample.md).
+To get started with OAISYS we recommand you to watch the [OAISYS video](https://www.youtube.com/watch?v=zXwYdT4yzTc) and complete the ![Basic Tutorial](doc/wiki/basicExample/basicExample.md).
 
 Important: Please be aware this repository is still under construction!
 
