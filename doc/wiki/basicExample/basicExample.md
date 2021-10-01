@@ -25,7 +25,7 @@ In this tutorial, we have a look into how to create such a dataset.
 Before we can start to create our own environment, we have to download this repository.
 Navigate to the folder, where you would like to download OAISYS and execute:
 
-`git clone https://rmc-github.robotic.dlr.de/moro/TerrainStageSimulator.git`
+`git clone https://github.com/DLR-RM/oaisys.git`
 
 # running OAISYS for the first time
 
