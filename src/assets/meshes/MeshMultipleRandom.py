@@ -34,6 +34,7 @@ class MeshMultipleRandom(TSSMesh):
         self._num_instance_label_per_channel = 51
         self._max_instances_labels = self._num_instance_label_per_channel*self._num_instance_label_per_channel\
                                                                     *self._num_instance_label_per_channel
+        self._num_labels_per_channel = 15
         self._node_tree = None
         self._particle_system = None
         self._instance_label_active = False
@@ -76,6 +77,7 @@ class MeshMultipleRandom(TSSMesh):
         self._num_instance_label_per_channel = 51
         self._max_instances_labels = self._num_instance_label_per_channel*self._num_instance_label_per_channel\
                                                                     *self._num_instance_label_per_channel
+        self._num_labels_per_channel = 15
         self._node_tree = None
         self._particle_system = None
         self._instance_label_active = False
@@ -264,11 +266,11 @@ class MeshMultipleRandom(TSSMesh):
             # TODO: add condition if rendering label is even set?!
             self._instance_label_active = mesh_settings_cfg['instanceLabelActive']
 
-
+            print(_label_ID_vec)
             _label_node,_label_ID_Node = self.create_semantic_nodes(\
                                                                 node_tree=material,
                                                                 label_ID_vec=_label_ID_vec,
-                                                                num_label_per_channel=self._num_instance_label_per_channel,
+                                                                num_label_per_channel=self._num_labels_per_channel,
                                                                 node_offset=[_global_Pos_GX,_global_Pos_GY+1500])
             ##########################################################################################
             
