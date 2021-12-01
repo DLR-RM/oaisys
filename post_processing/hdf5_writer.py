@@ -43,7 +43,7 @@ class HDF5Processor(AnnotationWriter):
                     _data_def = self.channel_def[sen][key]
 
                     if _data_def.get('post_process',False): 
-                        _map2 = PostprocessUtils.apply_postprocessing(_map, _data_def)
+                        _map = PostprocessUtils.apply_postprocessing(_map, _data_def)
 
                     _sen_data[key] = _map
             
