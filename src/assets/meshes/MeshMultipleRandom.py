@@ -266,7 +266,6 @@ class MeshMultipleRandom(TSSMesh):
             # TODO: add condition if rendering label is even set?!
             self._instance_label_active = mesh_settings_cfg['instanceLabelActive']
 
-            print(_label_ID_vec)
             _label_node,_label_ID_Node = self.create_semantic_nodes(\
                                                                 node_tree=material,
                                                                 label_ID_vec=_label_ID_vec,
