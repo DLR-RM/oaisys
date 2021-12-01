@@ -272,6 +272,8 @@ class MeshMultipleRandom(TSSMesh):
                                                                 label_ID_vec=_label_ID_vec,
                                                                 num_label_per_channel=self._num_labels_per_channel,
                                                                 node_offset=[_global_Pos_GX,_global_Pos_GY+1500])
+            
+            _label_node.inputs[0].default_value = 1
             ##########################################################################################
             
             self._label_ID_Node_list.append(_label_ID_Node)
@@ -290,8 +292,6 @@ class MeshMultipleRandom(TSSMesh):
 
 
                 self._instance_switch_node_list.append(_instance_switch_node)
-
-                _label_node.inputs[0].default_value = 1
 
                 material.node_tree.links.new(_instance_add_node.inputs[0], _particle_info_node.outputs[0])
                 material.node_tree.links.new(_instance_switch_node.inputs[1], _label_node.outputs[0])
