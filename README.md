@@ -2,7 +2,7 @@
 
 ![hero](doc/wiki/figures/MainPage/oaisys_hero_crop.jpg)
 
-OAISYS (**O**utdoor **A**rtificial **I**ntelligent **SY**stems **S**imulator) is a simulator for unstrucutred outdoor environments that sepcifically considers the requirements of planetary robotics. The simulator is capable of generating large varieties of (planetary) outdoor scenes with rich generation of meta data, such as multi-level  semantic  and  instance  annotations. OAISYS is built upon the open source engine Blender, without requiring expert knowledge in rendering pipelines. For further information on how OAISYS works, we refer to the following presentation and the corresponding IROS21 conference paper "A Photorealistic Terrain Simulation Pipeline for Unstructured Outdoor Environments".
+OAISYS (**O**utdoor **A**rtificial **I**ntelligent **SY**stems **S**imulator) is a simulator for unstructured outdoor environments that specifically considers the requirements of planetary robotics. The simulator is capable of generating large varieties of (planetary) outdoor scenes with rich generation of metadata, such as multi-level  semantic  and  instance  annotations. OAISYS is built upon the open source engine Blender, without requiring expert knowledge in rendering pipelines. For further information on how OAISYS works, we refer to the following presentation and the corresponding IROS21 conference paper, "A Photorealistic Terrain Simulation Pipeline for Unstructured Outdoor Environments".
 
 To get started with OAISYS we recommand you to watch the [OAISYS video](https://www.youtube.com/watch?v=zXwYdT4yzTc) and complete the ![Basic Tutorial](doc/wiki/basicExample/basicExample.md).
 
@@ -26,7 +26,7 @@ The current version of OAISYS works under Linux and is tested with the LTS Blend
 
 If you use the simulator for your work, we would like to kindly ask to reference our OAISYS paper:
 
-```
+```bibtex
 @InProceedings{Mueller2021,
 	author    = {M{\"u}ller, Marcus G. and Durner, Maximilian and Gawel, Abel and St{\"u}rzl, Wolfgang and Triebel, Rudolph and Siegwart, Roland},
 	title     = {{A Photorealistic Terrain Simulation Pipeline for Unstructured Outdoor Environments}},
