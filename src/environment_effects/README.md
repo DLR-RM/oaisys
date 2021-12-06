@@ -4,8 +4,8 @@ Environment Effects is a collection of effects which reside inside the world mat
 
 # Current List of Environment Effects
 
-- ![EnvLightBlenderSky](effects/doc/EnvLightBlenderSky_doc.md): This module allows to simulate realistic skies, with no clouds.
-- ![EnvHDRI](effects/doc/EnvHDRI_doc.md): This module allows to simulate background ambient lights with the usage of HDRIs.
+- [EnvLightBlenderSky](effects/doc/EnvLightBlenderSky_doc.md): This module allows to simulate realistic skies, with no clouds.
+- [EnvHDRI](effects/doc/EnvHDRI_doc.md): This module allows to simulate background ambient lights with the usage of HDRIs.
 
 # Usage Information
 
