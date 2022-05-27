@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="oaisys_client_ros" type="oaisys_client_node" name="test_oaisysclient" output="screen">
+    </node>
+</launch>

@@ -11,7 +11,7 @@ import pathlib
 
 # import files from TSS
 import src.tools.cfgParser
-import src.TSS_simulation as TSSStageSimulator
+import src.TSS_simulation_online as TSSStageSimulator
 
 from bpy.types import (
     AddonPreferences,

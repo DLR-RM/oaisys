@@ -380,9 +380,10 @@ class EnvHDRI(TSSEnvironmentEffects):
         return _current_mix_shader_node, label_ID_node
 
 
-    def step(self,keyframe):
+    def step(self,meta_data,keyframe):
         """ step function
         Args:
+            meta_data:      meta data which is passed to modules [dict]
             keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
         Returns:
             None

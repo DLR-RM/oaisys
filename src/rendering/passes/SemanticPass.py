@@ -171,3 +171,5 @@ class SemanticPass(TSSRenderPass):
         #################################################################################### end of rename output name #
         
         self._label_switch_node.check = False
+
+        return _moved_file_name

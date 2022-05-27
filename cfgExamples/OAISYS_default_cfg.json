@@ -3,7 +3,7 @@
 		"outputPath":"",
 		"defaultCfg": "",
 		"numBatches":2,
-		"numSamplesPerBatch":3,
+		"numSamplesPerBatch":1,
 		"renderImages": true,
 		"saveBlenderFiles": true,
 		"outputIDOffset":0
@@ -31,14 +31,14 @@
 							{
 							"type": "SemanticPass",
 							"passParams": {
-											"numIter": 2,
+											"numIter": 0,
 											"renderSamples":1
 										  }
 							},
 							{
 							"type": "InstancePass",
 							"passParams": {
-											"numIter": 1,
+											"numIter": 0,
 											"renderSamples":1
 										}
 							}]
@@ -50,14 +50,7 @@
 		"GENERAL": {
 					"renderPasses": ["combined"]
 					},
-		"POST_EFFECTS": [{
-							"type": "BloomEffect",
-							"effectParams": {
-											"quality": "HIGH",
-											"threshold": 0.8
-										}
-							}
-						]
+		"POST_EFFECTS": []
 				
 	},
 
@@ -65,13 +58,14 @@
 	"SENSOR_SETUP": {
 		"GENERAL": {
 
-
+					"onlineMode": true,
 					"baseMovement": {	"movementType": "randomEuclideanTarget",
 										"hoverBaseModeEnabled": true,
 									    "hoverBaseStage":"landscape01",
 										"hoverBaseDistance":1.5,
 										"hoverBaseDistanceNoise": 0.5
 									},
+					"onlineMode": true,
 					"sensorMovementType":"randomEuclideanTarget",
 					"hoverBaseModeEnabled": true,
 					"hoverBaseStage":"landscape01",
@@ -113,14 +107,14 @@
 	"ENVIRONMENT_EFFECTS_SETUP": {
 
 		"GENERAL": {"backgroundStrength": [0.1],
-					"stepInterval": 1
+					"stepInterval": 1000
 					},
 
 		"ENVIRONMENT_EFFECTS": [	{"type": "EnvLightBlenderSky",
-									"stepInterval": 1,
+									"stepInterval": 1000,
 									"environmentEffectsParams": {
 																"stepIntervalOption": "GLOBAL",
-																"stepInterval": 1,
+																"stepInterval": 1000,
 																"SunSize": [0.545],
 																"SunIntensity": [1.0],
 																"SunElevation": [15.0,90.0],
@@ -202,16 +196,19 @@
 					  ],
 
 		"STAGES": [{"name": "landscape01",
-					 "type": "StageBlenderLandscape",
-					 "stageParams": {
-							"stageName": "landscape",
-							"stageSizeX": 200,
-							"stageLandscapePreset": "another_noise",
-							"assetMaterial": "terrain_01",
-							"landscapeParams": {"random_seed":[0,1000]}
-					 		}
-					}
-					],
+		"type": "StageBlenderObject",
+		"stageParams": {
+				"meshInstanceName": "landscape",
+				"stageFilePath": "<path_to_workspace>/oaisys/oaisys_data/blender_files/stages/oaisys.blend",
+				"stageName": "landscape",
+				"stageDisplacementActive": false,
+				"stageSizeX": 200,
+				"stageLandscapePreset": "another_noise",
+				"assetMaterial": "terrain_01",
+				"landscapeParams": {"random_seed":[0,1000]}
+				}
+		}
+		],
 
 
 		"MESHES": [ {"name": "rock1",

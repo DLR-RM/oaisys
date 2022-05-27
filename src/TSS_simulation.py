@@ -10,6 +10,7 @@ import os
 import pathlib
 from datetime import datetime
 import time
+import random
 
 # simulation imports
 import src.tools.cfg_parser as cfg_parser
@@ -20,12 +21,38 @@ import src.handle.TSSAssetHandle as TSSAssetHandle
 import src.handle.TSSRenderPostProcessingHandle as RenderPostProcessingHandle
 
 
+from concurrent import futures
+import logging
+
+import grpc
+import helloworld_pb2
+import helloworld_pb2_grpc
+
+
+class Greeter(helloworld_pb2_grpc.GreeterServicer):
+
+    def SayHello(self, request, context):
+        return helloworld_pb2.HelloReply(message='Hello, %s!' % request.name)
+
+    def SayHelloAgain(self, request, context):
+        return helloworld_pb2.HelloReply(message='Hello again, %s!' % request.name)
+
+
 class TSS_OP_CStageSimulator():
     bl_idname = "example.func_2"
     bl_label = "create Stage"
     
     def execute(self, cfg_path):
+        server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+        helloworld_pb2_grpc.add_GreeterServicer_to_server(Greeter(), server)
+        server.add_insecure_port('[::]:50051')
+        server.start()
+        self.execute2(cfg_path)
+        server.wait_for_termination()
 
+
+    def execute2(self, cfg_path):
+        
         self._print_welcome()
 
         # create path to custom start file #############################################################################
@@ -137,11 +164,14 @@ class TSS_OP_CStageSimulator():
                 self._prCyan("Sample " + str((batch_ID-1)*_num_samples_per_batch+sample) + " / " + \
                                                                         str(_num_samples_per_batch*_num_batches))
 
+                # Middleware Interface
+                _stepping_data = self._call_middleware()
+
                 # step all instances
-                _sensor_handle.step(keyframe=_frame)
-                _env_handle.step(keyframe=_frame)
-                _asset_handle.step(keyframe=_frame)
-                _render_handle.step(keyframe=_frame)
+                _sensor_handle.step(meta_data=_stepping_data["sensor"],keyframe=_frame)
+                _env_handle.step(meta_data=_stepping_data["env"],keyframe=_frame)
+                _asset_handle.step(meta_data=_stepping_data["asset"],keyframe=_frame)
+                _render_handle.step(meta_data=_stepping_data["render"],keyframe=_frame)
 
                 # get render pass list
                 _render_pass_list = _render_handle.get_render_pass_list()
@@ -251,3 +281,20 @@ class TSS_OP_CStageSimulator():
         self._prCyan(f.read())
 
     def _prCyan(self,skk): print("\033[96m {}\033[00m" .format(skk))
+
+
+
+    def _call_middleware(self):
+
+        _stepping_data = {}
+
+
+        _tmp = {}
+        _tmp["sensor_pose"] = [0,random.uniform(0, 10), random.uniform(0, 10),random.uniform(0, 10), 1, 0, 0, 0]
+
+        _stepping_data["sensor"] = _tmp
+        _stepping_data["env"] = None
+        _stepping_data["asset"] = None
+        _stepping_data["render"] = None
+
+        return _stepping_data

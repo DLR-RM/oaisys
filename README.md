@@ -21,6 +21,34 @@ The current version of OAISYS works under Linux and is tested with the LTS Blend
 
 ### Developers
 * Basic Developer Tutorial: under construction
+#### Using the gRPC interface
+[gRPC](https://grpc.io/) can be used to control the OAISYS simulation from an external process
+***Installing grpcio wtih blender python pip***
+We need to install grpcio with python included in blender. Therefore we need to get pip for blender
+```
+cd <blender_path>
+cd 2.93 # (blender version)
+python/bin/python3.9 lib/python3.9/ensurepip/__main__.py
+```
+We can now use pip3.9 and install required packages
+```
+python/bin/pip3.9 install grpcio google protobuf
+```
+
+***Using oaisys_client_ros***
+`oaisys_client_ros` is a ROS package that interfaces with the OAISYS gRPC interface.
+In order to install ROS, follow the installation instructions in this [document](http://wiki.ros.org/melodic/Installation).
+Before we build the package, install the `catkin_grpc` dependency through the package manager.
+```
+apt install ros-melodic-grpc
+```
+
+Clone this repository into your catkin workspace and build the package
+```
+cd <catkin_ws_path>
+git clone git@github.com:mgmatDLR/oaisys_external.git <catkin_ws_path>/src/oaisys
+catkin build oaisys_client_ros
+```
 
 ## Citation
 
