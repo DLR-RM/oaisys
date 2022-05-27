@@ -161,3 +161,5 @@ class InstancePass(TSSRenderPass):
         #################################################################################### end of rename output name #
         
         self._instance_switch_node.check = False
+
+        return _moved_file_name

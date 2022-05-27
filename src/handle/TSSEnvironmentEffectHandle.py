@@ -19,7 +19,7 @@ class TSSEnvironmentEffectHandle(object):
         # class vars ###################################################################################################
         self._effect_list = []
         self._cfg = {}
-        self._trigger_interval = 1          # interval of triggering [uint]
+        self._trigger_interval = 1000          # interval of triggering [uint]
         self._stepping_counter = 0          # counter which counts how often stepping function is executed [uint]
         self._background_strength = [1,1]
         self._tree = None
@@ -45,7 +45,7 @@ class TSSEnvironmentEffectHandle(object):
 
         # reset vars ###################################################################################################
         self._effect_list = []
-        self._trigger_interval = 1
+        self._trigger_interval = 1000
         self._stepping_counter = 0
         self._background_strength = [1,1]
         self._tree = None
@@ -196,9 +196,10 @@ class TSSEnvironmentEffectHandle(object):
         pass
 
 
-    def step(self,keyframe):
+    def step(self,meta_data,keyframe):
         """ step handle and modules
         Args:
+            meta_data:      meta data which is passed to modules [dict]
             keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
         Returns:
             None
@@ -233,8 +234,8 @@ class TSSEnvironmentEffectHandle(object):
 
             if "GLOBAL" == _trigger_option:
                 if (self._stepping_counter % self._trigger_interval) == 0:
-                    effect_handle.step_module(keyframe=keyframe)
+                    effect_handle.step_module(meta_data=meta_data,keyframe=keyframe)
 
             if "LOCAL" == _trigger_option:
-                effect_handle.step_module(keyframe=keyframe)
+                effect_handle.step_module(meta_data=meta_data,keyframe=keyframe)
         ###################################################################################### end of step for modules #

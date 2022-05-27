@@ -1,0 +1,4 @@
+oaisys_tmp/*
+*.log
+*_pycache_*
+*.pyc
