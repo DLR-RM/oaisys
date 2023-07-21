@@ -6,6 +6,7 @@ import subprocess
 import shutil
 import signal
 import sys
+import zipfile
 from sys import platform, version_info
 
 if version_info.major == 3:
@@ -16,6 +17,21 @@ else:
 
 import uuid
 
+
+def extract_file(output_dir: str, file: str, mode: str = "ZIP"):
+        try:
+            if mode.lower() == "zip":
+                with zipfile.ZipFile(file) as tar:
+                    tar.extractall(str(output_dir))
+            elif mode.lower() == "tar":
+                with tarfile.open(file) as tar:
+                    tar.extractall(str(output_dir))
+            else:
+                raise Exception("No such mode: " + mode)
+
+        except (IOError, zipfile.BadZipfile) as e:
+            print('Bad zip file given as input.  %s' % e)
+            raise e
 
 parser = argparse.ArgumentParser(add_help=False)
 parser.add_argument('args', metavar='arguments', nargs='*', help='Additional arguments which are used to replace placeholders inside the configuration. <args:i> is hereby replaced by the i-th argument.')
@@ -108,7 +124,7 @@ if not os.path.exists(blender_path):
 
     if platform == "linux" or platform == "linux2":
         if version_info.major == 3:
-            SetupUtility.extract_file(blender_install_path, file_tmp, "TAR")
+            extract_file(blender_install_path, file_tmp, "TAR")
         else:
             with contextlib.closing(lzma.LZMAFile(file_tmp)) as xz:
                 with tarfile.open(fileobj=xz) as f:
@@ -128,7 +144,7 @@ if not os.path.exists(blender_path):
         subprocess.Popen(["rm {}".format(os.path.join(blender_install_path, blender_version + ".dmg"))], shell=True).wait()
         # add Blender.app path to it
     elif platform == "win32":
-        SetupUtility.extract_file(blender_install_path, file_tmp)
+        extract_file(blender_install_path, file_tmp)
     # rename the blender folder to better fit our existing scheme
     for folder in os.listdir(blender_install_path):
         if os.path.isdir(os.path.join(blender_install_path, folder)) and folder.startswith("blender-" + major_version):
