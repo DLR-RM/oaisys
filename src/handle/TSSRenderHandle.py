@@ -170,7 +170,7 @@ class TSSRenderHandle(object):
         ############################################################################## end of load render pass objects #
 
 
-    def step(self, keyframe=-1):
+    def step(self,meta_data=None, keyframe=-1):
         self._global_step_index += 1
 
         for render_pass in self._pass_list:

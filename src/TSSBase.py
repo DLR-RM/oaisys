@@ -68,11 +68,12 @@ class TSSBase(object):
         self._module_type = type
 
 
-    def step_module(self, keyframe=-1):
+    def step_module(self, meta_data=None, keyframe=-1):
         """ step function is called by handle fucntion for every new sample in of the batch; should be overwritten by
             custom class
             DO NOT OVERWRITE!
         Args:
+            meta_data:      meta data which is passed to modules [dict]
             keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
         Returns:
             None
@@ -84,13 +85,14 @@ class TSSBase(object):
         if self._step_trigger_reached():
 
             # call stepping function
-            self.step(keyframe=keyframe)
+            self.step(meta_data=meta_data,keyframe=keyframe)
 
 
-    def step(self, keyframe=-1):
+    def step(self, meta_data=None, keyframe=-1):
         """ step function is called for every new sample in of the batch; should be overwritten by custom class
             OVERWRITE!
         Args:
+            meta_data:      meta data which is passed to modules [dict]
             keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
         Returns:
             None

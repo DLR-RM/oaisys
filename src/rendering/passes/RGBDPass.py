@@ -468,6 +468,7 @@ class RGBDPass(TSSRenderPass):
         _moved_file_name = _sensor_path+"/"+_new_frame_number+_rgb_output_name+"_"+_sub_render_ID_str+".png"
         os.rename(_old_file_name,_new_file_name)
         shutil.move(_new_file_name,_moved_file_name)
+        _file1 = _moved_file_name
         ################################################################################ end of rename rgb output name #
 
         
@@ -478,9 +479,15 @@ class RGBDPass(TSSRenderPass):
             _moved_file_name = _sensor_path+"/"+_new_frame_number+_p_depth_output_name+"_"+_sub_render_ID_str+".exr"
             os.rename(_old_file_name,_new_file_name)
             shutil.move(_new_file_name,_moved_file_name)
+            _file2 = _moved_file_name
             ######################################################################## end of rename pinhole output name #
         #################################################################################### end of rename output name #
 
         self._pinhole_switch_node.check = False
         #self._depth_switch_node.check = False  NOTE: depth not supported anymore
         self._rgb_switch_node.check = False
+
+        if _file2:
+            return [_file1,_file2]
+        else:
+            return _file1 

@@ -261,9 +261,10 @@ class EnvLightBlenderSky(TSSEnvironmentEffects):
         return self._add_sky(last_element=last_element,node_offset=self._node_offset)
 
 
-    def step(self,keyframe):
+    def step(self,meta_data,keyframe):
         """ step function
         Args:
+            meta_data:      meta data which is passed to modules [dict]
             keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
         Returns:
             None

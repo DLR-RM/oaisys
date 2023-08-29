@@ -52,6 +52,44 @@ class StageBlenderObject(TSSStage):
         _new_obj_name = 'stage_' + object_file_name + str(1)
         self._single_stage.name = _new_obj_name
         ########################################################################### end of load/append object to scene #
+        
+        # clean object #################################################################################################
+        _mat_list = bpy.data.materials
+
+        # go through material slot and delete material
+        for mat_slot in self._single_stage.material_slots:
+            bpy.data.materials.remove(mat_slot.material)
+
+        # go through particle systems, delete system and object with it
+        for par_system in self._single_stage.particle_systems:
+            # check if object is attached with it
+            if hasattr(par_system.settings, 'instance_object'):
+                _par_obj = par_system.settings.instance_object
+                for mat_slot in _par_obj.material_slots:
+                    bpy.data.materials.remove(mat_slot.material)
+                bpy.data.objects.remove(_par_obj, do_unlink=True)
+            
+
+        # TODO: improve!
+        _particle_exist = True
+
+        while _particle_exist:
+            for mod in self._single_stage.modifiers:
+                if mod.type == "PARTICLE_SYSTEM":
+                    self._single_stage.modifiers.remove(mod)
+                    break
+            _particle_exist = False
+            for mod in self._single_stage.modifiers:
+                if mod.type == "PARTICLE_SYSTEM":
+                    _particle_exist = True
+                    break
+
+        # remove lastSubsurf
+        for mod in self._single_stage.modifiers:
+            if mod.name == "lastSubsurf":
+                self._single_stage.modifiers.remove(mod)
+
+        ########################################################################################## end of clean object #
 
         # setup stage cfg parameters
         if self._cfg['stageDisplacementActive']:
@@ -91,3 +129,61 @@ class StageBlenderObject(TSSStage):
 
     def step(self):
         pass
+
+
+
+
+
+'''
+            print("par_system.name): ", par_system.name)
+            print(self._single_stage.modifiers.get(par_system.name))
+            print(par_system)
+            #print(self._single_stage.modifiers.get(par_system))
+            if self._single_stage.modifiers.get(par_system.name):
+                self._single_stage.modifiers.remove(self._single_stage.modifiers.get(par_system.name))
+            
+
+            
+
+
+
+
+
+        for mod in self._single_stage.modifiers:
+            #print(mod.type)
+            #print("mod1: ", mod)
+            #print(mod.index)
+            #for mod2 in self._single_stage.modifiers:
+                #print("mod2: ", mod2)
+            print(type(mod))
+            if mod.type == "SUBSURF":#"PARTICLE_SYSTEM":
+                print(mod.name)
+                _t1.append(mod.name)
+                #print()
+                #print("remove me")
+                #self._single_stage.modifiers.remove(mod)
+
+        for t1 in _t1:
+            print("remove")
+            self._single_stage.modifiers.remove(self._single_stage.modifiers.get(t1))
+
+        for par_system in self._single_stage.particle_systems:
+            for mod in self._single_stage.modifiers:
+                print("mod: ", mod)
+                print("mod: ", mod.name)
+                print("par_system.name: ", par_system.name)
+                print("mod.type: ", mod.type)
+                if mod.name == par_system.name:
+                    print("remove me")
+                    _t1.append(mod)
+                    #self._single_stage.modifiers.remove(mod)            
+
+        print(_t1)
+        self._single_stageremove(remesh_mods[-1])
+        for t in _t1:
+            self._single_stage.modifiers.remove(t)
+
+        for par_system in self._single_stage.particle_systems:
+            print("ajsiklajfklsajfö: ", self._single_stage.modifiers.get(par_system.name))
+            self._single_stage.modifiers.remove(self._single_stage.modifiers.get(par_system.name))
+'''

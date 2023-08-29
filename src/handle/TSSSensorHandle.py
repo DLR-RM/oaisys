@@ -30,6 +30,8 @@ class TSSSensorHandle(TSSBase):
                                                 "deterministic": self._deterministic,
                                                 "randomEuclidean": self._random_euclidean,
                                                 "randomEuclideanTarget": self._random_euclidean_target}
+
+        self._online_mode = False                                       # online mode for middleware operation
         self._roll_limits = [0,0]
         ############################################################################################ end of class vars #
 
@@ -67,6 +69,7 @@ class TSSSensorHandle(TSSBase):
         self._target_object = None
         self._sensor_base_constraint = None
         self._roll_limits = [0,0]
+        self._online_mode = False
         ############################################################################################ end of reset vars #
 
 
@@ -79,11 +82,19 @@ class TSSSensorHandle(TSSBase):
         """
 
         
+        # check if online mode is requested ############################################################################
+        if "onlineMode" in cfg:
+            self._online_mode = cfg["onlineMode"]
+        else:
+            self._online_mode = False
+        ##################################################################### end of check if online mode is requested #
+
         # create empty blender object ##################################################################################
         self._sensor_base = bpy.data.objects.new("empty",None)
         self._sensor_base.name = "sensor_base"
         self._sensor_base.empty_display_type = 'PLAIN_AXES'
         self._sensor_base.empty_display_size = 0.5
+        self._sensor_base.rotation_mode = 'QUATERNION'
         bpy.context.scene.collection.objects.link(self._sensor_base)
         ########################################################################### end of create empty blender object #
 
@@ -523,9 +534,10 @@ class TSSSensorHandle(TSSBase):
         self._attach_sensors_to_base()
 
 
-    def step(self, keyframe):
+    def step(self, meta_data, keyframe):
         """ overwrite step function
         Args:
+            meta_data:      meta data which is passed to modules [dict]
             keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
         Returns:
             None
@@ -534,60 +546,80 @@ class TSSSensorHandle(TSSBase):
         # increase pose counter
         self._pose_index += 1
 
-        # move base pose one position forward ##########################################################################
-        # get pose at pose_index
-        _pose = self._sensor_pose_list[self._pose_index-1]
-        # update locaiton and rotation of base sensor
-        self._sensor_base_constraint.location = (_pose[1],_pose[2],_pose[3])
-        self._sensor_base_constraint.rotation_quaternion = (_pose[4],_pose[5],_pose[6],_pose[7])
-        ################################################################### end of move base pose one position forward #
+        if self._online_mode:
+            if meta_data is None:
+                meta_data = {}
+            # set sensor pose if requested #############################################################################
+            if "sensor_pose" in meta_data:
+                print(meta_data)
+                _pose = meta_data["sensor_pose"]
+                print(_pose)
+                self._sensor_base.location = (_pose[1],_pose[2],_pose[3])
+                self._sensor_base.rotation_quaternion = (_pose[4],_pose[5],_pose[6],_pose[7])
+            #######################################################################end of set sensor pose if requested #
 
-        # update locaiton and rotation of target sensor ################################################################
-        if self._target_object_active:
-            # move target pose one position forward
-            _target_object_pose = self._target_pose_list[self._pose_index-1]
+            # set sensor base ##########################################################################################
+            bpy.context.view_layer.update()
+            self._sensor_base.matrix_world = self._sensor_base.matrix_world
+            ################################################################################### end of set sensor base #
 
-            # set position of target object
-            self._target_object.location = (_target_object_pose[1],
-                                            _target_object_pose[2],
-                                            _target_object_pose[3])
+        else:
 
-            # set quaternion of target object
-            self._target_object.rotation_quaternion = ( _target_object_pose[4],
-                                                        _target_object_pose[5],
-                                                        _target_object_pose[6],
-                                                        _target_object_pose[7])
-        ######################################################### end of update locaiton and rotation of target sensor #
+            # move base pose one position forward ######################################################################
+            # get pose at pose_index
+            _pose = self._sensor_pose_list[self._pose_index-1]
+            # update locaiton and rotation of base sensor
+            self._sensor_base_constraint.location = (_pose[1],_pose[2],_pose[3])
+            self._sensor_base_constraint.rotation_quaternion = (_pose[4],_pose[5],_pose[6],_pose[7])
+            ############################################################### end of move base pose one position forward #
 
-        # calc hover base z noise ######################################################################################
-        if self._hover_target_constraint is not None:
-            if "hoverBaseDistanceNoise" in self._cfg["GENERAL"]:
-                _noise_value = float(self._cfg["GENERAL"]["hoverBaseDistanceNoise"])
-                _distance_random = random.uniform(0, _noise_value)
-                _distance_offset_value = self._cfg["GENERAL"]["hoverBaseDistance"] - _distance_random/2.0
-                self._hover_base_constraint.distance = _distance_offset_value
-        ############################################################################### end of calc hover base z noise #
-        
-        # set sensor base ##############################################################################################
-        bpy.context.view_layer.update()
-        self._sensor_base.matrix_world = self._sensor_base_constraint.matrix_world
-        ####################################################################################### end of set sensor base #
+            # update locaiton and rotation of target sensor ############################################################
+            if self._target_object_active:
+                # move target pose one position forward
+                _target_object_pose = self._target_pose_list[self._pose_index-1]
 
-        # add roll angle ###############################################################################################
-        _roll_angle = random.uniform(self._roll_limits[0], self._roll_limits[1])
-        self._sensor_base.rotation_euler.rotate_axis("Z", _roll_angle)
-        bpy.context.view_layer.update()
-        ######################################################################################## end of add roll angle #
+                # set position of target object
+                self._target_object.location = (_target_object_pose[1],
+                                                _target_object_pose[2],
+                                                _target_object_pose[3])
+
+                # set quaternion of target object
+                self._target_object.rotation_quaternion = ( _target_object_pose[4],
+                                                            _target_object_pose[5],
+                                                            _target_object_pose[6],
+                                                            _target_object_pose[7])
+            ##################################################### end of update locaiton and rotation of target sensor #
+
+            # calc hover base z noise ##################################################################################
+            if self._hover_target_constraint is not None:
+                if "hoverBaseDistanceNoise" in self._cfg["GENERAL"]:
+                    _noise_value = float(self._cfg["GENERAL"]["hoverBaseDistanceNoise"])
+                    _distance_random = random.uniform(0, _noise_value)
+                    _distance_offset_value = self._cfg["GENERAL"]["hoverBaseDistance"] - _distance_random/2.0
+                    self._hover_base_constraint.distance = _distance_offset_value
+            ########################################################################### end of calc hover base z noise #
+            
+            # set sensor base ##########################################################################################
+            bpy.context.view_layer.update()
+            self._sensor_base.matrix_world = self._sensor_base_constraint.matrix_world
+            ################################################################################### end of set sensor base #
+
+            # add roll angle ###########################################################################################
+            _roll_angle = random.uniform(self._roll_limits[0], self._roll_limits[1])
+            self._sensor_base.rotation_euler.rotate_axis("Z", _roll_angle)
+            bpy.context.view_layer.update()
+            #################################################################################### end of add roll angle #
 
         # go through all sensors and execute step function
         for sensor_obj in self._sensor_list:
-            sensor_obj.step(keyframe=keyframe)
+            sensor_obj.step(meta_data=meta_data,keyframe=keyframe)
 
         # set keyframes if requested ###################################################################################
         if keyframe >= 0:
             # set keyframe for location and rotation of base sensor
             self._sensor_base.keyframe_insert('location', frame=keyframe)
-            self._sensor_base.keyframe_insert('rotation_euler', frame=keyframe)
+            #self._sensor_base.keyframe_insert('rotation_euler', frame=keyframe)
+            self._sensor_base.keyframe_insert('rotation_quaternion', frame=keyframe)
             self._sensor_base_constraint.keyframe_insert('location', frame=keyframe)
             self._sensor_base_constraint.keyframe_insert('rotation_euler', frame=keyframe)
 

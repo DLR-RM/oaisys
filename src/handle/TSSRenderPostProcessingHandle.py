@@ -263,9 +263,10 @@ class TSSRenderPostProcessingHandle(object):
         ############################################################################## end of load render pass objects #
 
 
-    def step(self, keyframe=-1):
+    def step(self, meta_data=None, keyframe=-1):
         """ step function
         Args:
+            meta_data:                              meta data which is passed to modules [dict]
             keyframe:                               current frame number; if value > -1, this should enable also the
                                                     setting of a keyframe [int]
         Returns:
@@ -279,7 +280,7 @@ class TSSRenderPostProcessingHandle(object):
 
 
     def activate_pass(self, pass_name, pass_cfg, keyframe = -1):
-        """ step function
+        """ activate function
         Args:
             pass_name:                              name of pass which is suppose to be activated [str]
             pass_cfg:                               cfg of pass to be activated [dict]

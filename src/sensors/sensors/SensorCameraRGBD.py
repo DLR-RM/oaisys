@@ -177,8 +177,8 @@ class SensorCameraRGBD(TSSSensor):
         _h = self._cfg["imageResolution"][1]
 
         # calc field of view
-        _fov = 2.0*math.atan(_w/(2*_f_x))
-        _fov_deg = _fov*(180./math.pi)
+        # _fov = 2.0*math.atan(_w/(2*_f_x))
+        # _fov_deg = _fov*(180./math.pi)
 
         # aspect ratio
         _a_x = 1
@@ -186,30 +186,76 @@ class SensorCameraRGBD(TSSSensor):
         if _f_x > _f_y:
             _a_y = _f_x / _f_y
         elif _f_x < _f_y:
-            _a_y = _f_y / _f_x
+            _a_x = _f_y / _f_x
 
         # calc focal length ratio
-        _f_ratio = _f_x / _f_y
+        # _f_ratio = _f_x / _f_y
+        _f_ratio = _f_y / _f_x
+        _a_ratio = _a_y / _a_x
 
         # sensor fitting mode according to issue
+        print(f"_f_ratio: {_f_ratio}")
+        print(f"_f_x: {_f_x}")
+        print(f"_f_y: {_f_y}")
+        print(f" cam.sensor_fit: {self._sensor.data.sensor_fit}")
+        print(f" cam.sensor_width: {self._sensor.data.sensor_width}")
+        print(f" cam.sensor_height: {self._sensor.data.sensor_height}")
+        # self._sensor.data.sensor_fit = 'HORIZONTAL'
+        '''
         if 'AUTO' == self._sensor.data.sensor_fit:
             if _f_x*_w >= _f_y*_h:
                 _v = _w
             else:
-                _v = pixel_aspect_ratio * _h
+                _v = _f_ratio*_h #pixel_aspect_ratio * _h
         else:
-            if 'HORIZONTAL' == cam.sensor_fit:
+            if 'HORIZONTAL' == self._sensor.data.sensor_fit:
                 _v = _w
             else:
-                _v = pixel_aspect_ratio * _h
+                _v = _f_ratio*_h  #pixel_aspect_ratio * _h
+        '''
+        if 'AUTO' == self._sensor.data.sensor_fit:
+            if _a_x * _w >= _a_y * _h:
+                self._sensor.data.sensor_fit = 'HORIZONTAL'
+            else:
+                self._sensor.data.sensor_fit = 'VERTICAL'
+
+        if 'HORIZONTAL' == self._sensor.data.sensor_fit:
+            _v = _w
+        else:
+            _v = _a_ratio * _h
+
+        if self._sensor.data.sensor_fit == 'VERTICAL':
+            _s_mm = self._sensor.data.sensor_height
+        else:
+            _s_mm = self._sensor.data.sensor_width
+
+        _f = _f_x * _s_mm / _v
+
+        print(f"_f: {_f}")
+        print(f"_v: {_v}")
+        print(f"_s_mm: {_s_mm}")
+        print(f"_a_ratio: {_a_ratio}")
+
+        # self._sensor.data.sensor_height = self._sensor.data.sensor_width
+        print(f" cam.sensor_fit: {self._sensor.data.sensor_fit}")
+        print(f" cam.sensor_width: {self._sensor.data.sensor_width}")
+        print(f" cam.sensor_height: {self._sensor.data.sensor_height}")
 
         # Set shift
-        self._sensor.data.shift_x = ((_w/2.)-_c_x)/ _v
-        self._sensor.data.shift_y = ((_h/2.)-_c_y)/ _v * _f_ratio
+        self._sensor.data.shift_x = (_c_x - (_w - 1) / 2) / -_v  # ((_w/2.)-_c_x)/ _v
+        self._sensor.data.shift_y = (_c_y - (_h - 1) / 2) / _v * _a_ratio  # ((_h/2.)-_c_y)/ _v * _f_ratio
+
+        print(f"shift_x: {self._sensor.data.shift_x}")
+        print(f"shift_y: {self._sensor.data.shift_y}")
 
         # set field of view for camera
-        self._sensor.data.lens_unit = 'FOV'
-        self._sensor.data.angle = _fov
+        # self._sensor.data.lens_unit = 'FOV'
+        # self._sensor.data.angle = _fov
+        self._sensor.data.lens_unit = 'MILLIMETERS'
+        self._sensor.data.lens = _f
+
+        bpy.context.scene.render.pixel_aspect_x = _a_x
+        bpy.context.scene.render.pixel_aspect_y = _a_y
 
         # set transformation for camera
         self._sensor.rotation_mode = 'QUATERNION'        
