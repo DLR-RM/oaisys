@@ -6,6 +6,8 @@ import json
 import os
 import inspect
 
+# OAISYS imports
+from src.utilities.OAISYSLogger import OAISYSLogger
 
 class TSSBase(object):
     """docstring for TSSBase"""
@@ -21,6 +23,8 @@ class TSSBase(object):
         self._stepping_counter = 0          # counter which counts how often stepping function is executed [uint]
         self._module_type = 2               # module type   types:  1 -> main module
                                             #                       2 -> sub module
+        self._logger = OAISYSLogger()       # logger of meta data
+        self._verbose = False               # flag if debug data is displayed
         ########################################################################################### end of common vars #
 
         # load default cfg file if available
@@ -40,6 +44,7 @@ class TSSBase(object):
         self._trigger_option = -1
         self._trigger_interval = 1
         self._stepping_counter = 0
+        self._logger = OAISYSLogger()
 
 
     def create(self,cfg):
@@ -67,10 +72,19 @@ class TSSBase(object):
         # set module type
         self._module_type = type
 
+    def set_log_folder(self, log_folder_path):
+        """ set path to log folder
+                    DO NOT OVERWRITE!
+        Args:
+            log_folder_path:    path to log folder [str]
+        Returns:
+            None
+        """
+        self._logger.set_output_path(output_path=log_folder_path)
 
     def step_module(self, keyframe=-1):
-        """ step function is called by handle fucntion for every new sample in of the batch; should be overwritten by
-            custom class
+        """ step function is called by handle function for every new sample of the batch; should not be overwritten
+            by custom class
             DO NOT OVERWRITE!
         Args:
             keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
@@ -86,6 +100,24 @@ class TSSBase(object):
             # call stepping function
             self.step(keyframe=keyframe)
 
+    def log_step_module(self, keyframe=-1):
+        """ log step function is called by handle function for every new sample of the batch; should not be overwritten
+            by custom class
+            DO NOT OVERWRITE!
+        Args:
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        # increase stepping counter
+        self._stepping_counter += 1
+
+        if self._step_trigger_reached():
+
+            # call stepping function
+            self.log_step(keyframe=keyframe)
+
 
     def step(self, keyframe=-1):
         """ step function is called for every new sample in of the batch; should be overwritten by custom class
@@ -98,6 +130,16 @@ class TSSBase(object):
 
         pass
 
+    def log_step(self, keyframe=-1):
+        """ log step function is called for every new sample in of the batch; should be overwritten by custom class
+            OVERWRITE!
+        Args:
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        pass
 
     def activate_pass(self,pass_name, pass_cfg, keyframe=-1):
         """ enables specific pass
@@ -126,13 +168,12 @@ class TSSBase(object):
         Returns:
             None
         """
-
         # update cfg file ##############################################################################################
         if "OVERWRITE_CFG" in cfg:
             # overwrite entire cfg
             self._cfg = cfg
         else:
-            # update tpye 1 modules cfg
+            # update type 1 modules cfg
             if 1 == self._module_type:
                 for k, v in cfg.items():
                     if k in self._cfg:
@@ -255,6 +296,10 @@ class TSSBase(object):
         """
 
         self._general_cfg = cfg
+
+        # set logger
+        #if "OAISYS_MODULE_LOGGING_FOLDER" in self._general_cfg:
+        #    self._logger.set_output_path(self._general_cfg["OAISYS_MODULE_LOGGING_FOLDER"])
 
 
     def get_general_cfg(self):

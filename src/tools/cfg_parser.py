@@ -4,6 +4,8 @@ import bpy
 # system imports
 import json
 import copy as cp
+import os
+import pathlib
 
 class CCfgParser():
     def __init__(self):
@@ -34,6 +36,13 @@ class CCfgParser():
 
             # go through terrain cfg and replace template cfg by cfg
             #self.loadTemplateForAssets()
+
+    def save_cfg(self, outputPath):
+        outputPath = os.path.join(outputPath, "cfg")
+        pathlib.Path(outputPath).mkdir(parents=True, exist_ok=True)
+        outputPath = os.path.join(outputPath, "initial_cfg.json")
+        with open(outputPath, 'w') as f:
+            json.dump(self.jsonDict, f, indent=2)
 
     def loadTemplateForAssets(self):
         for terrainSample in self.assetsDict["terrains"]:

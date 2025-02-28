@@ -36,5 +36,5 @@ class TSSAsset(TSSBase,NodeTools):
         pass
 
 
-    def step(self):
+    def step(self, keyframe):
         pass

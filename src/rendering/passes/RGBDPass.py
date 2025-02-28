@@ -173,8 +173,13 @@ class RGBDPass(TSSRenderPass):
         # create output node pinhole depth
         self._pinhole_depth_output_node = self._node_tree.nodes.new(type="CompositorNodeOutputFile")
         self._pinhole_depth_output_node.name = 'TSSCompositorNodeOutputFileDepth'
-        self._pinhole_depth_output_node.location = (node_offset[0]+2500,node_offset[1]+0)
+        self._pinhole_depth_output_node.location = (node_offset[0]+2500, node_offset[1]+0)
         self._pinhole_depth_output_node.format.file_format = 'OPEN_EXR'
+        #self._pinhole_depth_output_node.format.file_format = 'TIFF'
+        #self._pinhole_depth_output_node.format.color_mode = 'BW'
+        #self._pinhole_depth_output_node.format.color_depth = '16'
+        #self._pinhole_depth_output_node.format.tiff_codec = 'NONE'
+
         self._pinhole_depth_output_node.base_path = self._general_cfg["outputPath"]
         self._pinhole_depth_output_node.file_slots.new('pinhole')
         bpy.context.scene.view_layers["View Layer"].use_pass_z = True
@@ -324,7 +329,11 @@ class RGBDPass(TSSRenderPass):
         self._euclidean_depth_output_node = self._node_tree.nodes.new(type="CompositorNodeOutputFile")
         self._euclidean_depth_output_node.name = 'TSSCompositorNodeOutputFileDepth'
         self._euclidean_depth_output_node.location = (node_offset[0]+2500,node_offset[1]+300)
-        self._euclidean_depth_output_node.format.file_format = 'OPEN_EXR'
+        #self._euclidean_depth_output_node.format.file_format = 'OPEN_EXR'
+        self._euclidean_depth_output_node.format.file_format = 'TIFF'
+        self._euclidean_depth_output_node.format.color_mode = 'BW'
+        self._euclidean_depth_output_node.format.color_depth = '16'
+        self._euclidean_depth_output_node.format.tiff_codec = 'NONE'
         self._euclidean_depth_output_node.base_path = self._general_cfg["outputPath"]
         bpy.context.scene.view_layers["View Layer"].use_pass_z = True
         self._euclidean_depth_output_node.format.compression = 0
@@ -340,6 +349,10 @@ class RGBDPass(TSSRenderPass):
         self._pinhole_depth_output_node.name = 'TSSCompositorNodeOutputFileDepth'
         self._pinhole_depth_output_node.location = (node_offset[0]+2500,node_offset[1]+0)
         self._pinhole_depth_output_node.format.file_format = 'OPEN_EXR'
+        #self._pinhole_depth_output_node.format.file_format = 'TIFF'
+        #self._pinhole_depth_output_node.format.color_mode = 'BW'
+        #self._pinhole_depth_output_node.format.color_depth = '16'
+        #self._pinhole_depth_output_node.format.tiff_codec = 'NONE'
         self._pinhole_depth_output_node.base_path = self._general_cfg["outputPath"]
         self._pinhole_depth_output_node.file_slots.new('pinhole')
         bpy.context.scene.view_layers["View Layer"].use_pass_z = True
@@ -473,9 +486,11 @@ class RGBDPass(TSSRenderPass):
         
         if sensor_data["DepthEnabled"]:
             # rename pinhole depth output name #########################################################################
-            _old_file_name = _base_path+"/pinhole"+_current_frame_number+".exr"
-            _new_file_name = _base_path+"/"+_new_frame_number+_p_depth_output_name+"_"+_sub_render_ID_str+".exr"
-            _moved_file_name = _sensor_path+"/"+_new_frame_number+_p_depth_output_name+"_"+_sub_render_ID_str+".exr"
+            #_file_extension = ".tif"
+            _file_extension = ".exr"
+            _old_file_name = _base_path+"/pinhole"+_current_frame_number+_file_extension
+            _new_file_name = _base_path+"/"+_new_frame_number+_p_depth_output_name+"_"+_sub_render_ID_str+_file_extension
+            _moved_file_name = _sensor_path+"/"+_new_frame_number+_p_depth_output_name+"_"+_sub_render_ID_str+_file_extension
             os.rename(_old_file_name,_new_file_name)
             shutil.move(_new_file_name,_moved_file_name)
             ######################################################################## end of rename pinhole output name #

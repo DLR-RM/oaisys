@@ -71,7 +71,7 @@ class EnvLightBlenderSky(TSSEnvironmentEffects):
         # create switching nodes for semantics
         _semantic_switching_node,self._label_ID_Node = self.create_semantic_nodes( node_tree=self._world_node_tree,
                                                                                     label_ID_vec=_label_ID_vec,
-                                                                                    num_label_per_channel=15)
+                                                                                    num_label_per_channel=self._num_labels_per_channel)
 
         # link switching nodes with tree
         self._world_node_tree.node_tree.links.new(_semantic_switching_node.inputs[1], _current_last_output)
@@ -86,7 +86,7 @@ class EnvLightBlenderSky(TSSEnvironmentEffects):
         # create switching nodes for semantics
         _instance_switching_node = self.create_single_semantic_node(node_tree=self._world_node_tree,
                                                                     label_ID=_label_ID_vec[0],
-                                                                    num_label_per_channel=15,
+                                                                    num_label_per_channel=self._num_labels_per_channel,
                                                                     node_offset=[-2000,-2000])
 
         # link switching nodes with tree
@@ -258,7 +258,7 @@ class EnvLightBlenderSky(TSSEnvironmentEffects):
         """
 
         # add sky
-        return self._add_sky(last_element=last_element,node_offset=self._node_offset)
+        return self._add_sky(last_element=last_element, node_offset=self._node_offset)
 
 
     def step(self,keyframe):

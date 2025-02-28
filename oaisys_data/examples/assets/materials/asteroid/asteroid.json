@@ -1,0 +1,13 @@
+{
+	"path":"oaisys_data/examples/assets/materials/asteroid/",
+	"diffuse":true,
+	"ref":true,
+	"spec":true,
+	"normal":false,
+	"displacement":true,
+	"normalStrength":0.0,
+	"dispmapStrength": [[2.0, 5.0], [1.75, 2.25]],
+	"size": 60.0,
+	"mosaicRotation": 360.0,
+	"mosaicNoise": 0.8
+}

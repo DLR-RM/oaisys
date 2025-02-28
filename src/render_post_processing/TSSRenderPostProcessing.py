@@ -31,7 +31,7 @@ class TSSRenderPostProcessing(object):
         self.reset()
 
 
-    def reset():
+    def reset(self):
         pass
 
 
@@ -172,8 +172,10 @@ class TSSRenderPostProcessing(object):
 
         pass
 
+    def set_log_folder(self, log_folder_path):
+        pass
 
-    def step(self):
+    def step(self, keyframe):
         """ step function
             OVERWRITE!
         Args:
@@ -184,6 +186,16 @@ class TSSRenderPostProcessing(object):
 
         pass
 
+    def log_step(self, keyframe):
+        """ log step function is called for every new sample in of the batch; should be overwritten by custom class
+            OVERWRITE!
+        Args:
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        pass
 
     def activate_pass(self):
         """ activate function

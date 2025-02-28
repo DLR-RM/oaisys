@@ -9,16 +9,17 @@ import importlib
 
 from src.TSSBase import TSSBase
 
+
 class TSSStageHandle(TSSBase):
     """docstring for TSSStageHandle"""
+
     def __init__(self):
         super(TSSStageHandle, self).__init__()
         # class vars ###################################################################################################
-        self._stage_list = []                                            # list of stage [list]
-        self._stage_obj_list = []                                        # list of stage nodes [list]
-        self._stage_dict = {}                                            # dict of stages [dict]
+        self._stage_list = []  # list of stage [list]
+        self._stage_obj_list = []  # list of stage nodes [list]
+        self._stage_dict = {}  # dict of stages [dict]
         ############################################################################################ end of class vars #
-
 
     def reset_module(self):
         """ reset all local vars
@@ -36,14 +37,13 @@ class TSSStageHandle(TSSBase):
             # maybe obsolete in future versions
             del stage
         ##################################################################################### end of reset all stages #
-        
+
         self.reset_base()
         self._stage_list = []
         self._stage_obj_list = []
         self._stage_dict = {}
 
-
-    def create(self,materials):
+    def create(self, materials):
         """ create function
         Args:
             materials:          list of all materials [list]
@@ -52,9 +52,8 @@ class TSSStageHandle(TSSBase):
         """
 
         self._create_stages(cfg=self._cfg["STAGES"],
-                                general_cfg=self._cfg["GENERAL"],
-                                materials=materials)
-
+                            general_cfg=self._cfg["GENERAL"],
+                            materials=materials)
 
     def update_after_meshes(self):
         """ update mesh function
@@ -65,10 +64,9 @@ class TSSStageHandle(TSSBase):
         """
 
         for stage in self._stage_obj_list:
-            stage.update_after_meshes()        
+            stage.update_after_meshes()
 
-
-    def _create_stages(self,cfg,general_cfg,materials):
+    def _create_stages(self, cfg, general_cfg, materials):
         """ create function
         Args:
             cfg:            list of stage cfgs [list]
@@ -109,11 +107,11 @@ class TSSStageHandle(TSSBase):
                         _stage.apply_material(material=materials[_material])
                     else:
                         raise Exception("Material not found!")
-                
+
                 # add pass to list
                 self._stage_obj_list.append(_stage)
                 self._stage_list.append(_stage.get_stage())
-                self._stage_dict[stage["name"]]=_stage.get_stage()
+                self._stage_dict[stage["name"]] = _stage.get_stage()
 
 
 
@@ -123,7 +121,6 @@ class TSSStageHandle(TSSBase):
                 return -1
 
         return 0
-
 
     def get_stages(self):
         """  get all stages
@@ -135,7 +132,6 @@ class TSSStageHandle(TSSBase):
 
         return self._stage_list
 
-
     def get_stage_objs(self):
         """  get all stage objects
         Args:
@@ -146,7 +142,6 @@ class TSSStageHandle(TSSBase):
 
         return self._stage_obj_list
 
-
     def get_stage_dict(self):
         """  get all stage dict
         Args:
@@ -156,3 +151,43 @@ class TSSStageHandle(TSSBase):
         """
 
         return self._stage_dict
+
+    def activate_pass(self, pass_name, pass_cfg, keyframe=-1):
+        """ enables specific pass
+        Args:
+            pass_name:      name of pass to activate [string]
+            pass_cfg:       specific parameters for the pass [dict]
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        for stage in self._stage_obj_list:
+            stage.activate_pass(pass_name=pass_name, pass_cfg=pass_cfg, keyframe=keyframe)
+
+    def set_log_folder(self, log_folder_path):
+        for stage_obj in self._stage_obj_list:
+            stage_obj.set_log_folder(log_folder_path)
+
+    def step(self, keyframe):
+        """ step handle and modules
+        Args:
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        self._stepping_counter += 1
+
+        # step for modules #############################################################################################
+        for stage_obj in self._stage_obj_list:
+
+            _trigger_option = stage_obj.get_trigger_type()
+
+            if "GLOBAL" == _trigger_option:
+                if (self._stepping_counter % self._trigger_interval) == 0:
+                    stage_obj.step_module(keyframe=keyframe)
+
+            if "LOCAL" == _trigger_option:
+                stage_obj.step_module(keyframe=keyframe)
+        ###################################################################################### end of step for modules #

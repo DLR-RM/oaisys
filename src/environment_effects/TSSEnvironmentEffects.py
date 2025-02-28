@@ -23,6 +23,7 @@ class TSSEnvironmentEffects(TSSBase,NodeTools):
         self._world_node_tree = None                    # world node tree [blObject]
         self._render_layers_node = None                 # render passes node in compositor [blObject]
         self._node_offset = [0,0]                       # node offsets for nodes in compositor [blObject]
+        self._num_labels_per_channel = 51
         ############################################################################################ end of class vars #
 
 
@@ -110,7 +111,7 @@ class TSSEnvironmentEffects(TSSBase,NodeTools):
         pass
 
 
-    def step(self):
+    def step(self, keyframe):
         """ step function
             OVERWRITE!
         Args:

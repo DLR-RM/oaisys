@@ -161,7 +161,9 @@ class TSSEnvironmentEffectHandle(object):
                             render_layers_node=_render_layers_node)
         ###################################################################################### end of setup compositor #
 
-
+    def set_log_folder(self, log_folder_path):
+        for effect in self._effect_list:
+            effect.set_log_folder(log_folder_path)
 
     def activate_pass(self, pass_name, pass_cfg, keyframe = -1):
         """ activate pass of modules
@@ -237,4 +239,26 @@ class TSSEnvironmentEffectHandle(object):
 
             if "LOCAL" == _trigger_option:
                 effect_handle.step_module(keyframe=keyframe)
+        ###################################################################################### end of step for modules #
+
+    def log_step(self, keyframe):
+        """ log step function is called for every new sample in of the batch; should be overwritten by custom class
+            OVERWRITE!
+        Args:
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        # step for modules #############################################################################################
+        for effect_handle in self._effect_list:
+
+            _trigger_option = effect_handle.get_trigger_type()
+
+            if "GLOBAL" == _trigger_option:
+                if (self._stepping_counter % self._trigger_interval) == 0:
+                    effect_handle.log_step_module(keyframe=keyframe)
+
+            if "LOCAL" == _trigger_option:
+                effect_handle.log_step_module(keyframe=keyframe)
         ###################################################################################### end of step for modules #

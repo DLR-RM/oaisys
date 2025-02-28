@@ -20,7 +20,6 @@ class MaterialTerrain(TSSMaterial):
         # class vars ###################################################################################################
         self._material_list = []
         self._texture_dict = {}
-        self._num_labels_per_channel = 15
         self._general_terrain_cfg = None
         self._terrain_cfg = None
         self._label_ID_node = None
@@ -39,7 +38,6 @@ class MaterialTerrain(TSSMaterial):
         # class vars ###################################################################################################
         self._material_list = []
         self._texture_dict = {}
-        self._num_labels_per_channel = 15
         self._general_terrain_cfg = None
         self._terrain_cfg = None
         self._label_ID_node = None
@@ -85,10 +83,24 @@ class MaterialTerrain(TSSMaterial):
         self._print_msg("Create Terrain Material")
 
         # get cfgs #####################################################################################################
-        _terrain_cfg = self._cfg["terrainTextureList"]
         _general_terrain_cfg = self._cfg["general"]
+
+        _terrain_cfg = {}
+
+        if "terrainTextureList" in self._cfg and "terrainTextureList1" not in self._cfg:
+            _terrain_cfg[1] = self._cfg["terrainTextureList"]
+            _terrain_cfg[1] = self.load_template_for_assets(_terrain_cfg[1])
+        else:
+            if "terrainTextureList" in self._cfg:
+                del self._cfg["terrainTextureList"]
+            for k, v in self._cfg.items():
+                if 'terrainTextureList' in k:
+                    _trunc_k = cp.deepcopy(k)
+                    _trunc_k = int(_trunc_k.replace('terrainTextureList', ""))
+                    _terrain_cfg[_trunc_k] = v
+                    _terrain_cfg[_trunc_k] = self.load_template_for_assets(_terrain_cfg[_trunc_k])
         ############################################################################################# end of  get cfgs #
-        _terrain_cfg = self.load_template_for_assets(_terrain_cfg)
+        #_terrain_cfg = self.load_template_for_assets(_terrain_cfg)
 
 
         # create material
@@ -132,12 +144,122 @@ class MaterialTerrain(TSSMaterial):
         _channel_list = []
 
         # deepcopy terrain list to alter it
+        #_terrain_cfg_copy = copy.deepcopy(terrain_cfg)
+
+        _min_is_list = isinstance(num_min_mix_terrains, list)
+        _max_is_list = isinstance(num_max_mix_terrains, list)
+
+        if _min_is_list or _max_is_list:
+            if _min_is_list:
+                if _max_is_list:
+                    # take list from both
+                    if len(num_min_mix_terrains) != len(num_max_mix_terrains):
+                        raise Exception('Length of minNumMixTerrains and maxNumMixTerrains has to match!')
+                    _num_min_mix_terrains_list = num_min_mix_terrains
+                    _num_max_mix_terrains_list = num_max_mix_terrains
+                else:
+                    # take list from min, convert max to list
+                    _num_min_mix_terrains_list = num_min_mix_terrains
+                    _num_max_mix_terrains_list = [num_max_mix_terrains]*len(num_min_mix_terrains)
+            else:
+                # take list from max, convert min to list
+                _num_min_mix_terrains_list = [num_min_mix_terrains] * len(num_max_mix_terrains)
+                _num_max_mix_terrains_list = num_max_mix_terrains
+
+        else:
+            # convert max and min to single list
+            _num_min_mix_terrains_list = [num_min_mix_terrains]
+            _num_max_mix_terrains_list = [num_max_mix_terrains]
+
+        for s in range(0, len(_num_min_mix_terrains_list)):
+            if s+1 not in terrain_cfg:
+                raise Exception('Cannot find set of terrain!')
+            _terrain_cfg_copy = copy.deepcopy(terrain_cfg[s+1])
+            _min_num = _num_min_mix_terrains_list[s]
+            _max_num = _num_max_mix_terrains_list[s]
+            # check if all terrains are supposed to be used
+            if _max_num >= 0:
+
+                # sample terrains num_max_mix_terrains times
+                if _max_num == 0:
+                    _max_num = 1
+                    self._print_msg("Warning: adjusted num_max_mix_terrains!")
+
+                if _min_num <= 0:
+                    _min_num = 1
+                    self._print_msg("Warning: adjusted num_min_mix_terrains!")
+
+                if _min_num > _max_num:
+                    _min_num = _max_num
+                    self._print_msg("Warning: adjusted num_min_mix_terrains!")
+
+                if _min_num > len(_terrain_cfg_copy):
+                    _min_num = len(_terrain_cfg_copy)
+                    self._print_msg("Warning: adjusted num_min_mix_terrains!")
+
+                if _max_num <= len(_terrain_cfg_copy):
+                    _num_terrain_samples = random.randint(_min_num, _max_num)
+                else:
+                    _num_terrain_samples = random.randint(_min_num, len(_terrain_cfg_copy))
+                    self._print_msg("Warning: adjusted num_max_mix_terrains!")
+
+                for jj in range(0, _num_terrain_samples):
+
+                    # pick random sample
+                    item = random.choice(_terrain_cfg_copy)
+
+                    # add sample to terrain list
+                    _channel_list.append(item)
+
+                    # remove item, depending on sampling method
+                    if not with_replacement:
+                        _terrain_cfg_copy.remove(item)
+
+            else:
+                # take entire terrain list
+                _channel_list = _terrain_cfg_copy
+        ################################################################### end of create random selection of terrains #
+
+        # raise warning if _channel_list is empty
+        if not _channel_list:
+            self._print_msg("Warning: _channel_list is empty!")
+
+        # create mixed terrain material and return result
+        return self._create_materials(general_terrain_cfg, material_name, _channel_list, hard_label_borders,\
+                                                                            noise_phase_shift_enabled, noise_phase_rate)
+
+
+    def _create_mix_terrain_materialbak(   self, material_name, general_terrain_cfg, terrain_cfg,
+                                        num_max_mix_terrains, num_min_mix_terrains, hard_label_borders,
+                                        noise_phase_shift_enabled,noise_phase_rate, with_replacement=True):
+        """ create mix terrain material.
+        Args:
+            material_name:                              name of the resulting mixed terrain material [string]
+            general_terrain_cfg:                        general cfg for terrain [dict]
+            terrain_cfg:                                specific cfg for each pure terrain texture [dict]
+            num_max_mix_terrains:                       number of max pure textures, which are merged together. If set
+                                                        to -1, all textures are used [int]
+            num_min_mix_terrains:                       number of min pure textures, which are merged together [int]
+            hard_label_borders:                         if true, hard borders are provided for semantic labels [boolean]
+            noise_phase_shift_enabled:                  noise phase shift flag [boolean]
+            noise_phase_rate:                           noise shift rate [float]
+            with_replacement:                           sampling with replacement (true) or without (false) from the
+                                                        terrain list [boolean]
+        Returns:
+            mixed terrain material [blObject]
+        """
+
+        # create random selection of terrains ##########################################################################
+        # list of terrain, which will be used
+        _channel_list = []
+
+        # deepcopy terrain list to alter it
         _terrain_cfg_copy = copy.deepcopy(terrain_cfg)
 
         # check if all terrains are supposed to be used
         if num_max_mix_terrains >= 0:
 
-            # sample terrrains num_max_mix_terrains times
+            # sample terrains num_max_mix_terrains times
             if num_max_mix_terrains == 0:
                 num_max_mix_terrains = 1
                 self._print_msg("Warning: adjusted num_max_mix_terrains!")
@@ -184,6 +306,7 @@ class MaterialTerrain(TSSMaterial):
         # create mixed terrain material and return result
         return self._create_materials(general_terrain_cfg, material_name, _channel_list, hard_label_borders,\
                                                                             noise_phase_shift_enabled, noise_phase_rate)
+
 
 
     def _get_map_path(self, base_path, prefix):
@@ -243,7 +366,7 @@ class MaterialTerrain(TSSMaterial):
         _terrain_material.cycles.displacement_method = 'BOTH'
 
         # init nodePosBase
-        _node_offset = [0,0]
+        _node_offset = [0, 0]
 
         # current channel outputs
         _latest_PBSDF_output = None
@@ -252,6 +375,7 @@ class MaterialTerrain(TSSMaterial):
         _latest_rough_output = None
         _latest_nrm_output = None
         _latest_disp_output = None
+        _latest_emission_output = None
         _latest_label_output = None
 
         # get material output node
@@ -273,24 +397,49 @@ class MaterialTerrain(TSSMaterial):
             _spec_map_path = None
             _refl_map_path = None
             _normal_map_path = None
+            _emission_map_path = None
             _disp_map_path = None
+            _latest_emission_path = None
             ################################################################################## end of define map paths #
+            if "baseTexturePathOverwriteEnabled" in general_terrain_cfg:
+                if general_terrain_cfg["baseTexturePathOverwriteEnabled"]:
+                    if "noPathOverwrite" in material_cfg:
+                        if not material_cfg["noPathOverwrite"]:
+                            # overwrite base path of texture
+                            material_cfg['basePath'] = general_terrain_cfg["baseTexturePath"]
+                    else:
+                        # overwrite base path of texture
+                        material_cfg['basePath'] = general_terrain_cfg["baseTexturePath"]
 
             if not os.path.isabs(material_cfg['path']):
+                # check if base path is provided
+                if "basePath" in material_cfg:
+                    material_cfg['path'] = os.path.join(material_cfg['basePath'],material_cfg['path'])
+                else:
+                    if "noPathOverwrite" in material_cfg:
+                        if not material_cfg["noPathOverwrite"]:
+                            if "baseTexturePath" in general_terrain_cfg:
+                                material_cfg['basePath'] = general_terrain_cfg["baseTexturePath"]
+                                material_cfg['path'] = os.path.join(material_cfg['basePath'],material_cfg['path'])
+                    else:
+                        if "baseTexturePath" in general_terrain_cfg:
+                            material_cfg['basePath'] = general_terrain_cfg["baseTexturePath"]
+                            material_cfg['path'] = os.path.join(material_cfg['basePath'],material_cfg['path'])
+
                 # create abs path
                 _current_path = os.path.dirname(__file__)
-                material_cfg['path'] = os.path.join(_current_path,"../../../",material_cfg['path'])
+                material_cfg['path'] = os.path.join(_current_path, "../../../", material_cfg['path'])
 
             # get texture paths ########################################################################################
             # get color map ############################################################################################
             if (material_cfg['diffuse']):
-                _col_map_path = self._get_map_path(material_cfg['path'],"COL")
+                _col_map_path = self._get_map_path(material_cfg['path'], "COL")
                 if _col_map_path is None:
-                    _col_map_path = self._get_map_path(material_cfg['path'],"col")
+                    _col_map_path = self._get_map_path(material_cfg['path'], "col")
                 if _col_map_path is None:
-                    _col_map_path = self._get_map_path(material_cfg['path'],"DIFF")
+                    _col_map_path = self._get_map_path(material_cfg['path'], "DIFF")
                 if _col_map_path is None:
-                    _col_map_path = self._get_map_path(material_cfg['path'],"diff")
+                    _col_map_path = self._get_map_path(material_cfg['path'], "diff")
                 if _col_map_path is None:
                     self._print_msg("WARNING: diffuse texture in folder " + material_cfg['path'] + \
                                                                             " cannot be found! Using default color!")
@@ -337,6 +486,17 @@ class MaterialTerrain(TSSMaterial):
                     self._print_msg("WARNING: normal texture in folder " + material_cfg['path'] + \
                                                                             " cannot be found! Using default color!")
             #################################################################################### end of get normal map #
+
+            # get emission map #########################################################################################
+            if 'emission' in material_cfg:
+                if material_cfg['emission']:
+                    _emission_map_path = self._get_map_path(material_cfg['path'], "EMISSIVE")
+                    if _emission_map_path is None:
+                        _emission_map_path = self._get_map_path(material_cfg['path'], "emissive")
+                    if _emission_map_path is None:
+                        self._print_msg("WARNING: emission texture in folder " + material_cfg['path'] + \
+                                                                            " cannot be found! Using default color!")
+            ################################################################################## end of get emission map #
 
             # get displacement map #####################################################################################
             if (material_cfg['displacement']):
@@ -672,7 +832,38 @@ class MaterialTerrain(TSSMaterial):
                 _current_nrm_output = _nrm_default
             ############################################################## end of  create NORMAL image texture channel #
 
-            
+            # create EMISSION texture channel ##########################################################################
+            _current_emission_output = None
+            if _emission_map_path is not None:
+                # check if image is already in use for other material
+                if _emission_map_path in self._texture_dict:
+                    _img = self._texture_dict[_emission_map_path]
+                else:
+                    _img = bpy.data.images.load(_emission_map_path)
+                    self._texture_dict[_emission_map_path] = _img
+
+                # create image shader node #############################################################################
+                _emission_image = _terrain_material.node_tree.nodes.new('ShaderNodeTexImage')
+                _emission_image.image = _img
+                _emission_image.image.colorspace_settings.name = 'Non-Color'
+                _emission_image.location = (_node_offset[0] - 470, _node_offset[1] - 500)
+                ###################################################################### end of create image shader node #
+
+                # update current last normal node
+                _current_emission_output = _emission_image
+
+            if not _current_emission_output:
+                # provide default rgb value
+                _emission_default = _terrain_material.node_tree.nodes.new('ShaderNodeRGB')
+                _emission_default.location = (_node_offset[0] - 470, _node_offset[1] - 500)
+                _emission_default.outputs[0].default_value[0] = 0.0
+                _emission_default.outputs[0].default_value[1] = 0.0
+                _emission_default.outputs[0].default_value[2] = 0.0
+                _emission_default.outputs[0].default_value[3] = 1.0
+
+                _current_emission_output = _emission_default
+            ################################################################### end of create EMISSION texture channel #
+
             # create DISPLACEMENT image texture channel ################################################################
             _current_disp_output = None
             if _disp_map_path is not None:
@@ -734,49 +925,178 @@ class MaterialTerrain(TSSMaterial):
             ################################################################### end of create texture for each channel #
 
             # create mapping nodes for tiling textures #################################################################
-            # TODO change!
-            mat_config = self.load_nodegroup_config("uber_mapping")
-            node_group = self.create_nodegroup_from_config(mat_config)
+            _tiling_mode_set = False
 
-            _mapping_node = _terrain_material.node_tree.nodes.new(type='ShaderNodeGroup')
-            _mapping_group = node_group
+            if 'tilingMode' in material_cfg:
+                if "VORONOI_STYLE" == material_cfg['tilingMode']:
+                    _tiling_mode_set = True
+                    _scale_to_tile_val = self._retrieve_parameter(cfg=material_cfg,key='scaleFileFac')
+                    _y_x_scale_ratio = self._retrieve_parameter(cfg=material_cfg,key='scaleYXRatio')
+                    if not _y_x_scale_ratio:
+                        _y_x_scale_ratio = 1.0
+                    if not _scale_to_tile_val:
+                        _tiling_node_tree = self._create_voronoli_style_tiling_nodes(scale_to_tile_val=\
+                                                                                                    _scale_to_tile_val,
+                                                                                    y_x_scale_ratio=\
+                                                                                                    _y_x_scale_ratio)
+                    else:
+                        _tiling_node_tree = self._create_voronoli_style_tiling_nodes(y_x_scale_ratio=_y_x_scale_ratio)
+                    _node_group = _terrain_material.node_tree.nodes.new("ShaderNodeGroup")
+                    _node_group.node_tree = _tiling_node_tree
+                    _node_group.inputs[0].default_value = material_cfg['size']
+                    _node_group.location = (_node_offset[0]-700,_node_offset[1])
 
-            # custom_mapping
-            _mapping_node.node_tree = _mapping_group
-            _mapping_node.name = _mapping_group.name
-            _mapping_node.location = (_node_offset[0]-700,_node_offset[1])
+                    
+                    if _col_map_path is not None:
+                        _tmp_list = []
+                        for node_links in _rgb_image.outputs[0].links:
+                            _tmp_list.append(node_links)
+                        _rgb_image_mix = self._create_voronoli_style_merging(   node_tree=_terrain_material,
+                                                                                tiling_node=_node_group,
+                                                                                texture_node=_rgb_image)
+                        for node in _tmp_list:
+                            _terrain_material.node_tree.links.new(  node.to_node.inputs[node.to_socket.identifier],
+                                                                    _rgb_image_mix.outputs[0])
+                        if not _tmp_list:
+                            _current_col_output = _rgb_image_mix
 
-            _mapping_node.inputs[1].default_value = imageSize
-            _mapping_node.inputs[6].default_value = mosaicRotation
-            _mapping_node.inputs[7].default_value = mosaicNoise
+                    if _spec_map_path is not None:
+                        _tmp_list = []
+                        for node_links in _specular_image.outputs[0].links:
+                            _tmp_list.append(node_links)
+                        _specular_image_mix = self._create_voronoli_style_merging( node_tree=_terrain_material,
+                                                                                    tiling_node=_node_group,
+                                                                                    texture_node=_specular_image)
+                        for node in _tmp_list:
+                            _terrain_material.node_tree.links.new(  node.to_node.inputs[node.to_socket.identifier],
+                                                                    _specular_image_mix.outputs[0])
+                        if not _tmp_list:
+                            _current_spec_output = _specular_image_mix
 
-            _tex_coord_node = _terrain_material.node_tree.nodes.new('ShaderNodeTexCoord')
-            _tex_coord_node.location = (_node_offset[0]-900,_node_offset[1])
+                    if _gloss_map_path is not None:
+                        _tmp_list = []
+                        for node_links in _glossy_image.outputs[0].links:
+                            _tmp_list.append(node_links)
+                        _glossy_image_mix = self._create_voronoli_style_merging( node_tree=_terrain_material,
+                                                                                    tiling_node=_node_group,
+                                                                                    texture_node=_glossy_image)
+                        for node in _tmp_list:
+                            _terrain_material.node_tree.links.new(  node.to_node.inputs[node.to_socket.identifier],
+                                                                    _glossy_image_mix.outputs[0])
+                        if not _tmp_list:
+                            _current_spec_output = _glossy_image_mix
 
-            _terrain_material.node_tree.links.new(_mapping_node.inputs[0], _tex_coord_node.outputs[0])
+                    if _rough_map_path is not None:
+                        _tmp_list = []
+                        for node_links in _roughness_image.outputs[0].links:
+                            _tmp_list.append(node_links)
+                        _roughness_image_mix = self._create_voronoli_style_merging(node_tree=_terrain_material,
+                                                                                    tiling_node=_node_group,
+                                                                                    texture_node=_roughness_image)
+                        for node in _tmp_list:
+                            _terrain_material.node_tree.links.new(  node.to_node.inputs[node.to_socket.identifier],
+                                                                    _roughness_image_mix.outputs[0])
+                        if not _tmp_list:
+                            _current_rough_output = _roughness_image_mix
 
-            if _col_map_path is not None:
-                _terrain_material.node_tree.links.new(_rgb_image.inputs[0], _mapping_node.outputs[0])
-            if _spec_map_path is not None:
-                _terrain_material.node_tree.links.new(_specular_image.inputs[0], _mapping_node.outputs[0])
-            if _gloss_map_path is not None:
-                _terrain_material.node_tree.links.new(_glossy_image.inputs[0], _mapping_node.outputs[0])
-            if _rough_map_path is not None:
-                _terrain_material.node_tree.links.new(_roughness_image.inputs[0], _mapping_node.outputs[0])
-            if _normal_map_path is not None: 
-                _terrain_material.node_tree.links.new(_normal_image.inputs[0], _mapping_node.outputs[0])
-            if _disp_map_path is not None: 
-                _terrain_material.node_tree.links.new(_disp_image.inputs[0], _mapping_node.outputs[0])
+                    if _normal_map_path is not None:
+                        _tmp_list = []
+                        for node_links in _normal_image.outputs[0].links:
+                            _tmp_list.append(node_links)
+                        _nrm_image_mix = self._create_voronoli_style_merging(  node_tree=_terrain_material,
+                                                                                    tiling_node=_node_group,
+                                                                                    texture_node=_normal_image)
+                        for node in _tmp_list:
+                            _terrain_material.node_tree.links.new(  node.to_node.inputs[node.to_socket.identifier],
+                                                                    _nrm_image_mix.outputs[0])
+                        if not _tmp_list:
+                            _current_nrm_output = _nrm_image_mix
+
+                    if _emission_map_path is not None:
+                        _tmp_list = []
+                        for node_links in _emission_image.outputs[0].links:
+                            _tmp_list.append(node_links)
+                        _emission_image_mix = self._create_voronoli_style_merging(node_tree=_terrain_material,
+                                                                                    tiling_node=_node_group,
+                                                                                    texture_node=_emission_image)
+                        for node in _tmp_list:
+                            _terrain_material.node_tree.links.new(  node.to_node.inputs[node.to_socket.identifier],
+                                                                    _emission_image_mix.outputs[0])
+                        if not _tmp_list:
+                            _current_emission_output = _emission_image_mix
+
+                    if _disp_map_path is not None:
+                        _tmp_list = []
+                        for node_links in _disp_image.outputs[0].links:
+                            _tmp_list.append(node_links)
+                        _disp_image_mix = self._create_voronoli_style_merging(  node_tree=_terrain_material,
+                                                                                tiling_node=_node_group,
+                                                                                texture_node=_disp_image)
+                        for node in _tmp_list:
+                            _terrain_material.node_tree.links.new(  node.to_node.inputs[node.to_socket.identifier],
+                                                                    _disp_image_mix.outputs[0])
+                        if not _tmp_list:
+                            _current_disp_output = _disp_image_mix
+
+            if not _tiling_mode_set:
+                # TODO change!
+                mat_config = self.load_nodegroup_config("uber_mapping")
+                node_group = self.create_nodegroup_from_config(mat_config)
+
+                _mapping_node = _terrain_material.node_tree.nodes.new(type='ShaderNodeGroup')
+                _mapping_group = node_group
+
+                # custom_mapping
+                _mapping_node.node_tree = _mapping_group
+                _mapping_node.name = _mapping_group.name
+                _mapping_node.location = (_node_offset[0]-700,_node_offset[1])
+
+                _mapping_node.inputs[1].default_value = imageSize
+                _mapping_node.inputs[6].default_value = mosaicRotation
+                _mapping_node.inputs[7].default_value = mosaicNoise
+
+                _tex_coord_node = _terrain_material.node_tree.nodes.new('ShaderNodeTexCoord')
+                _tex_coord_node.location = (_node_offset[0]-900,_node_offset[1])
+
+                _terrain_material.node_tree.links.new(_mapping_node.inputs[0], _tex_coord_node.outputs[0])
+
+                if _col_map_path is not None:
+                    _terrain_material.node_tree.links.new(_rgb_image.inputs[0], _mapping_node.outputs[0])
+                if _spec_map_path is not None:
+                    _terrain_material.node_tree.links.new(_specular_image.inputs[0], _mapping_node.outputs[0])
+                if _gloss_map_path is not None:
+                    _terrain_material.node_tree.links.new(_glossy_image.inputs[0], _mapping_node.outputs[0])
+                if _rough_map_path is not None:
+                    _terrain_material.node_tree.links.new(_roughness_image.inputs[0], _mapping_node.outputs[0])
+                if _normal_map_path is not None: 
+                    _terrain_material.node_tree.links.new(_normal_image.inputs[0], _mapping_node.outputs[0])
+                if _emission_map_path is not None:
+                    _terrain_material.node_tree.links.new(_emission_image.inputs[0], _mapping_node.outputs[0])
+                if _disp_map_path is not None: 
+                    _terrain_material.node_tree.links.new(_disp_image.inputs[0], _mapping_node.outputs[0])
             ########################################################## end of create mapping nodes for tiling textures #
 
             # setup semantic nodes #####################################################################################
-            _label_node, self._label_ID_node = self.create_semantic_nodes(  \
-                                                                node_tree=_terrain_material,
-                                                                num_label_per_channel=self._num_labels_per_channel,
-                                                                label_ID_vec=material_cfg['passParams']\
-                                                                                    ['semantic_label']['labelIDVec'][0],
-                                                                uv_map = _mapping_node.outputs[0],
-                                                                node_offset=[_node_offset[0]-500, _node_offset[1]-1700])
+            _label_node = None
+            if 'tilingMode' in material_cfg:
+                if "VORONOI_STYLE" == material_cfg['tilingMode']:
+                    _label_node, self._label_ID_node = self.create_semantic_nodes(  \
+                                                                        node_tree=_terrain_material,
+                                                                        num_label_per_channel=self._num_labels_per_channel,
+                                                                        label_ID_vec=material_cfg['passParams']\
+                                                                                            ['semantic_label']['labelIDVec'][0],
+                                                                        uv_map = None,
+                                                                        node_offset=[_node_offset[0]-500, _node_offset[1]-1700])
+           
+            if not _label_node:
+
+                _label_node, self._label_ID_node = self.create_semantic_nodes(  \
+                                                                    node_tree=_terrain_material,
+                                                                    num_label_per_channel=self._num_labels_per_channel,
+                                                                    label_ID_vec=material_cfg['passParams']\
+                                                                                        ['semantic_label']['labelIDVec'][0],
+                                                                    uv_map = _mapping_node.outputs[0],
+                                                                    node_offset=[_node_offset[0]-500, _node_offset[1]-1700])
 
             # set default value
             _label_node.inputs[0].default_value=1
@@ -792,7 +1112,7 @@ class MaterialTerrain(TSSMaterial):
             _instance_switching_node = self.create_single_semantic_node(\
                                                                 node_tree=_terrain_material,
                                                                 label_ID=_label_ID_vec[0],
-                                                                num_label_per_channel=15,
+                                                                num_label_per_channel=self._num_labels_per_channel,
                                                                 node_offset=[_node_offset[0], _node_offset[1]-2000])
 
             # link switching nodes with tree
@@ -812,6 +1132,7 @@ class MaterialTerrain(TSSMaterial):
                 _latest_rough_output = _current_rough_output
                 _latest_spec_output = _current_spec_output
                 _latest_nrm_output = _current_nrm_output
+                _latest_emission_output = _current_emission_output
                 _latest_disp_output = _current_disp_output
                 _latest_label_output = _label_node
             else:
@@ -940,10 +1261,27 @@ class MaterialTerrain(TSSMaterial):
                     _latest_nrm_output = mixShaderNode
                 ####################################################################################
 
+                ## EMISSION MIX ####################################################################################
+                # add new mix shaders
+                if _latest_emission_output is None:
+                    _latest_emission_output = _current_rough_output
+                else:
+                    mixShaderNode = _terrain_material.node_tree.nodes.new("ShaderNodeMixRGB")
+                    mixShaderNode.location = (_node_offset[0]+3500, _node_offset[1]+800)
+
+                    # combine shaders
+                    _terrain_material.node_tree.links.new(mixShaderNode.inputs[0], _noise_color_ramp_node.outputs[0])
+                    _terrain_material.node_tree.links.new(mixShaderNode.inputs[1], _latest_emission_output.outputs[0])
+                    _terrain_material.node_tree.links.new(mixShaderNode.inputs[2], _current_emission_output.outputs[0])
+
+                    # set new output
+                    _latest_emission_output = mixShaderNode
+                ####################################################################################
+
                 ## LABEL MIX ####################################################################################
                 # add new mix shaders
                 mixShaderNode = _terrain_material.node_tree.nodes.new("ShaderNodeMixRGB")
-                mixShaderNode.location = (_node_offset[0]+2500,_node_offset[1]+300)
+                mixShaderNode.location = (_node_offset[0]+2500, _node_offset[1]+300)
 
                 # combine shaders
                 if hard_label_borders:
@@ -1061,6 +1399,8 @@ class MaterialTerrain(TSSMaterial):
         _terrain_material.node_tree.links.new(_material_output.inputs[0], masterMixShaderNode.outputs[0])
         ############################################################
 
+        if _latest_emission_output is not None:
+            _terrain_material.node_tree.links.new(PBSDFNode.inputs[17], _latest_emission_output.outputs[0])
 
         # add disp mapping node
         if _latest_disp_output is not None:
@@ -1143,6 +1483,210 @@ class MaterialTerrain(TSSMaterial):
 
 
 
+
+    def _create_voronoli_style_tiling_nodes(self,
+                                            scale_to_tile_val=1.0,
+                                            y_x_scale_ratio=1.0,
+                                            trans_multi_val=1.0,
+                                            trans_multi_x_val=-1.0,
+                                            trans_multi_y_val=-1.0,
+                                            trans_multi_z_val=-1.0,
+                                            rot_multi_val=1.0,
+                                            color_ramp_stop_1=0.191):
+
+        # basic node group setup #######################################################################################
+        # create node group
+        _tiling_group = bpy.data.node_groups.new(type="ShaderNodeTree", name="voronoi_style_tiling")
+
+        # inputs
+        _group_input = _tiling_group.nodes.new("NodeGroupInput")
+        _group_input.location = (0,-600)
+        _tiling_group.inputs.new('NodeSocketFloat','scale')
+
+        # outputs
+        _group_outputs = _tiling_group.nodes.new("NodeGroupOutput")
+        _group_outputs.location = (3500,-800)
+        _tiling_group.outputs.new('NodeSocketColor','blankFac')
+        _tiling_group.outputs.new('NodeSocketVector','blankVec')
+        _tiling_group.outputs.new('NodeSocketVector','tilingVec')
+        ################################################################################ end of basic node group setup #
+
+        # voronoi style tiling functionality ###########################################################################
+        # create all needed nodes ######################################################################################
+        # texture corrdinates node
+        _tiling_tex_corrd_node = _tiling_group.nodes.new("ShaderNodeTexCoord")
+        _tiling_tex_corrd_node.location = (400,0)
+
+        # [blank] mapping node
+        _tiling_blank_mapping_node = _tiling_group.nodes.new("ShaderNodeMapping")
+        _tiling_blank_mapping_node.location = (2400,-300)
+
+        # [scale] combine node
+        _tiling_scale_combine_math_node = _tiling_group.nodes.new("ShaderNodeCombineXYZ")
+        _tiling_scale_combine_math_node.location = (1200,-300)
+
+        # [scale] multiply node
+        _tiling_scale_aspect_math_node = _tiling_group.nodes.new("ShaderNodeMath")
+        _tiling_scale_aspect_math_node.location = (800,-300)
+        _tiling_scale_aspect_math_node.operation = 'MULTIPLY'
+        _tiling_scale_aspect_math_node.inputs[1].default_value = y_x_scale_ratio
+
+        # [blank] voronoi texture node for filling the blanks
+        _tiling_noise_tex_blanks_node = _tiling_group.nodes.new("ShaderNodeTexVoronoi")
+        _tiling_noise_tex_blanks_node.location = (1200,0)
+        _tiling_noise_tex_blanks_node.feature = 'DISTANCE_TO_EDGE'
+
+        # [blank] color ramp node
+        _tiling_color_ramp_node = _tiling_group.nodes.new("ShaderNodeValToRGB")
+        _tiling_color_ramp_node.location = (3200,0)
+        _tiling_color_ramp_node.color_ramp.elements[1].position = color_ramp_stop_1
+
+        # voronoi texture node for tiling
+        _tiling_noise_tex_node = _tiling_group.nodes.new("ShaderNodeTexVoronoi")
+        _tiling_noise_tex_node.location = (1200,-1200)
+        _tiling_noise_tex_node.feature = 'F1'
+        _tiling_noise_tex_node.distance = 'EUCLIDEAN'
+
+        # multiply node
+        _tiling_math_node = _tiling_group.nodes.new("ShaderNodeMath")
+        _tiling_math_node.location = (800,-800)
+        _tiling_math_node.operation = 'MULTIPLY'
+        _tiling_math_node.inputs[1].default_value = scale_to_tile_val
+
+        # [translation] multiply node
+        _tiling_translation_math_node = _tiling_group.nodes.new("ShaderNodeMath")
+        _tiling_translation_math_node.location = (1600,-1000)
+        _tiling_translation_math_node.operation = 'MULTIPLY'
+        _tiling_translation_math_node.inputs[1].default_value = trans_multi_val
+
+        # [translation] multiply node x
+        _tiling_translation_math_x_node = _tiling_group.nodes.new("ShaderNodeMath")
+        _tiling_translation_math_x_node.location = (2400,-800)
+        _tiling_translation_math_x_node.operation = 'MULTIPLY'
+        if trans_multi_x_val < 0:
+            trans_multi_x_val = random.uniform(0.2,3.0)
+        _tiling_translation_math_x_node.inputs[1].default_value = trans_multi_x_val
+
+        # [translation] multiply node y
+        _tiling_translation_math_y_node = _tiling_group.nodes.new("ShaderNodeMath")
+        _tiling_translation_math_y_node.location = (2400,-1000)
+        _tiling_translation_math_y_node.operation = 'MULTIPLY'
+        if trans_multi_y_val < 0:
+            trans_multi_y_val = random.uniform(0.2,3.0)
+        _tiling_translation_math_y_node.inputs[1].default_value = trans_multi_y_val
+
+        # [translation] multiply node z
+        _tiling_translation_math_z_node = _tiling_group.nodes.new("ShaderNodeMath")
+        _tiling_translation_math_z_node.location = (2400,-1200)
+        _tiling_translation_math_z_node.operation = 'MULTIPLY'
+        if trans_multi_z_val < 0:
+            trans_multi_z_val = random.uniform(0.2,3.0)
+        _tiling_translation_math_z_node.inputs[1].default_value = trans_multi_z_val
+
+        # [translation] separate node
+        _tiling_translation_separate_node = _tiling_group.nodes.new("ShaderNodeSeparateXYZ")
+        _tiling_translation_separate_node.location = (2000,-1000)
+
+        # [translation] combine node z
+        _tiling_translation_combine_node = _tiling_group.nodes.new("ShaderNodeCombineXYZ")
+        _tiling_translation_combine_node.location = (2800,-1000)
+
+        # [rotation] multiply node
+        _tiling_rotation_math_node = _tiling_group.nodes.new("ShaderNodeMath")
+        _tiling_rotation_math_node.location = (1600,-1400)
+        _tiling_rotation_math_node.operation = 'MULTIPLY'
+        _tiling_rotation_math_node.inputs[1].default_value = rot_multi_val
+
+        # [rotation] combine node
+        _tiling_rotation_combine_node = _tiling_group.nodes.new("ShaderNodeCombineXYZ")
+        _tiling_rotation_combine_node.location = (2000,-1400)
+
+        # mapping node
+        _tiling_mapping_node = _tiling_group.nodes.new("ShaderNodeMapping")
+        _tiling_mapping_node.location = (3200,-1200)
+
+        ############################################################################### end of create all needed nodes #
+
+        # link nodes ###################################################################################################
+        _tiling_group.links.new(_tiling_noise_tex_blanks_node.inputs[0], _tiling_tex_corrd_node.outputs[0])
+        _tiling_group.links.new(_tiling_noise_tex_node.inputs[0], _tiling_tex_corrd_node.outputs[0])
+        _tiling_group.links.new(_tiling_blank_mapping_node.inputs[0], _tiling_tex_corrd_node.outputs[0])
+        _tiling_group.links.new(_tiling_mapping_node.inputs[0], _tiling_tex_corrd_node.outputs[0])
+
+        _tiling_group.links.new(_tiling_noise_tex_blanks_node.inputs[2], _tiling_math_node.outputs[0])
+        _tiling_group.links.new(_tiling_noise_tex_node.inputs[2], _tiling_math_node.outputs[0])
+
+        _tiling_group.links.new(_tiling_color_ramp_node.inputs[0], _tiling_noise_tex_blanks_node.outputs[0])
+
+        _tiling_group.links.new(_tiling_translation_math_node.inputs[0], _tiling_noise_tex_node.outputs[1])
+        _tiling_group.links.new(_tiling_rotation_math_node.inputs[0], _tiling_noise_tex_node.outputs[1])
+
+        _tiling_group.links.new(_tiling_translation_separate_node.inputs[0], _tiling_translation_math_node.outputs[0])
+        _tiling_group.links.new(_tiling_translation_math_x_node.inputs[0], _tiling_translation_separate_node.outputs[0])
+        _tiling_group.links.new(_tiling_translation_math_y_node.inputs[0], _tiling_translation_separate_node.outputs[1])
+        _tiling_group.links.new(_tiling_translation_math_z_node.inputs[0], _tiling_translation_separate_node.outputs[2])
+
+        _tiling_group.links.new(_tiling_translation_combine_node.inputs[0], _tiling_translation_math_x_node.outputs[0])
+        _tiling_group.links.new(_tiling_translation_combine_node.inputs[1], _tiling_translation_math_y_node.outputs[0])
+        _tiling_group.links.new(_tiling_translation_combine_node.inputs[2], _tiling_translation_math_z_node.outputs[0])
+
+        _tiling_group.links.new(_tiling_rotation_combine_node.inputs[2], _tiling_rotation_math_node.outputs[0])
+
+        _tiling_group.links.new(_tiling_mapping_node.inputs[1], _tiling_translation_combine_node.outputs[0])
+        _tiling_group.links.new(_tiling_mapping_node.inputs[2], _tiling_rotation_combine_node.outputs[0])
+
+        _tiling_group.links.new(_tiling_math_node.inputs[0], _group_input.outputs[0])
+        #_tiling_group.links.new(_tiling_blank_mapping_node.inputs[3], _group_input.outputs[0])
+        #_tiling_group.links.new(_tiling_mapping_node.inputs[3], _group_input.outputs[0])
+        _tiling_group.links.new(_tiling_scale_aspect_math_node.inputs[0], _group_input.outputs[0])
+        _tiling_group.links.new(_tiling_scale_combine_math_node.inputs[0], _group_input.outputs[0])
+        _tiling_group.links.new(_tiling_scale_combine_math_node.inputs[1], _tiling_scale_aspect_math_node.outputs[0])
+
+        _tiling_group.links.new(_tiling_blank_mapping_node.inputs[3], _tiling_scale_combine_math_node.outputs[0])
+        _tiling_group.links.new(_tiling_mapping_node.inputs[3], _tiling_scale_combine_math_node.outputs[0])
+
+        _tiling_group.links.new(_group_outputs.inputs[0], _tiling_color_ramp_node.outputs[0])
+        _tiling_group.links.new(_group_outputs.inputs[1], _tiling_blank_mapping_node.outputs[0])
+        _tiling_group.links.new(_group_outputs.inputs[2], _tiling_mapping_node.outputs[0])
+
+        
+
+        
+        ############################################################################################ end of link nodes #
+        #################################################################### end of voronoi style tiling functionality #
+
+        # return node group
+        return _tiling_group
+
+    def _create_voronoli_style_merging(self, node_tree, tiling_node, texture_node):
+
+        # duplicate texture
+        _duplicated_tex_node = node_tree.node_tree.nodes.new('ShaderNodeTexImage')
+        _duplicated_tex_node.image = texture_node.image
+        _duplicated_tex_node.image.colorspace_settings.name = texture_node.image.colorspace_settings.name
+        _duplicated_tex_node.location = (texture_node.location[0] + 400, texture_node.location[1])
+
+        # create mix node
+        _tex_mix_node = node_tree.node_tree.nodes.new("ShaderNodeMixRGB")
+        _tex_mix_node.location = (texture_node.location[0] + 600, texture_node.location[1])
+
+        # link
+        node_tree.node_tree.links.new(_duplicated_tex_node.inputs[0], tiling_node.outputs[1])
+        node_tree.node_tree.links.new(texture_node.inputs[0], tiling_node.outputs[2])
+
+        node_tree.node_tree.links.new(_tex_mix_node.inputs[0], tiling_node.outputs[0])
+        node_tree.node_tree.links.new(_tex_mix_node.inputs[1], _duplicated_tex_node.outputs[0])
+        node_tree.node_tree.links.new(_tex_mix_node.inputs[2], texture_node.outputs[0])
+
+        # return mix node
+        return _tex_mix_node
+
+
+    def _retrieve_parameter(self, cfg, key):
+        if key in cfg:
+            return cfg[key]
+        else:
+            return None
 
 
    ### The following lines are from https://www.poliigon.com/

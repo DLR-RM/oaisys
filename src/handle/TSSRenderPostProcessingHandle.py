@@ -277,6 +277,21 @@ class TSSRenderPostProcessingHandle(object):
         for effect in self._post_processing_list:
             effect.increase_global_step_index()
 
+    def set_log_folder(self, log_folder_path):
+        for effect in self._post_processing_list:
+            effect.set_log_folder(log_folder_path)
+
+    def log_step(self, keyframe):
+        """ log step function is called for every new sample in of the batch; should be overwritten by custom class
+            OVERWRITE!
+        Args:
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        for effect in self._post_processing_list:
+            effect.log_step(keyframe)
 
     def activate_pass(self, pass_name, pass_cfg, keyframe = -1):
         """ step function

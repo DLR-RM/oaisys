@@ -18,6 +18,7 @@ The current version of OAISYS works under Linux and is tested with the LTS Blend
 * [Basic Tutorial](doc/wiki/basicExample/basicExample.md): If this is the first time you are using OAISYS, you should go through this tutorial.
 * Forest Scene: under construction
 * Water World: under construction
+* [Asteroid Crater Creation](doc/wiki/basicExample/asteroidExample.md): README for the IEEE Aerospace Conference Paper "Bridging the Data Gap of Asteroid Exploration: OAISYS Extension for Synthetic Asteroids Creation"
 
 ### Developers
 * Basic Developer Tutorial: under construction

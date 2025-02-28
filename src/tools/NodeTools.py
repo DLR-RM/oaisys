@@ -532,7 +532,6 @@ class NodeTools(object):
             for key, value in _mapping_dict.items():
 
                 _prev_color = value[0]
-                print("_prev_color: ", _prev_color)
 
                 # create compare nodes #################################################################################
                 # red channel
