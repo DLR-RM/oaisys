@@ -1082,6 +1082,7 @@ class MaterialAsteroid(TSSMaterial):
                     _terrain_material.node_tree.links.new(_emission_image.inputs[0], _mapping_node.outputs[0])
                 if _disp_map_path is not None:
                     _terrain_material.node_tree.links.new(_disp_image.inputs[0], _mapping_node.outputs[0])
+                    _terrain_material.node_tree.links.new(add_disp_image.inputs[0], _mapping_node.outputs[0])
             ########################################################## end of create mapping nodes for tiling textures #
 
             # setup semantic nodes #####################################################################################
