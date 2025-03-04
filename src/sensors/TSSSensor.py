@@ -103,7 +103,6 @@ class TSSSensor(TSSBase):
 
         return self._sensor
 
-
     def activate_pass(self, pass_name, pass_cfg, keyframe = -1):
 
         if pass_name in self._cfg["renderPasses"]:

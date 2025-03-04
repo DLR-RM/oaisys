@@ -6,6 +6,7 @@
 		"numSamplesPerBatch":3,
 		"renderImages": true,
 		"saveBlenderFiles": true,
+		"saveMetaData": false,
 		"outputIDOffset":0
 	},
 
@@ -75,7 +76,7 @@
 					"sensorMovementType":"randomEuclideanTarget",
 					"hoverBaseModeEnabled": true,
 					"hoverBaseStage":"landscape01",
-					"hoverBaseDistance":1.5,
+					"hoverBaseDistance":[1.5, 1.5],
 					"hoverBaseDistanceNoise": 0.5,
 					"hoverTargetModeEnabled": true,
 					"hoverTargetStage":"landscape01",

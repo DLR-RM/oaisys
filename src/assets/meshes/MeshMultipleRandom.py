@@ -31,10 +31,8 @@ class MeshMultipleRandom(TSSMesh):
         self._rotation_option_phase = None
         self._rotation_option_phase_random = None
         self._mix_shader_node = None
-        self._num_instance_label_per_channel = 51
         self._max_instances_labels = self._num_instance_label_per_channel*self._num_instance_label_per_channel\
                                                                     *self._num_instance_label_per_channel
-        self._num_labels_per_channel = 15
         self._node_tree = None
         self._particle_system = None
         self._instance_label_active = False
@@ -74,10 +72,8 @@ class MeshMultipleRandom(TSSMesh):
         self._rotation_option_phase = None
         self._rotation_option_phase_random = None
         self._mix_shader_node = None
-        self._num_instance_label_per_channel = 51
         self._max_instances_labels = self._num_instance_label_per_channel*self._num_instance_label_per_channel\
                                                                     *self._num_instance_label_per_channel
-        self._num_labels_per_channel = 15
         self._node_tree = None
         self._particle_system = None
         self._instance_label_active = False
@@ -92,10 +88,11 @@ class MeshMultipleRandom(TSSMesh):
         ############################################################################################ end of class vars #
 
 
-    def create(self,instance_id_offset=0):
+    def create(self,instance_id_offset=0, materials=None):
         """ create function
         Args:
             instance_id_offset:                                     instance offset ID [int]
+            materials:                                              list of all OAISYS materials [list]
         Returns:
             _current_real_particle_count:                              particle count [int]
             _current_real_particle_label_count
@@ -120,7 +117,7 @@ class MeshMultipleRandom(TSSMesh):
         return _current_real_particle_count, _current_real_particle_label_count
 
 
-    def step(self):
+    def step(self, keyframe):
         """ settping function
         Args:
             None
@@ -128,7 +125,6 @@ class MeshMultipleRandom(TSSMesh):
             None
         """
         pass
-
 
     def get_meshes(self):
         """ get mesh function
@@ -222,7 +218,7 @@ class MeshMultipleRandom(TSSMesh):
                 _mesh.rotation_euler[1] = (mesh_settings_cfg["preRotationDeg"][1]*np.pi)/180
                 _mesh.rotation_euler[2] = (mesh_settings_cfg["preRotationDeg"][2]*np.pi)/180
 
-            # apply scale and roation
+            # apply scale and rotation
             bpy.context.view_layer.objects.active = _mesh
             bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
        ################################################################################### end of load particle object #
@@ -266,17 +262,16 @@ class MeshMultipleRandom(TSSMesh):
             # TODO: add condition if rendering label is even set?!
             self._instance_label_active = mesh_settings_cfg['instanceLabelActive']
 
+
             _label_node,_label_ID_Node = self.create_semantic_nodes(\
                                                                 node_tree=material,
                                                                 label_ID_vec=_label_ID_vec,
                                                                 num_label_per_channel=self._num_labels_per_channel,
                                                                 node_offset=[_global_Pos_GX,_global_Pos_GY+1500])
-            
-            _label_node.inputs[0].default_value = 1
             ##########################################################################################
             
             self._label_ID_Node_list.append(_label_ID_Node)
-
+            _label_node.inputs[0].default_value = 1
             if self._instance_label_active:
 
                 # add particle info node
@@ -291,6 +286,8 @@ class MeshMultipleRandom(TSSMesh):
 
 
                 self._instance_switch_node_list.append(_instance_switch_node)
+
+                #_label_node.inputs[0].default_value = 1
 
                 material.node_tree.links.new(_instance_add_node.inputs[0], _particle_info_node.outputs[0])
                 material.node_tree.links.new(_instance_switch_node.inputs[1], _label_node.outputs[0])

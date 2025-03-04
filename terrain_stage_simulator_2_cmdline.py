@@ -10,7 +10,6 @@ import os
 import pathlib
 
 # import files from TSS
-import src.tools.cfgParser
 import src.TSS_simulation as TSSStageSimulator
 
 from bpy.types import (

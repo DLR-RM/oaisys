@@ -16,6 +16,8 @@ class TSSStage(TSSAsset,TSSModifieres):
         super(TSSStage, self).__init__()
         # class vars ###################################################################################################
         self._stage = None
+        self._num_instance_label_per_channel = 51
+        self._num_labels_per_channel = 51
         ############################################################################################ end of class vars #
 
 
@@ -66,5 +68,5 @@ class TSSStage(TSSAsset,TSSModifieres):
         pass
 
 
-    def step(self):
+    def step(self, keyframe):
         pass

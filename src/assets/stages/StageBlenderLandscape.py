@@ -13,12 +13,14 @@ import json
 
 from src.assets.TSSStage import TSSStage
 
+
 class StageBlenderLandscape(TSSStage):
     """docstring for StageBlenderLandscape"""
+
     def __init__(self):
         super(StageBlenderLandscape, self).__init__()
         # class vars ###################################################################################################
-        self._single_stage = None                               # blender stage objcet [blObject]
+        self._single_stage = None  # blender stage objcet [blObject]
         ############################################################################################ end of class vars #
 
         # import Another Noise Tool ####################################################################################
@@ -30,7 +32,6 @@ class StageBlenderLandscape(TSSStage):
             return -1
         ############################################################################# end of import Another Noise Tool #
 
-
     def reset(self):
         """ reset all local vars
         Args:
@@ -41,7 +42,6 @@ class StageBlenderLandscape(TSSStage):
 
         self._single_stage = None
 
-
     def update_after_meshes(self):
         """ update function after mesh placements
         Args:
@@ -51,12 +51,12 @@ class StageBlenderLandscape(TSSStage):
         """
 
         # add sub surf modifier ########################################################################################
-        self._single_stage.modifiers.new("lastSubsurf", type='SUBSURF')
-        self._single_stage.cycles.use_adaptive_subdivision = True # TODO:maybe shift this to higher level
+        if "NOSUBSURF" not in self._cfg:
+            self._single_stage.modifiers.new("lastSubsurf", type='SUBSURF')
+            self._single_stage.cycles.use_adaptive_subdivision = True  # TODO:maybe shift this to higher level
         ################################################################################# end of add sub surf modifier #
 
-
-    def _get_random_number(self,min_max_array):
+    def _get_random_number(self, min_max_array):
         """ get random number from array; use uniformal distribution
         Args:
             min_max_array:      define min and max value [min_value, max_value] [float,float]; if just one value is
@@ -65,16 +65,20 @@ class StageBlenderLandscape(TSSStage):
             return random value [float]
         """
 
-        # check length of array and caluclate random number ############################################################
+        # check length of array and calculate random number ############################################################
         if len(min_max_array) > 1:
             if min_max_array[1] >= min_max_array[0]:
-                return random.uniform(min_max_array[0],min_max_array[1])
+                if isinstance(min_max_array[0], float) and isinstance(min_max_array[1], float):
+                    return random.uniform(min_max_array[0], min_max_array[1])
+                elif isinstance(min_max_array[0], int) and isinstance(min_max_array[1], int):
+                    return random.randint(min_max_array[0], min_max_array[1])
+                else:
+                    raise NotImplementedError(f"Type {type(min_max_array[0])} and {type(min_max_array[1])} not implemented!")
             else:
                 raise Exception("[StageBlenderLandscape] Max >=! Min!")
         else:
             return min_max_array[0]
         ##################################################### end of check length of array and caluclate random number #
-
 
     def _prepare_landscape_cfg(self, cfg):
         """ prepare ant arguments
@@ -91,8 +95,8 @@ class StageBlenderLandscape(TSSStage):
         # general settings #############################################################################################
         if "stageLandscapePreset" in cfg:
             # compile default cfg path #################################################################################
-            _default_cfg_path = os.path.join(os.path.dirname(inspect.getfile(self.__class__)),"default_cfg")
-            _default_cfg_path = os.path.join(_default_cfg_path,cfg["stageLandscapePreset"]+".json")
+            _default_cfg_path = os.path.join(os.path.dirname(inspect.getfile(self.__class__)), "default_cfg")
+            _default_cfg_path = os.path.join(_default_cfg_path, cfg["stageLandscapePreset"] + ".json")
             ########################################################################## end of compile default cfg path #
 
             # load default cfg file ####################################################################################
@@ -123,12 +127,11 @@ class StageBlenderLandscape(TSSStage):
                 # value is a number -> choose radom sample between value[0] and value [1]
                 _landscape_cfg[key] = self._get_random_number(value)
             else:
-                _landscape_cfg[key] = radnom.choice(value)
+                _landscape_cfg[key] = random.choice(value)
         ########################################################################### end of go through dict and set cfg #
 
         # return cfg dict
         return _landscape_cfg
-
 
     def _create_single_stage(self):
         """ create landscape stage
@@ -156,17 +159,24 @@ class StageBlenderLandscape(TSSStage):
         # resize terrain ###############################################################################################
         if "stageSizeX" in self._cfg:
             _mesh_size_x = _landscape_cfg["mesh_size_x"]
-            _scaling_fac = self._cfg["stageSizeX"]/_mesh_size_x
+            _scaling_fac = self._cfg["stageSizeX"] / _mesh_size_x
             self._single_stage.scale = (_scaling_fac, _scaling_fac, _scaling_fac)
 
-            # apply scale and roation
+            # apply scale and rotation
             bpy.context.view_layer.objects.active = self._single_stage
             bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
         ######################################################################################## end of resize terrain #        
 
+        # add physics constrain to stage
+        bpy.context.view_layer.objects.active = self._single_stage
+        bpy.ops.rigidbody.object_add()
+        bpy.context.object.rigid_body.type = 'PASSIVE'
+        bpy.context.object.rigid_body.collision_shape = 'MESH'
+        bpy.context.object.rigid_body.mesh_source = 'FINAL'
+        bpy.context.object.rigid_body.collision_margin = 4e-05
+
         # update stage var
         self._stage = self._single_stage
-
 
     def create(self):
         """ create function
@@ -175,7 +185,5 @@ class StageBlenderLandscape(TSSStage):
         Returns:
             None
         """
-
-        print(self._cfg)
 
         self._create_single_stage()

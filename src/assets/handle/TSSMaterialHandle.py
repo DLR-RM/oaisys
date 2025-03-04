@@ -69,7 +69,7 @@ class TSSMaterialHandle(TSSBase):
 
 
 
-    def _create_materials(self,cfg,general_cfg):
+    def _create_materials(self, cfg, general_cfg):
         """ create function
         Args:
             cfg:                cfg list of material modules [list]
@@ -131,3 +131,30 @@ class TSSMaterialHandle(TSSBase):
             list of material objects [list]
         """
         return self._material_obj_list
+
+    def set_log_folder(self, log_folder_path):
+        for material_obj in self._material_obj_list:
+            material_obj.set_log_folder(log_folder_path)
+
+    def step(self, keyframe):
+        """ step handle and modules
+        Args:
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        self._stepping_counter += 1
+
+        # step for modules #############################################################################################
+        for material_obj in self._material_obj_list:
+
+            _trigger_option = material_obj.get_trigger_type()
+
+            if "GLOBAL" == _trigger_option:
+                if (self._stepping_counter % self._trigger_interval) == 0:
+                    material_obj.step_module(keyframe=keyframe)
+
+            if "LOCAL" == _trigger_option:
+                material_obj.step_module(keyframe=keyframe)
+        ###################################################################################### end of step for modules #

@@ -63,7 +63,7 @@ class CMesh(object):
 
         return poseList
 
-    def step():
+    def step(self, keyframe):
         pass # TODO: to be filled!
 
     def activateLabelPass(self,labelID=1):

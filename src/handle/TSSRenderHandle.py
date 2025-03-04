@@ -101,7 +101,7 @@ class TSSRenderHandle(object):
 
         self._cfg = cfg
 
-        
+
     def _set_render_settings(self,renderCfg):
 
         # setup render engine
@@ -118,8 +118,8 @@ class TSSRenderHandle(object):
         # TODO: shift this to button "render scene"
 
         # performance settings
-        bpy.context.scene.render.tile_x = renderCfg['performanceTilesX']
-        bpy.context.scene.render.tile_y = renderCfg['performanceTilesY']
+        #bpy.context.scene.render.tile_x = renderCfg['performanceTilesX']
+        #bpy.context.scene.render.tile_y = renderCfg['performanceTilesY']
 
         # activate renderChannels ###############################################################
         # deactive by default all render channels
@@ -170,12 +170,28 @@ class TSSRenderHandle(object):
         ############################################################################## end of load render pass objects #
 
 
+    def set_log_folder(self, log_folder_path):
+        for render_pass in self._pass_list:
+            render_pass.set_log_folder(log_folder_path)
+
     def step(self, keyframe=-1):
         self._global_step_index += 1
 
         for render_pass in self._pass_list:
             render_pass.increase_global_step_index()
 
+
+    def log_step(self, keyframe):
+        """ log step function is called for every new sample in of the batch; should be overwritten by custom class
+            OVERWRITE!
+        Args:
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        for render_pass in self._pass_list:
+            render_pass.log_step(keyframe)
 
     def activate_pass(self, pass_name, pass_cfg, keyframe = -1):
         pass

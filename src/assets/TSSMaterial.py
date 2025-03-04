@@ -17,6 +17,7 @@ class TSSMaterial(TSSAsset,TSSModifieres):
         # class vars ###################################################################################################
         self._material = None
         self._node_tree = None
+        self._num_labels_per_channel = 51
         ############################################################################################ end of class vars #
 
 
@@ -46,7 +47,7 @@ class TSSMaterial(TSSAsset,TSSModifieres):
         pass
 
 
-    def step(self):
+    def step(self, keyframe):
         pass
 
 

@@ -1,0 +1,248 @@
+{
+	"SIMULATION_SETUP": {
+		"outputPath":"",
+		"defaultCfg": "",
+		"numBatches":1,
+		"numSamplesPerBatch":5,
+		"renderImages": true,
+		"saveBlenderFiles": true,
+		"saveMetaData": true,
+		"outputIDOffset":0
+	},
+
+	"RENDER_SETUP": {
+
+		"GENERAL": {
+					"renderEngine":"CYCLES",
+					"renderFeatureSet":"EXPERIMENTAL",
+					"renderDevice": "GPU",
+					"performanceTilesX": 256,
+					"performanceTilesY": 256
+					},
+
+		"RENDER_PASSES": [{
+							"type": "RGBDPass",
+							"passParams": {
+											"numIter": 1,
+											"renderDepthActive": true,
+											"renderSamples":120,
+											"lightPathesMaxBounces": 6
+										}
+							},
+							{
+							"type": "SemanticPass",
+							"passParams": {
+											"numIter": 2,
+											"renderSamples":1
+										  }
+							},
+							{
+							"type": "InstancePass",
+							"passParams": {
+											"numIter": 1,
+											"renderSamples":1
+										}
+							}]
+
+	},
+
+
+	"RENDER_POST_PROCESSING_EFFECTS_SETUP": {
+		"GENERAL": {
+					
+					},
+		"POST_EFFECTS": [
+						]
+
+	},
+
+
+	"SENSOR_SETUP": {
+		"GENERAL": {
+					"stepInterval": 1,
+					"sensorMovementType":"centeredTarget",
+                    "sensorDistanceScale": [1.5,3.0],
+					"landingMode": false,
+					"finalApproachDistance": 1.05,
+					"hoverBaseModeEnabled": false,
+					"hoverBaseStage":"landscape01",
+					"hoverTargetModeEnabled": false,
+					"hoverBaseDistance":[0.3, 6.0],
+					"targetObjectActive":false,
+					"tragetObjectMovementType":"random",
+					"targetObject": "asteroid"
+		},
+
+		"SENSORS": [{"type": "SensorCameraRGBD",
+					"sensorParams": {
+										"outputBaseName":"sensor_1",
+										"imageResolution": [1376,1110],
+										"KMatrix": [1082.28,	0,			688,
+													0,		1082.28,		554,
+													0,		0,			1],
+										"transformation": [0.0,0,0,0,0,0,0],
+										"triggerInterval": 1,
+										"renderPasses": {
+														"RGBDPass": {"activationSlot":[1], "DepthEnabled": true},
+														"SemanticPass": {"activationSlot":[1,0]},
+														"InstancePass": {"activationSlot":[0]}
+														}
+									}
+					}
+		]
+	},
+
+	"ENVIRONMENT_EFFECTS_SETUP": {
+
+		"GENERAL": {"backgroundStrength": [0.5],
+					"stepInterval": 1
+					},
+
+		"ENVIRONMENT_EFFECTS": [	{"type": "EnvLightBlenderSky",
+									"stepInterval": 1,
+									"environmentEffectsParams": {
+																"stepIntervalOption": "GLOBAL",
+																"stepInterval": 1,
+																"SunSize": [0.145],
+																"SunIntensity": [0.03],
+																"SunElevation": [0.0,0.0],
+																"SunRotation": [-60.0,-120.0],
+																"SunAltitude": [60000.0,60000.0],
+																"AirDensity": [0.0,0.0],
+																"DustDensity": [0.0,0.0],
+																"OzoneDensity": [0.0,0.0],
+																"passParams": 	{ "RGBDPass": {"rgbIDVec": [1,-1,-1,-1]},
+																				  "SemanticPass": {"semanticIDVec": [700,700,500,500]},
+																				  "InstancePass": {"instanceIDVec": [-1]}
+																				}
+															}
+
+									}
+								]
+	},
+
+
+	"ASSET_SETUP": {
+
+
+
+		"GENERAL": {},
+
+
+
+
+		"MATERIALS": [
+										{"name": "mesh_material_01",
+										"type":"MaterialAsteroid",
+										"materialParams":{
+													"general": {"minNumMixTerrains":1,
+																"maxNumMixTerrains":1,
+																"hardLabelBorders":true,
+																"withReplacement":true,
+																"dispMidLevel":0.0,
+																"dispScale":1.0,
+																"normalStrength":1.0,
+																"mergingNoise": {
+																	"Scale": [1.0,1.0],
+																	"Detail": [1.0,1.0],
+																	"Roughness": [0.2,0.5],
+																	"Distortion": [0.0,0.6]
+																}},
+													"terrainTextureList": [
+																{
+																	"templatePath": "oaisys_data/examples/assets/materials/asteroid/asteroid.json",
+																	"passParams": 	{ "rgb": {},
+																					"semantic_label": {"labelIDVec": [[
+																						{
+																							"filePath": "oaisys_data/examples/assets/materials/asteroid/label_mask.png",
+																							"mappingTable": {
+																															 "1": [[10,10,10],[100]],
+																															 "2": [[20,20,20],[200]],
+																															 "3": [[30,30,30],[300]],
+																															 "4": [[40,40,40],[400]],
+																															 "5": [[50,50,50],[500]],
+																															 "6": [[60,60,60],[600]],
+																															 "7": [[70,70,70],[700]],
+																															 "8": [[80,80,80],[800]],
+																															 "9": [[90,90,90],[900]],
+																															 "10": [[100,100,100],[1000]],
+																															 "11": [[110,110,110],[1100]],
+																															 "12": [[120,120,120],[1200]],
+																															 "13": [[130,130,130],[1300]],
+																															 "14": [[140,140,140],[1400]],
+																															 "15": [[150,150,150],[1500]],
+																															 "16": [[160,160,160],[1600]],
+																															 "17": [[170,170,170],[1700]],
+																															 "18": [[180,180,180],[1800]],
+																															 "19": [[190,190,190],[1900]],
+																															 "20": [[200,200,200],[2000]]
+																							}
+																						}
+																						,5,2]]},
+																					"instance_label": {}
+																					},
+																	"colorAdjustment": 	{
+																		"cColorPoints": [[0.70758,0.30417]],
+																		"rColorPoints": [[0.50909,0.48750]],
+																		"gColorPoints": [[0.5,0.5]],
+																		"bColorPoints": [[0.5,0.48750]]
+																	},
+																	"size": 1.0,
+																	"dispStrength": 1.0
+																}
+																]
+										}}
+							],
+		"STAGES": [
+		],
+		"MESHES": [
+			{
+				"name": "asteroid",
+				"type": "MeshAsteroid",
+				"meshParams": {
+					"meshFilePath":"oaisys_data/blender_files/rocks/asteroid.blend",
+					"meshInstanceName": "asteroid",
+					"location": "trajectory_simulation",
+					"trajectorySimulation": [-0,-0,-0,-0,-0,-0],
+					"numSamples": 5,
+					"assetDistanceScale": [1.2,1.4],
+					"random_rotation": true,
+					
+					"assetMaterial": "mesh_material_01", 
+
+					"passParams": 	{ "rgb": {},
+									  "semantic_label": {"labelIDVec": [[2400,2400,100,100]]},
+									  "instance_label": {}
+					},
+
+					"trajectoryParams": { 
+									"trajectoryType": {"mode": "predefinedProbability", "probability":[0.5,0.5,0.0]},
+									"rotationPeriod": 8.12,
+									"observationTime": 0.1
+					},
+
+					"instanceLabelActive": true,
+                    "randomSwitchOnOff": false,
+					"activationProbability": 0.3,
+					
+					"assetDisplacementParams":{
+									"assetDisplacementActive": true,
+									"assetDisplacementMidLevel": 0.4,
+									"assetDisplacementStrength": [1,80],
+									"assetDisplacementNoiseType": "MUSGRAVE",
+									"assetDisplacementNoiseParams": { 	"noise_scale": 200,
+															"noise_depth": 0.2,
+															"nabla": 0.2
+									}	
+					}
+
+				}
+
+
+			}
+
+		]
+
+	}
+
+}

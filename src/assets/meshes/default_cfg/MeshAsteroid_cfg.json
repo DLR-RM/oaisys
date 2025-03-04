@@ -1,0 +1,261 @@
+{
+	"SIMULATION_SETUP": {
+		"outputPath":"",
+		"defaultCfg": "",
+		"numBatches":1,
+		"numSamplesPerBatch":3,
+		"renderImages": true,
+		"saveBlenderFiles": true,
+        "saveConfigFiles": true,
+		"saveMetaData": true,
+		"outputIDOffset":0
+	},
+
+	"RENDER_SETUP": {
+
+		"GENERAL": {
+					"renderEngine":"CYCLES",
+					"renderFeatureSet":"EXPERIMENTAL",
+					"renderDevice": "GPU",
+					"performanceTilesX": 256,
+					"performanceTilesY": 256
+					},
+
+		"RENDER_PASSES": [{
+							"type": "RGBDPass",
+							"passParams": {
+											"numIter": 1,
+											"renderDepthActive": true,
+											"renderSamples":120,
+											"lightPathesMaxBounces": 6
+										}
+							},
+							{
+							"type": "SemanticPass",
+							"passParams": {
+											"numIter": 2,
+											"renderSamples":1
+										  }
+							},
+							{
+							"type": "InstancePass",
+							"passParams": {
+											"numIter": 1,
+											"renderSamples":1
+										}
+							}]
+
+	},
+
+
+	"RENDER_POST_PROCESSING_EFFECTS_SETUP": {
+		"GENERAL": {
+					
+					},
+		"POST_EFFECTS": [
+						]
+
+	},
+
+
+	"SENSOR_SETUP": {
+		"GENERAL": {
+					"baseMovement": {	"movementType": "randomEuclideanTarget",
+										"hoverBaseModeEnabled": false,
+									    "hoverBaseStage":"landscape01",
+										"hoverBaseDistance": [1.0, 5.0],
+										"hoverBaseDistanceNoise": 0.5
+									},
+					"MESH_FOLLOWERb":  { "meshFilePath":"oaisys_data/blender_files/rocks/rocks_01.blend",
+										"meshInstanceName": "rock_02",
+										"transformation": [0, 0, 0, 1, 0, 0, 0]
+					},
+					"sensorMovementType":"centeredTarget",
+					"sensorMovementPose":"possible_old_files/asteroid_deterministic.csv",
+                    "sensorDistanceScale": [2.0,2.00],
+
+					"hoverBaseModeEnabled": false,
+					"hoverBaseStage":"landscape01",
+					"hoverTargetModeEnabled": false,
+					"hoverBaseDistance":[0.3, 6.0],
+
+					"randomEuclideanPosMin": [0.0,0.0,0.0],
+					"randomEuclideanPosMax": [20.0,20.0,20.0],
+					"randomEuclideanEulerMin": [0,0,0],
+					"randomEuclideanEulerMax": [20,20,20],
+
+					"randomTargetPosMin": [0.0,0.0,0.0],
+					"randomTargetPosMax": [0.0,0.0,0.0],
+					"randomTargetEulerMin": [0,0,0],
+					"randomTargetEulerMax": [0,0,0],
+
+					"targetObjectActive":true,
+					"tragetObjectMovementType":"random"
+		},
+
+		"SENSORS": [{"type": "SensorCameraRGBD",
+					"sensorParams": {
+										"outputBaseName":"sensor_1",
+										"imageResolution": [688,555],
+										"KMatrix": [541.14,	0,			344,
+													0,		541.14,		277,
+													0,		0,			1],
+										"transformation": [0.0,0,0,0,0,0,0],
+										"triggerInterval": 1,
+										"renderPasses": {
+														"RGBDPass": {"activationSlot":[1], "DepthEnabled": true},
+														"SemanticPass": {"activationSlot":[1,1]},
+														"InstancePass": {"activationSlot":[1]}
+														}
+									}
+					}
+		]
+	},
+
+	"ENVIRONMENT_EFFECTS_SETUP": {
+
+		"GENERAL": {"backgroundStrength": [0.5],
+					"stepInterval": 1
+					},
+
+		"ENVIRONMENT_EFFECTS": [	{"type": "EnvLightBlenderSky",
+									"stepInterval": 1,
+									"environmentEffectsParams": {
+																"stepIntervalOption": "GLOBAL",
+																"stepInterval": 1,
+																"SunSize": [0.145],
+																"SunIntensity": [0.06],
+																"SunElevation": [45.0,45.0],
+																"SunRotation": [30.0,30.0],
+																"SunAltitude": [60000.0,60000.0],
+																"AirDensity": [0.0,0.0],
+																"DustDensity": [0.0,0.0],
+																"OzoneDensity": [0.0,0.0],
+																"passParams": 	{ "RGBDPass": {"rgbIDVec": [1,-1,-1,-1]},
+																				  "SemanticPass": {"semanticIDVec": [700,700,500,500]},
+																				  "InstancePass": {"instanceIDVec": [-1]}
+																				}
+															}
+
+									}
+								]
+	},
+
+
+	"ASSET_SETUP": {
+
+
+
+		"GENERAL": {},
+
+
+
+
+		"MATERIALS": [	{"name": "terrain_01",
+						"type":"MaterialTerrain",
+						"materialParams":{
+											"general": {"minNumMixTerrains":1,
+														"maxNumMixTerrains":2,
+														"hardLabelBorders":true,
+														"withReplacement":true,
+														"dispMidLevel":0.5,
+														"dispScale":0.6,
+														"normalStrength":2.0,
+														"texture_base_path": "oaisys_data/examples/assets/materials/rock_ground/",
+														"known_list_id_bak": [100, 200, 300, 1000, 1100, 1200, 1300, 1400, 2000, 2200],
+														"known_list_id": [],
+														"number_known_limits_bak": [1,7],
+														"number_known_limits": [0, 0],
+														"number_unknown_limits": [1, 7],
+														"mergingNoise": {
+															"Scale": [5.0,8.0],
+															"Detail": [0.5,1.0],
+															"Roughness": [0.2,0.5],
+															"Distortion": [0.0,0.3]
+														}},
+                                                        "terrainTextureList": [
+                                                                    {
+                                                                        "templatePath": "oaisys_data/examples/assets/materials/rock_ground/rock_ground.json",
+                                                                        "passParams": 	{ "rgb": {},
+                                                                                          "semantic_label": {"labelIDVec": [[30,500,5,2]]},
+                                                                                          "instance_label": {}
+                                                                                        },
+                                                                        "colorAdjustment": 	{
+                                                                            "cColorPoints": [[0.70758,0.30417]],
+                                                                            "rColorPoints": [[0.50909,0.48750]],
+                                                                            "gColorPoints": [[0.5,0.5]],
+                                                                            "bColorPoints": [[0.5,0.48750]]
+                                                                        },
+                                                                        "size": 120.0,
+                                                                        "dispStrength": 0.03
+                                                                    },
+                                                                    {
+                                                                        "templatePath": "oaisys_data/examples/assets/materials/dry_ground_01/dry_ground_01.json",
+                                                                        "passParams": 	{ "rgb": {},
+                                                                                          "semantic_label": {"labelIDVec": [[30,500,5,2]]},
+                                                                                          "instance_label": {}
+                                                                                        },
+                                                                        "colorAdjustment": 	{
+                                                                            "cColorPoints": [[0.70758,0.30417]],
+                                                                            "rColorPoints": [[0.50909,0.48750]],
+                                                                            "gColorPoints": [[0.5,0.5]],
+                                                                            "bColorPoints": [[0.5,0.48750]]
+                                                                        },
+                                                                        "size": 120.0,
+                                                                        "dispStrength": 0.03
+                                                                    }
+                                                                    ]
+								}}
+		],
+
+		"STAGES": [
+		],
+
+
+		"MESHES": [
+			{
+				"name": "asteroid",
+				"type": "MeshAsteroid",
+				"meshParams": {
+					"meshFilePath":"oaisys_data/examples/assets/objects/asteroids/cube.obj",
+					"location": "trajectory_simulation",
+					"trajectorySimulation": [0,0,0,0,0,0],
+					"numSamples": 1,
+					"assetDistanceScale": [2.0,2.0],
+					"random_rotation": true,
+
+					"passParams": 	{ "rgb": {},
+									  "semantic_label": {"labelIDVec": [[2400,2400,100,100]]},
+									  "instance_label": {}
+									},
+
+					"trajectoryParams": { "trajectoryType": {"mode": "predefinedProbability", "probability":[0.5,0.5,0.0]},
+									"rotationPeriod": 17.6,
+									"observationTime": 1
+								  },           									
+					"instanceLabelActive": false,
+                    "randomSwitchOnOff": false,
+					"activationProbability": 0.3,
+
+					"assetDisplacementParams":{
+
+						"assetDisplacementActive": true,
+						"assetDisplacementMidLevel": 0.5,
+						"assetDisplacementStrength": 2,
+						"assetDisplacementNoiseType": "MUSGRAVE",
+						"assetDisplacementNoiseParams": { 	"noise_scale": 1,
+															"noise_depth": 1,
+															"nabla": 1
+							}
+						
+					}
+				}
+
+
+			}
+
+		]
+
+	}
+
+}

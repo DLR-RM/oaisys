@@ -41,10 +41,12 @@ parser.add_argument('--config-file', dest='config_file',  default=None, help='co
 parser.add_argument('-h', '--help', dest='help', action='store_true', help='Show this help message and exit.')
 args = parser.parse_args()
 blender_install_path = args.blender_install_path
+print(f"blender_install_path: {blender_install_path}")
 config_file = args.config_file
 
 if blender_install_path is None:
     blender_install_path = os.path.join("/home_local", os.getenv("USERNAME") if platform == "win32" else os.getenv("USER"), "blender")
+    print(f"blender_install_path: {blender_install_path}")
 
 blender_install_path = os.path.expanduser(blender_install_path)
 if blender_install_path.startswith("/home_local") and not os.path.exists("/home_local"):
@@ -60,8 +62,8 @@ if blender_install_path.startswith("/home_local") and not os.path.exists("/home_
 
 # Determine configured version
 # right now only support blender-2.93
-major_version = "2.93"
-minor_version = "0"
+major_version = "3.6"
+minor_version = "21"
 blender_version = "blender-{}.{}".format(major_version, minor_version)
 if platform == "linux" or platform == "linux2":
     blender_version += "-linux-x64"
@@ -81,7 +83,7 @@ else:
 if os.path.exists(blender_path) and args.reinstall_blender:
     print("Blender installation already exit!")
     shutil.rmtree(blender_path)
-
+print(f"blender_path: {blender_path}")
 # Download blender if it not already exists
 if not os.path.exists(blender_path):
     if version_info.major != 3:
@@ -100,22 +102,8 @@ if not os.path.exists(blender_path):
     else:
         raise Exception("This system is not supported yet: {}".format(platform))
     try:
-        import progressbar
-        class DownloadProgressBar(object):
-            def __init__(self):
-                self.pbar = None
-            def __call__(self, block_num, block_size, total_size):
-                if not self.pbar:
-                    self.pbar = progressbar.ProgressBar(maxval=total_size)
-                    self.pbar.start()
-                downloaded = block_num * block_size
-                if downloaded < total_size:
-                    self.pbar.update(downloaded)
-                else:
-                    self.pbar.finish()
-
         print("Downloading blender from " + url)
-        file_tmp = urlretrieve(url, None, DownloadProgressBar())[0]
+        file_tmp = urlretrieve(url, None)[0]
     except ImportError:
         print("Progressbar for downloading, can only be shown, "
               "when the python package \"progressbar\" is installed")

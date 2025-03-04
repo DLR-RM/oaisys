@@ -18,6 +18,8 @@ class TSSMesh(TSSAsset,TSSModifieres):
         self._stage_list = []
         self._stage_dict = {}
         self._node_tree = None
+        self._num_labels_per_channel = 51
+        self._num_instance_label_per_channel = 51
         ############################################################################################ end of class vars #
 
 
@@ -45,7 +47,7 @@ class TSSMesh(TSSAsset,TSSModifieres):
         pass
 
 
-    def step(self):
+    def step(self, keyframe):
         pass
 
 
