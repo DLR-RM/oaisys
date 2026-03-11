@@ -9,16 +9,17 @@ import importlib
 
 from src.TSSBase import TSSBase
 
-
 class TSSMeshHandle(TSSBase):
     """docstring for TSSMeshHandle"""
-
     def __init__(self):
         super(TSSMeshHandle, self).__init__()
         # class vars ###################################################################################################
-        self._mesh_list = []  # list of mesh [list]
-        self._mesh_obj_list = []  # list of mesh nodes [list]
+        self._mesh_list = []                                            # list of mesh [list]
+        self._mesh_obj_list = []                                        # list of mesh nodes [list]
+        self._mesh_dict = {}
+        self._mesh_obj_dict = {}
         ############################################################################################ end of class vars #
+
 
     def reset_module(self):
         """ reset all local vars
@@ -40,8 +41,11 @@ class TSSMeshHandle(TSSBase):
         self.reset_base()
         self._mesh_list = []
         self._mesh_obj_list = []
+        self._mesh_dict = {}
+        self._mesh_obj_dict = {}
 
-    def activate_pass(self, pass_name, pass_cfg, keyframe=-1):
+
+    def activate_pass(self,pass_name, pass_cfg, keyframe=-1):
         """ enables specific pass
         Args:
             pass_name:      name of pass to activate [string]
@@ -52,13 +56,14 @@ class TSSMeshHandle(TSSBase):
         """
 
         for mesh in self._mesh_obj_list:
-            mesh.activate_pass(pass_name=pass_name, pass_cfg=pass_cfg, keyframe=keyframe)
+            mesh.activate_pass(pass_name=pass_name,pass_cfg=pass_cfg,keyframe=keyframe)
 
-    def create(self, stage_dict, materials):
+
+    def create(self,stage_dict, materials):
         """  create function
         Args:
             stage_dict:     dict of stages [dict]
-            materials:      list of all OAISYS materials [list]
+            materials       list of materials [list]
         Returns:
             None
         """
@@ -70,12 +75,14 @@ class TSSMeshHandle(TSSBase):
 
         return self.get_meshes()
 
-    def _create_meshes(self, cfg, general_cfg, stage_dict, materials):
+
+    def _create_meshes(self,cfg,general_cfg,stage_dict,materials):
         """  create function
         Args:
             cfg:            list of mesh cfgs [list]
             general_cfg:    general cfg [dict]
             stage_dict:     dict of stages [dict]
+            materials:      list of materials [list]
         Returns:
             success code [boolean]
         """
@@ -97,7 +104,7 @@ class TSSMeshHandle(TSSBase):
 
                 _mesh.set_stage_dict(stage_dict=stage_dict)
 
-                # save name of material
+                # save name of mesh
                 mesh['meshParams']['name'] = mesh["name"]
 
                 # store mesh obj id
@@ -105,19 +112,19 @@ class TSSMeshHandle(TSSBase):
 
                 # update mesh cfg
                 _mesh.update_cfg(cfg=mesh["meshParams"])
+
                 # create material
                 _instance_count, _instance_label_count = _mesh.create(instance_id_offset=_current_instance_label_count,
                                                                       materials=materials)
 
                 _current_instance_label_count += _instance_label_count
                 ############################################################### end of set pass params and create pass #
-
+                
                 # add pass to list
                 self._mesh_obj_list.append(_mesh)
-                _meshes = _mesh.get_meshes()
-                if _meshes is not None:
-                    self._mesh_list.append(_mesh.get_meshes())
-
+                self._mesh_list.append(_mesh.get_meshes())
+                self._mesh_dict[mesh["name"]] = _mesh.get_meshes()
+                self._mesh_obj_dict[mesh["name"]] = _mesh
 
 
             except ImportError:
@@ -125,7 +132,17 @@ class TSSMeshHandle(TSSBase):
                 raise Exception("Cannot add mesh")
                 return -1
 
+        # go through all mesh obj and update them with created meshes from OAISYS
+        for mesh in self._mesh_obj_list:
+            mesh.update_after_initial_mesh_creation(mesh_dict=self._mesh_dict)
+
         return 0
+
+    def get_mesh_dict(self):
+        return self._mesh_dict
+
+    def get_mesh_oaisys_obj(self):
+        return self._mesh_obj_dict
 
     def get_meshes(self):
         """  get all meshes
@@ -136,6 +153,7 @@ class TSSMeshHandle(TSSBase):
         """
 
         return self._mesh_list
+
 
     def get_mesh_objs(self):
         """  get all mesh objects

@@ -7,12 +7,15 @@ import csv
 import random
 import importlib
 import os
+import copy as cp
 
 from src.TSSBase import TSSBase
 
 from src.tools.trajectory.ObjectTrajectory import get_single_mesh_data, compute_center_of_mass, find_furthest_point
 import src.tools.trajectory.ObjectTrajectory as ot
-
+from src.utilities.pose_sampler import get_random_position_on_sphere_with_noise
+from src.tools.trajectory_sampler_linear_approach import linear_approach_trajectory
+from src.tools.trajectory_sampler_spiral_approach import spiral_approach_trajectory
 
 class TSSSensorHandle(TSSBase):
     """docstring for TSSSensorHandle"""
@@ -20,25 +23,27 @@ class TSSSensorHandle(TSSBase):
     def __init__(self):
         super(TSSSensorHandle, self).__init__()
         # class vars ###################################################################################################
-        self._sensor_list = []  # list of sensors [list]
-        self._target_pose_list = []  # list of target poses [list]
-        self._target_object_active = False  # flag whether target object is active [bool]
-        self._sensor_movement_type = -1  # movement type [int]
-        self._sensor_pose_list = []  # list of sensor poses [list]
-        self._pose_index = 0  # current pose index [int]
-        self._sensor_base = None  # sensor base of all sensors [blObject]
-        self._sensor_base_constraint = None  # sensor base constraint object of all sensors
-        #                                    [blObject]
-        self._target_object = None  # target object of sensor base [blObject]
-        self._hover_base_constraint = None  # hover constraint for base [blObject]
-        self._hover_target_constraint = None  # hover constraint for target [blObject]
-        self._sensor_movement_type_mapping = {  # mapping to movement functions [dict]
-            "deterministic": self._deterministic,
-            "randomEuclidean": self._random_euclidean,
-            "randomEuclideanTarget": self._random_euclidean_target,
-            "centeredTarget": self._centered_target
-        }
-        self._roll_limits = [0, 0]
+        self._sensor_list = []                                          # list of sensors [list]
+        self._target_pose_list = []                                     # list of target poses [list]
+        self._target_object_active = False                              # flag whether target object is active [bool]
+        self._sensor_movement_type = -1                                 # movement type [int]
+        self._sensor_pose_list = []                                     # list of sensor poses [list]
+        self._pose_index = 0                                            # current pose index [int]
+        self._sensor_base = None                                        # sensor base of all sensors [blObject]
+        self._sensor_base_constraint = None                             # sensor base constraint object of all sensors 
+                                                                        #                                    [blObject]
+        self._target_object = None                                      # target object of sensor base [blObject]
+        self._hover_base_constraint = None                              # hover constraint for base [blObject]
+        self._hover_target_constraint = None                            # hover constraint for target [blObject]
+        self._sensor_movement_type_mapping = {                          # mapping to movement functions [dict]
+                                                "deterministic": self._deterministic,
+                                                "randomEuclidean": self._random_euclidean,
+                                                "randomEuclideanTarget": self._random_euclidean_target,
+                                                "orbit_object": self._orbit_object,
+                                                "approach_trajectory": self._approach_trajectory,
+						"centeredTarget": self._centered_target}
+        self._roll_limits = [0,0]
+        self.orbit_mesh = None
         ############################################################################################ end of class vars #
 
         # set correct module type
@@ -73,7 +78,8 @@ class TSSSensorHandle(TSSBase):
         self._sensor_base = None
         self._target_object = None
         self._sensor_base_constraint = None
-        self._roll_limits = [0, 0]
+        self._roll_limits = [0,0]
+        self.orbit_mesh = None
         ############################################################################################ end of reset vars #
 
     def _create_base_object(self, cfg, mesh_list):
@@ -220,6 +226,52 @@ class TSSSensorHandle(TSSBase):
                 self._hover_base_constraint.target = _assets
             else:
                 raise ("Assets for trajectory generation mode was not found!")
+
+    def set_meshes(self, meshes):
+        if (self._cfg["GENERAL"]["sensorMovementType"] == "orbit_object" or
+                self._cfg["GENERAL"]["sensorMovementType"] == "approach_trajectory"):
+            self.orbit_mesh = meshes[self._cfg["GENERAL"]["orbit_mesh"]]["main"]
+
+            self._sensor_base.constraints.new(type='TRACK_TO')
+            self._sensor_base.constraints["Track To"].target = self.orbit_mesh
+            self._sensor_base.constraints["Track To"].track_axis = 'TRACK_NEGATIVE_Z'
+            self._sensor_base.constraints["Track To"].up_axis = 'UP_Y'
+
+    def set_oaisys_objs(self, objs):
+        if self._cfg["GENERAL"]["sensorMovementType"] == "approach_trajectory":
+            # get position from mesh in the future
+            orbit_obj = objs[self._cfg["GENERAL"]["orbit_mesh"]]
+
+            mesh_pos_list = []
+            mesh_rot_list = []
+            for ii in range(0, len(self._sensor_pose_list)):
+                mesh_pos_ii, mesh_rot_ii = orbit_obj.get_pose_for_step_in_future(step=ii)
+                mesh_pos_list.append(mesh_pos_ii)
+                mesh_rot_list.append(mesh_rot_ii)
+
+            if "linear" == self._cfg["GENERAL"]["approach_moving_type"]:
+                start_pos = np.array(self._cfg["GENERAL"]["approach_moving_params"]["relative_sensor_start_position"]) + mesh_pos_list[0]
+                end_pos = np.array(self._cfg["GENERAL"]["approach_moving_params"]["relative_sensor_end_position"]) + mesh_pos_list[-1]
+
+                p = linear_approach_trajectory(n=len(self._sensor_pose_list)-1,
+                                               sat_locs=np.array(mesh_pos_list),
+                                               start_loc=start_pos,
+                                               end_loc=end_pos,
+                                               v_start=self._cfg["GENERAL"]["approach_moving_params"]["sensor_start_v"],
+                                               v_end=self._cfg["GENERAL"]["approach_moving_params"]["sensor_end_v"])
+            elif "spiral" == self._cfg["GENERAL"]["approach_moving_type"]:
+                p = spiral_approach_trajectory(n=len(self._sensor_pose_list) - 1,
+                                               sat_locs=np.array(mesh_pos_list),
+                                               r_start=self._cfg["GENERAL"]["approach_moving_params"]["r_start"],
+                                               r_end=self._cfg["GENERAL"]["approach_moving_params"]["r_end"],
+                                               plane=self._cfg["GENERAL"]["approach_moving_params"]["plane"],
+                                               rotations=self._cfg["GENERAL"]["approach_moving_params"]["rotations"])
+
+            for ii in range(0, len(self._sensor_pose_list)):
+                if 0==ii:
+                    self._sensor_pose_list[ii][1:4] = p[0]
+                else:
+                    self._sensor_pose_list[ii][1:4] = p[ii-1]
 
     def _create_sensors(self, cfg):
         """ create all sensors defined in cfg
@@ -576,27 +628,30 @@ class TSSSensorHandle(TSSBase):
         """
 
         if ((self._stepping_counter - 1) % self._trigger_interval) == 0:
+            print(f"logging!")
             # go through all sensors and execute step function
             for sensor_obj in self._sensor_list:
-                # self.current_sensor_q = cp.deepcopy(sensor_obj.rotation_quaternion)
-                self.current_sensor_q = self._sensor_base_constraint.rotation_euler.to_quaternion()
-                self.current_sensor_q2 = self._sensor_base.rotation_quaternion
+                sensor_obj.log_step(keyframe=keyframe)
 
-                # sensor_obj.log_step(keyframe=keyframe)
-                pose = [str(self._sensor_base_constraint.location[0]), str(self._sensor_base_constraint.location[1]),
-                        str(self._sensor_base_constraint.location[2]),
-                        str(self.current_sensor_q[0]), str(self.current_sensor_q[1]),
-                        str(self.current_sensor_q[2]), str(self.current_sensor_q[3])]
-                # sensor_obj.log_step(keyframe=keyframe)
-                pose2 = [str(self._sensor_base.location[0]), str(self._sensor_base.location[1]),
-                         str(self._sensor_base.location[2]),
-                         str(self.current_sensor_q2[0]), str(self.current_sensor_q2[1]),
-                         str(self.current_sensor_q2[2]), str(self.current_sensor_q2[3])]
+    def _orbit_object(self, cfg):
+        """
 
-                # self._logger.log_pose(f"{self._sensor_base.name}", pose)
+        """
+        #p = get_random_position_on_sphere_with_noise(r=0.5, r_noise=0., num_samples=cfg["numSamples"])
+        p = get_random_position_on_sphere_with_noise(r=cfg["orbit_radius"],
+                                                     r_noise=cfg["orbit_radius_noise"],
+                                                     num_samples=cfg["numSamples"])
+
+        return [[i, *s, 1., 0., 0., 0.] for i, s in enumerate(p)], None
+
+    def _approach_trajectory(self, cfg):
+        """
+
+        """
+        return [[i, 0, 0, 0, 1., 0., 0., 0.] for i in range(0,cfg["numSamples"])], None
 
     def _random_euclidean_target(self, cfg, mesh_list):
-        """ random euclidean target movement option;  create random pose for base and target object within box
+        """ random euclidiean target movement option;  create random pose for base and target object within box
         Args:
             cfg:                        general part of cfg from sensor handle [dict]
             mesh_list:                  list of all meshes created by OAISYS [list]
@@ -815,12 +870,21 @@ class TSSSensorHandle(TSSBase):
 
             # move base pose one position forward ##########################################################################
             # get pose at pose_index
-            _pose = self._sensor_pose_list[self._pose_index - 1]
+            _pose = self._sensor_pose_list[self._pose_index-1]
+
+            if self._cfg["GENERAL"]["sensorMovementType"] == "orbit_object":
+                mx = self.orbit_mesh.matrix_world
+                loc_m, _, _ = mx.decompose()
+                _pose[1] += loc_m[0]
+                _pose[2] += loc_m[1]
+                _pose[3] += loc_m[2]
+
             # update location and rotation of base sensor
             self._sensor_base_constraint.rotation_mode = 'QUATERNION'
             self._sensor_base.rotation_mode = 'QUATERNION'
-            self._sensor_base_constraint.location = (_pose[1], _pose[2], _pose[3])
-            self._sensor_base_constraint.rotation_quaternion = (_pose[4], _pose[5], _pose[6], _pose[7])
+            self._sensor_base_constraint.location = (_pose[1],_pose[2],_pose[3])
+            self._sensor_base_constraint.rotation_quaternion = (_pose[4],_pose[5],_pose[6],_pose[7])
+            bpy.context.view_layer.update()
             ################################################################### end of move base pose one position forward #
 
             # update location and rotation of target sensor ################################################################

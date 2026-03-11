@@ -54,6 +54,12 @@ class TSSAssetHandle(TSSBase):
     def get_stages(self):
         return self._stage_handle.get_stage_dict()
 
+    def get_meshes(self):
+        return self._mesh_handle.get_mesh_dict()
+
+    def get_oaisys_obj(self):
+        return self._mesh_handle.get_mesh_oaisys_obj()
+
     def create(self):
         # create materials
         self._material_handle = TSSMaterialHandle()

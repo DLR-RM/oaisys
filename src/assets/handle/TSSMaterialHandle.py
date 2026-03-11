@@ -136,6 +136,27 @@ class TSSMaterialHandle(TSSBase):
         for material_obj in self._material_obj_list:
             material_obj.set_log_folder(log_folder_path)
 
+    def log_step(self, keyframe):
+        """ step handle and modules
+        Args:
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        # step for modules #############################################################################################
+        for material_obj in self._material_obj_list:
+
+            _trigger_option = material_obj.get_trigger_type()
+
+            if "GLOBAL" == _trigger_option:
+                if (self._stepping_counter % self._trigger_interval) == 0:
+                    material_obj.log_step_module(keyframe=keyframe)
+
+            if "LOCAL" == _trigger_option:
+                material_obj.log_step_module(keyframe=keyframe)
+        ###################################################################################### end of step for modules #
+
     def step(self, keyframe):
         """ step handle and modules
         Args:
