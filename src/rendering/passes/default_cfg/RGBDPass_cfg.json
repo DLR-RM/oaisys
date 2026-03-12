@@ -2,5 +2,12 @@
 	"numIter": 1,
 	"renderDepthActive": true,
 	"renderSamples":128,
-	"lightPathesMaxBounces": 6
+	"lightPathesMaxBounces": 6,
+    "diffuseBounces": 4,
+    "glossyBounces": 4,
+    "transmissionBounces": 12,
+    "volumeBounces": 32,
+    "transparentBounces": 8,
+    "volume_step_rate_render": 1.0,
+    "volume_max_steps": 1024
 }

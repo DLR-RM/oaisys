@@ -190,179 +190,6 @@ class RGBDPass(TSSRenderPass):
                 self._pinhole_depth_output_node.inputs['pinhole'])
 
 
-    def _create_depth_nodes_bak(self,node_offset=[0,0]):
-        """ create nodes for depth calculation; pinhole and eucleadin depth
-        Args:
-            node_offset:                            offset position for nodes [list]
-        Returns:
-            None
-        """
-
-        # create node setup to get pinhole depth dp = (de * f)/sqrt(f*f + u*u + v*v)
-        # create texture to obtain u and v information from blender
-        _uv_texture = bpy.data.textures.new(name="uv_coordinate_texture", type="NONE")
-        _uv_texture.use_nodes = True
-        _uv_texture.node_tree.nodes.clear()
-        _coordinate_texture_node = _uv_texture.node_tree.nodes.new(type="TextureNodeCoordinates")
-        _output_texture_node = _uv_texture.node_tree.nodes.new(type="TextureNodeOutput")
-        _uv_texture.node_tree.links.new(_coordinate_texture_node.outputs[0], _output_texture_node.inputs['Color'])
-
-        # build up pinhole node tree
-        _uv_texture_node = self._node_tree.nodes.new(type="CompositorNodeTexture")
-        _uv_texture_node.texture = _uv_texture
-        _uv_texture_node.location = (node_offset[0]+0,node_offset[1]+600)
-
-        _coordinate_seperation_node = self._node_tree.nodes.new(type="CompositorNodeSepRGBA")
-        _coordinate_seperation_node.label = "coordinate_seperation_node"
-        self._node_tree.links.new(_uv_texture_node.outputs[1], _coordinate_seperation_node.inputs[0])
-        _coordinate_seperation_node.location = (node_offset[0]+200,node_offset[1]+600)
-
-        # get u*u #####################################################
-        # get u values 
-        _u_value = self._node_tree.nodes.new(type="CompositorNodeMath")
-        _u_value.operation = 'MULTIPLY'
-        _u_value.label = "u_value"
-        self._node_tree.links.new(_coordinate_seperation_node.outputs['R'], _u_value.inputs[0])
-        self._node_tree.links.new(self._camera_resolution_x.outputs[0], _u_value.inputs[1])
-        _u_value.location = (node_offset[0]+700,node_offset[1]+700)
-
-        # add principle points c_x
-        _c_u_node = self._node_tree.nodes.new(type="CompositorNodeMath")
-        _c_u_node.operation = 'SUBTRACT'
-        _c_u_node.label = "c_u_node"
-        self._node_tree.links.new(_u_value.outputs[0], _c_u_node.inputs[0])
-        self._node_tree.links.new(self._camera_principle_point_u.outputs[0], _c_u_node.inputs[1])
-        _c_u_node.location = (node_offset[0]+900,node_offset[1]+700)
-            
-        # square values
-        _c_u_squared_node = self._node_tree.nodes.new(type="CompositorNodeMath")
-        _c_u_squared_node.operation = 'MULTIPLY'
-        _c_u_squared_node.label = "c_u_squared_node"
-        self._node_tree.links.new(_c_u_node.outputs[0], _c_u_squared_node.inputs[0])
-        self._node_tree.links.new(_c_u_node.outputs[0], _c_u_squared_node.inputs[1])
-        _c_u_squared_node.location = (node_offset[0]+1100,node_offset[1]+700)
-        #####################################################
-
-        # get v*v #####################################################
-        # get v values
-        _v_value = self._node_tree.nodes.new(type="CompositorNodeMath")
-        _v_value.operation = 'MULTIPLY'
-        _v_value.label = "v_value"
-        self._node_tree.links.new(_coordinate_seperation_node.outputs['G'], _v_value.inputs[0])
-        self._node_tree.links.new(self._camera_resolution_y.outputs[0], _v_value.inputs[1])
-        _v_value.location = (node_offset[0]+700,node_offset[1]+300)
-
-        # add principle points c_x
-        _c_v_node = self._node_tree.nodes.new(type="CompositorNodeMath")
-        _c_v_node.operation = 'SUBTRACT'
-        _c_v_node.label = "c_v_node"
-        self._node_tree.links.new(_v_value.outputs[0], _c_v_node.inputs[0])
-        self._node_tree.links.new(self._camera_principle_point_v.outputs[0], _c_v_node.inputs[1])
-        _c_v_node.location = (node_offset[0]+900,node_offset[1]+300)
-            
-        # square values
-        _c_v_squared_node = self._node_tree.nodes.new(type="CompositorNodeMath")
-        _c_v_squared_node.operation = 'MULTIPLY'
-        _c_v_squared_node.label = "c_v_squared_node"
-        self._node_tree.links.new(_c_v_node.outputs[0], _c_v_squared_node.inputs[0])
-        self._node_tree.links.new(_c_v_node.outputs[0], _c_v_squared_node.inputs[1])
-        _c_v_squared_node.location = (node_offset[0]+1100,node_offset[1]+300)
-        #####################################################
-
-        # get 1/sqrt(f*f + u*u + v*v) ###############################
-        # get u*u + v*v
-        _u_and_v_node = self._node_tree.nodes.new(type="CompositorNodeMath")
-        _u_and_v_node.operation = 'MULTIPLY'
-        _u_and_v_node.label = "u_and_v_node"
-        self._node_tree.links.new(_c_u_squared_node.outputs[0], _u_and_v_node.inputs[0])
-        self._node_tree.links.new(_c_v_squared_node.outputs[0], _u_and_v_node.inputs[1])
-        _u_and_v_node.location = (node_offset[0]+1300,node_offset[1]+500)
-
-        # get u*u + v*v + f*f
-        _u_and_v_and_f_node = self._node_tree.nodes.new(type="CompositorNodeMath")
-        _u_and_v_and_f_node.operation = 'MULTIPLY'
-        _u_and_v_and_f_node.label = "u_and_v_and_f_node"
-        self._node_tree.links.new(_u_and_v_node.outputs[0], _u_and_v_and_f_node.inputs[0])
-        self._node_tree.links.new(self._camera_focal_length.outputs[0], _u_and_v_and_f_node.inputs[1])
-        _u_and_v_and_f_node.location = (node_offset[0]+1500,node_offset[1]+500)
-
-        # get final product
-        _one_over_node = self._node_tree.nodes.new(type="CompositorNodeMath")
-        _one_over_node.operation = 'INVERSE_SQRT'
-        _one_over_node.label = "one_over_node"
-        self._node_tree.links.new(_u_and_v_and_f_node.outputs[0], _one_over_node.inputs[0])
-        _one_over_node.location = (node_offset[0]+1700,node_offset[1]+500)
-        ###############################
-
-        # get (NODE*f)/sqrt(f*f + u*u + v*v) ###############################
-        # get f/sqrt(f*f + u*u + v*v)
-        _f_over_node = self._node_tree.nodes.new(type="CompositorNodeMath")
-        _f_over_node.operation = 'MULTIPLY'
-        _f_over_node.label = "f_over_node"
-        self._node_tree.links.new(_one_over_node.outputs[0], _f_over_node.inputs[0])
-        self._node_tree.links.new(self._camera_focal_length.outputs[0], _f_over_node.inputs[1])
-        _f_over_node.location = (node_offset[0]+1900,node_offset[1]+500)
-
-        # get NODE*f/sqrt(f*f + u*u + v*v)
-        self._pinhole_converter_node = self._node_tree.nodes.new(type="CompositorNodeMath")
-        self._pinhole_converter_node.operation = 'MULTIPLY'
-        self._pinhole_converter_node.label = "pinhole_converter_node"
-        self._node_tree.links.new(_f_over_node.outputs[0], self._pinhole_converter_node.inputs[0])
-        self._pinhole_converter_node.location = (node_offset[0]+2100,node_offset[1]+500)
-
-        # switch node
-        self._depth_switch_node = self._node_tree.nodes.new(type="CompositorNodeSwitch")
-        self._depth_switch_node.label = 'depth_switch'
-        self._depth_switch_node.check = False
-        self._node_tree.links.new(self._render_layers_node.outputs['Depth'], self._depth_switch_node.inputs[1])
-        self._node_tree.links.new(self._render_layers_node.outputs['Depth'], self._pinhole_converter_node.inputs[1])
-        self._depth_switch_node.location = (node_offset[0]+2300,node_offset[1]+500)
-
-        self._pinhole_switch_node = self._node_tree.nodes.new(type="CompositorNodeSwitch")
-        self._pinhole_switch_node.label = 'depth_switch'
-        self._pinhole_switch_node.check = False
-        self._node_tree.links.new(self._pinhole_converter_node.outputs[0], self._pinhole_switch_node.inputs[1])
-        self._pinhole_switch_node.location = (node_offset[0]+2300,node_offset[1]+500)
-
-
-        # create output node euclidean depth
-        self._euclidean_depth_output_node = self._node_tree.nodes.new(type="CompositorNodeOutputFile")
-        self._euclidean_depth_output_node.name = 'TSSCompositorNodeOutputFileDepth'
-        self._euclidean_depth_output_node.location = (node_offset[0]+2500,node_offset[1]+300)
-        #self._euclidean_depth_output_node.format.file_format = 'OPEN_EXR'
-        self._euclidean_depth_output_node.format.file_format = 'TIFF'
-        self._euclidean_depth_output_node.format.color_mode = 'BW'
-        self._euclidean_depth_output_node.format.color_depth = '16'
-        self._euclidean_depth_output_node.format.tiff_codec = 'NONE'
-        self._euclidean_depth_output_node.base_path = self._general_cfg["outputPath"]
-        bpy.context.scene.view_layers["View Layer"].use_pass_z = True
-        self._euclidean_depth_output_node.format.compression = 0
-        self._euclidean_depth_output_node.file_slots.new('euclidean')
-        self._node_tree.links.new(
-                self._depth_switch_node.outputs[0],
-                self._euclidean_depth_output_node.inputs['euclidean'])
-
-        #self._euclidean_depth_output_node.file_slots['dummy_euclidean'].path = "asdfsafsd"
-
-        # create output node pinhole depth
-        self._pinhole_depth_output_node = self._node_tree.nodes.new(type="CompositorNodeOutputFile")
-        self._pinhole_depth_output_node.name = 'TSSCompositorNodeOutputFileDepth'
-        self._pinhole_depth_output_node.location = (node_offset[0]+2500,node_offset[1]+0)
-        self._pinhole_depth_output_node.format.file_format = 'OPEN_EXR'
-        #self._pinhole_depth_output_node.format.file_format = 'TIFF'
-        #self._pinhole_depth_output_node.format.color_mode = 'BW'
-        #self._pinhole_depth_output_node.format.color_depth = '16'
-        #self._pinhole_depth_output_node.format.tiff_codec = 'NONE'
-        self._pinhole_depth_output_node.base_path = self._general_cfg["outputPath"]
-        self._pinhole_depth_output_node.file_slots.new('pinhole')
-        bpy.context.scene.view_layers["View Layer"].use_pass_z = True
-        self._pinhole_depth_output_node.format.compression = 0
-        
-        self._node_tree.links.new(
-                self._pinhole_switch_node.outputs[0],
-                self._pinhole_depth_output_node.inputs['pinhole'])
-
-
     def create(self):
         """ create function of RGBD
         Args:
@@ -378,10 +205,10 @@ class RGBDPass(TSSRenderPass):
         self._create_depth_nodes(node_offset=self._node_offset)
 
 
-    def activate_pass(self, keyframe = -1): #pass_name, pass_cfg, keyframe = -1):
+    def activate_pass(self, keyframe=-1):  # pass_name, pass_cfg, keyframe = -1):
         """ active pass function
         Args:
-            pass_name:                              name of pass which is suppose to be activated [str]
+            pass_name:                              name of pass which is supposed to be activated [str]
             pass_cfg:                               cfg of pass to be activated [dict]
             keyframe:                               current frame number; if value > -1, this should enable also the
                                                     setting of a keyframe [int]
@@ -390,17 +217,22 @@ class RGBDPass(TSSRenderPass):
         """
 
         # set params ###################################################################################################
-        # set color managment to filmic
+        # set color management to filmic
         bpy.context.scene.view_settings.view_transform = 'Filmic'
         bpy.context.scene.render.image_settings.color_mode = 'RGB'
         bpy.context.scene.render.film_transparent = False
-
+        print(self._cfg)
         self._switch_On_AA(keyframe=keyframe)
         self._set_render_samples(num_samples=self._cfg['renderSamples'], keyframe=keyframe)
         self._set_max_bounces(num_bounces=self._cfg['lightPathesMaxBounces'], keyframe=keyframe)
+        self._set_max_bounces_diffuse(num_bounces=self._cfg['diffuseBounces'], keyframe=keyframe)
+        self._set_max_bounces_glossy(num_bounces=self._cfg['glossyBounces'], keyframe=keyframe)
+        self._set_max_bounces_transmission(num_bounces=self._cfg['transmissionBounces'], keyframe=keyframe)
+        self._set_max_bounces_volume(num_bounces=self._cfg['volumeBounces'], keyframe=keyframe)
+        self._set_max_bounces_transparent(num_bounces=self._cfg['transparentBounces'], keyframe=keyframe)
+        self._set_volume_step_rate(rate=self._cfg['volume_step_rate_render'], keyframe=keyframe)
+        self._set_volume_max_steps(steps=self._cfg['volume_max_steps'], keyframe=keyframe)
         ############################################################################################ end of set params #
-
-
 
     def deactivate_pass(self, pass_name, pass_cfg, keyframe = -1):
         """ deactive pass function

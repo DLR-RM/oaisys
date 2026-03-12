@@ -2,9 +2,9 @@
 import bpy
 
 # utility imports
-import numpy as np
-import csv
-import random
+import json
+import os
+import inspect
 
 class TSSRenderPass(object):
     """docstring for TSSRenderPass"""
@@ -23,6 +23,9 @@ class TSSRenderPass(object):
         self._compositor_pass_list = {}
         ############################################################################################ end of class vars #
 
+        # load default cfg file if available
+        self._load_default_cfg()
+
     def reset_module(self):
         """ reset all local vars
         Args:
@@ -40,8 +43,29 @@ class TSSRenderPass(object):
         self.reset()
 
 
-    def reset():
+    def reset(self):
         pass
+
+    def _load_default_cfg(self):
+        """ load default cfg dict for object
+            DO NOT OVERWRITE!
+        Args:
+            None
+        Returns:
+            None
+        """
+
+        # compile default cfg path #####################################################################################
+        _default_cfg_path = os.path.join(os.path.dirname(inspect.getfile(self.__class__)),"default_cfg")
+        _default_cfg_path = os.path.join(_default_cfg_path,self.__class__.__name__+"_cfg.json")
+        print(_default_cfg_path)
+        ############################################################################## end of compile default cfg path #
+
+        # load default cfg file ########################################################################################
+        if os.path.isfile(_default_cfg_path):
+            with open(_default_cfg_path, 'r') as f:
+                self._cfg = json.load(f)
+        ################################################################################# end of load default cfg file #
 
 
     def set_compositor_pass_list(self,compositor_pass_list):
@@ -139,6 +163,89 @@ class TSSRenderPass(object):
             self._set_scene_keyframe_interpolation(interpolation='CONSTANT')
         '''
 
+    def _set_max_bounces_diffuse(self, num_bounces, keyframe):
+        """ set number of maximum light bounces for cycles
+            DO NOT OVERWRITE!
+        Args:
+            num_bounces:    number of maximum light bounces [int]
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        bpy.context.scene.cycles.diffuse_bounces = num_bounces
+
+    def _set_max_bounces_glossy(self, num_bounces, keyframe):
+        """ set number of maximum light bounces for cycles
+            DO NOT OVERWRITE!
+        Args:
+            num_bounces:    number of maximum light bounces [int]
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        bpy.context.scene.cycles.glossy_bounces = num_bounces
+
+    def _set_max_bounces_transmission(self, num_bounces, keyframe):
+        """ set number of maximum light bounces for cycles
+            DO NOT OVERWRITE!
+        Args:
+            num_bounces:    number of maximum light bounces [int]
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        bpy.context.scene.cycles.transmission_bounces = num_bounces
+
+    def _set_max_bounces_volume(self, num_bounces, keyframe):
+        """ set number of maximum light bounces for cycles
+            DO NOT OVERWRITE!
+        Args:
+            num_bounces:    number of maximum light bounces [int]
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        bpy.context.scene.cycles.volume_bounces = num_bounces
+
+    def _set_max_bounces_transparent(self, num_bounces, keyframe):
+        """ set number of maximum light bounces for cycles
+            DO NOT OVERWRITE!
+        Args:
+            num_bounces:    number of maximum light bounces [int]
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        bpy.context.scene.cycles.transparent_max_bounces = num_bounces
+
+    def _set_volume_step_rate(self, rate, keyframe):
+        """ set number of maximum light bounces for cycles
+            DO NOT OVERWRITE!
+        Args:
+            rate:           volume step rate [float]
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        bpy.context.scene.cycles.volume_step_rate = rate
+
+    def _set_volume_max_steps(self, steps, keyframe):
+        """ set number of maximum light bounces for cycles
+            DO NOT OVERWRITE!
+        Args:
+            steps:           volume max steps [int]
+            keyframe:       current frame number; if value > -1, this should enable also the setting of a keyframe [int]
+        Returns:
+            None
+        """
+
+        bpy.context.scene.cycles.volume_step_rate = steps
 
     def set_node_offset(self,node_offset):
         """ set node offset of nodes in compositor
@@ -187,18 +294,21 @@ class TSSRenderPass(object):
 
         return self._general_cfg
 
-
-    def update_cfg(self,cfg):
-        """ set cfg dict for object
+    def update_cfg(self, cfg):
+        """ update dict for object
             DO NOT OVERWRITE!
         Args:
             cfg:            cfg dict of class [dict]
         Returns:
             None
         """
-
-        self._cfg = cfg
-
+        # update cfg file ##############################################################################################
+        if "OVERWRITE_CFG" in cfg:
+            # overwrite entire cfg
+            self._cfg = cfg
+        else:
+            self._cfg.update(cfg)
+        ####################################################################################### end of update cfg file #
 
     def get_cfg(self):
         """ get cfg dict of object

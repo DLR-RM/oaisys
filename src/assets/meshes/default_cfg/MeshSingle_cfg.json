@@ -1,0 +1,13 @@
+{
+  "meshFilePath":"oaisys_data/blender_files/rocks/rocks_01.blend",
+  "meshInstanceName": "rock_02",
+  "location": [0,0,0],
+  "rotation_deg": [0,0,0],
+  "instanceLabelActive": true,
+  "randomSwitchOnOff": false,
+  "activationProbability": 0.3,
+  "passParams":       {   "rgb": {},
+                          "semantic_label": {"labelIDVec": [[2400,2400,100,100]]},
+                          "instance_label": {}
+                      }
+}

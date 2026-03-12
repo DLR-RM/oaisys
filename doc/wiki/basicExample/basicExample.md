@@ -31,7 +31,7 @@ Navigate to the folder, where you would like to download OAISYS and execute:
 
 To run OAISYS you just have to execute the following command
 
-`python run_oaisys.py --blender-install-path /path/to/blender/ --config-file /path/to/cfg/file/cfg_file.json`
+`python3 run_oaisys.py --blender-install-path /path/to/blender/ --config-file /path/to/cfg/file/cfg_file.json`
 
 OAISYS needs as input your blender installation. If you have not blender installed yet, just provide the path where you would like it to be installed (with _blender-install-path_), and OAISYS will do the rest for you. Since everything is controlled via a cfg file, the path to this file has to be provided as well (with _config-file_).
 
@@ -39,7 +39,7 @@ Although, you will most likely always use OAISYS with your own custom cfg file, 
 Therefore, to get fimiliar with OAISYS we will start by calling OAISYS without any cfg file.
 For that, navigate into the OAISYS repo and execute the following lines (with your prefered blender path):
 
-`python run_oaisys.py --blender-install-path /path/to/blender/`
+`python3 run_oaisys.py --blender-install-path /path/to/blender/`
 
 If you have not blender installed yet or not the correct version, it will take a while to download the correct blender version. After the installation you will be greeted by OAISYS:
 

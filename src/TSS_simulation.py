@@ -150,6 +150,10 @@ class TSS_OP_CStageSimulator():
             # update sensors with stages
             _sensor_handle.set_stages(_asset_handle.get_stages())
 
+            # update sensors with meshes
+            _sensor_handle.set_meshes(_asset_handle.get_meshes())
+            _sensor_handle.set_oaisys_objs(_asset_handle.get_oaisys_obj())
+
             #_sensor_handle._create_sensor_movement()
 
             # set metadata output folder path
@@ -169,9 +173,9 @@ class TSS_OP_CStageSimulator():
                     str(_num_samples_per_batch * _num_batches + _batch_ID_offset))
 
                 # step all instances
-                _sensor_handle.step(keyframe=_frame)
                 _env_handle.step(keyframe=_frame)
                 _asset_handle.step(keyframe=_frame)
+                _sensor_handle.step(keyframe=_frame)
                 _render_handle.step(keyframe=_frame)
 
                 # get render pass list

@@ -58,6 +58,8 @@ class TSSMesh(TSSAsset,TSSModifieres):
     def set_stage_dict(self,stage_dict):
         self._stage_dict = stage_dict
 
+    def update_after_initial_mesh_creation(self, mesh_dict):
+        pass
 
     def additional_pass_action(self,pass_name, pass_cfg, keyframe):
         """ overwrite base function

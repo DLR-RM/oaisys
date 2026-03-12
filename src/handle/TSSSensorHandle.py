@@ -633,7 +633,7 @@ class TSSSensorHandle(TSSBase):
             for sensor_obj in self._sensor_list:
                 sensor_obj.log_step(keyframe=keyframe)
 
-    def _orbit_object(self, cfg):
+    def _orbit_object(self, cfg, mesh_list):
         """
 
         """
@@ -644,7 +644,7 @@ class TSSSensorHandle(TSSBase):
 
         return [[i, *s, 1., 0., 0., 0.] for i, s in enumerate(p)], None
 
-    def _approach_trajectory(self, cfg):
+    def _approach_trajectory(self, cfg, mesh_list):
         """
 
         """
