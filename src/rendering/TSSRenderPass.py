@@ -58,7 +58,7 @@ class TSSRenderPass(object):
         # compile default cfg path #####################################################################################
         _default_cfg_path = os.path.join(os.path.dirname(inspect.getfile(self.__class__)),"default_cfg")
         _default_cfg_path = os.path.join(_default_cfg_path,self.__class__.__name__+"_cfg.json")
-        print(_default_cfg_path)
+
         ############################################################################## end of compile default cfg path #
 
         # load default cfg file ########################################################################################

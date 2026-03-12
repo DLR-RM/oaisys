@@ -277,6 +277,9 @@ class SensorCameraRGBD(TSSSensor):
                                             self._base_to_sensor[4],
                                             self._base_to_sensor[5],
                                             self._base_to_sensor[6])
+
+        self._sensor.data.clip_start = 1e-06
+        self._sensor.data.clip_end = 1e06
         ##################################################################################### end of set camera params #
 
         # set render pass dict #########################################################################################

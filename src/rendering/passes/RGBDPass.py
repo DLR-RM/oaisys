@@ -221,7 +221,7 @@ class RGBDPass(TSSRenderPass):
         bpy.context.scene.view_settings.view_transform = 'Filmic'
         bpy.context.scene.render.image_settings.color_mode = 'RGB'
         bpy.context.scene.render.film_transparent = False
-        print(self._cfg)
+
         self._switch_On_AA(keyframe=keyframe)
         self._set_render_samples(num_samples=self._cfg['renderSamples'], keyframe=keyframe)
         self._set_max_bounces(num_bounces=self._cfg['lightPathesMaxBounces'], keyframe=keyframe)

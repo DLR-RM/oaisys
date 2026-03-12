@@ -1,0 +1,202 @@
+{
+	"SIMULATION_SETUP": {
+		"outputPath":"",
+		"defaultCfg": "",
+		"numBatches":1,
+		"numSamplesPerBatch":7,
+		"renderImages": true,
+		"saveBlenderFiles": true,
+		"saveMetaData": false,
+		"outputIDOffset":0
+	},
+
+	"RENDER_SETUP": {
+
+		"GENERAL": {
+					"renderEngine":"CYCLES",
+					"renderFeatureSet":"EXPERIMENTAL",
+					"renderDevice": "GPU",
+					"performanceTilesX": 256,
+					"performanceTilesY": 256
+					},
+
+		"RENDER_PASSES": [{
+							"type": "RGBDPass",
+							"passParams": {
+											"numIter": 1,
+											"renderDepthActive": true,
+											"renderSamples":120,
+											"lightPathesMaxBounces": 6
+										}
+							},
+							{
+							"type": "SemanticPass",
+							"passParams": {
+											"numIter": 1,
+											"renderSamples":1
+										  }
+							},
+							{
+							"type": "InstancePass",
+							"passParams": {
+											"numIter": 0,
+											"renderSamples":1
+										}
+							}]
+
+	},
+
+
+	"RENDER_POST_PROCESSING_EFFECTS_SETUP": {
+		"GENERAL": {
+					"renderPasses": ["combined"]
+					},
+		"POST_EFFECTS": [{
+							"type": "BloomEffect",
+							"effectParams": {
+											"quality": "HIGH",
+											"threshold": 0.8
+										}
+							}
+						]
+
+	},
+
+
+	"SENSOR_SETUP": {
+		"GENERAL": {
+					"sensorMovementType":"orbit_object",
+                    "orbit_mesh": "sat",
+                    "orbit_radius": 0.0007,
+                    "orbit_radius_noise": 0.0,
+                    "approach_moving_type": "spiral",
+                    "approach_moving_params": { "sensor_start_v": 0.00001,
+                                                "sensor_end_v": 0.000001,
+                                                "relative_sensor_start_position": [0.001,-0.001,0],
+                                                "relative_sensor_end_position": [0.0001,-0.0001,0],
+                                                "r_start": 0.0001,
+                                                "r_end": 0.001,
+                                                "plane":  "xy",
+                                                "rotations": 3},
+					"hoverBaseModeEnabled": false,
+					"hoverBaseStage":"landscape01",
+					"hoverBaseDistance":[1.5, 1.5],
+					"hoverBaseDistanceNoise": 0.5,
+					"hoverTargetModeEnabled": false,
+					"positionOffsetEnabled":false,
+					"targetObjectActive":false},
+		"SENSORS": [{"type": "SensorCameraRGBD",
+					"sensorParams": {
+										"outputBaseName":"sensor_1",
+										"imageResolution": [640,480],
+										"KMatrix": [541.14,	0,			320,
+													0,		541.14,		240,
+													0,		0,			1],
+										"transformation": [0.0,0,0,1.0,0.0,0,0],
+										"triggerInterval": 1,
+										"renderPasses": {
+														"RGBDPass": {"activationSlot":[1], "DepthEnabled": true},
+														"SemanticPass": {"activationSlot":[1,1]},
+														"InstancePass": {"activationSlot":[1]}
+														}
+									}
+					}]
+	},
+
+	"ENVIRONMENT_EFFECTS_SETUP": {
+
+		"GENERAL": {"backgroundStrength": [0.0],
+					"stepInterval": 1
+					},
+
+		"ENVIRONMENT_EFFECTS": [
+          {"type": "EnvBlenderSun",
+									"stepInterval": 1,
+									"environmentEffectsParams": {
+                                                                "name": "sun",
+                                                                "energy": 10.0,
+                                                                "rotation_rad": [[1.0],0,0]
+															}
+
+									}
+								]
+	},
+
+
+
+	"ASSET_SETUP": {
+		"GENERAL": {},
+
+		"MATERIALS": [],
+
+		"STAGES": [],
+
+		"MESHES": [
+          {
+          "name": "sat",
+          "type": "MeshSatelliteObject",
+          "meshParams":
+                      { "meshFilePath":"oaisys_data/examples/assets/meshes/satellites/moon_sat.blend",
+                        "meshInstanceName": "sat",
+                        "rotation_deg": [0,0,180],
+                        "scale": [0.000069332079, 0.000069332079, 0.000069332079],
+                        "instanceLabelActive": true,
+                        "randomSwitchOnOff": false,
+                        "orbit_params": {
+                                                  "type": "circular",
+                                                  "parent": "moon",
+                                                  "scale": [1.4, 1.4, 1.4],
+                                                  "rotation_deg": [30, 30, 0],
+                                                  "v_step": 0.01,
+                                                  "orbit_start": 15.0
+                              },
+                        "oaisys_drivers": { "material_drivers": {
+                                                        "drivers": {
+                                                                      "scale": {
+                                                                        "clip_min": 0.1,
+                                                                        "clip_max": 10.0,
+                                                                        "ideal": 1.0,
+                                                                        "jitter_variance": 10.0
+                                                                      },
+                                                                      "location": {
+                                                                        "clip_min": 0.0,
+                                                                        "clip_max": 1000.0,
+                                                                        "ideal": 0,
+                                                                        "jitter_variance": 1000.0
+                                                                      },
+                                                                      "rotation": {
+                                                                        "clip_min": 0.0,
+                                                                        "clip_max": 1000.0,
+                                                                        "ideal": 0,
+                                                                        "jitter_variance": 1000.0
+                                                                      }
+                                                                    },
+                                                        "jitter_strength": 1.0,
+                                                        "step_interval": 1
+                              }},
+                        "passParams":       {   "rgb": {},
+                                                "semantic_label": {"labelIDVec": [[500,2400,100,100]]},
+                                                "instance_label": {}
+                                            }}
+          },
+          {
+          "name": "moon",
+				"type": "MeshSingle",
+				"meshParams":
+                            { "meshFilePath":"oaisys_data/examples/assets/meshes/celestial_bodies/moons/earth_moon/moon.blend",
+                              "meshInstanceName": "moon",
+                              "rotation_deg": [0,0,0],
+                              "scale": [1.0, 1.0, 1.0],
+                              "position": [0, 0, 0],
+                              "instanceLabelActive": true,
+                              "randomSwitchOnOff": false,
+                              "passParams":       {   "rgb": {},
+                                                      "semantic_label": {"labelIDVec": [[2400,2400,100,100]]},
+                                                      "instance_label": {}
+                                                  }}
+          }
+				]
+
+	}
+
+}

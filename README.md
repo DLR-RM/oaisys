@@ -19,6 +19,7 @@ The current version of OAISYS works under Linux and is tested with the LTS Blend
 * Forest Scene: under construction
 * Water World: under construction
 * [Asteroid Crater Creation](doc/wiki/basicExample/asteroidExample.md): README for the IEEE Aerospace Conference Paper "Bridging the Data Gap of Asteroid Exploration: OAISYS Extension for Synthetic Asteroids Creation"
+* [Space OAISYS](doc/wiki/basicExample/space_oaisys.md): README for the IEEE Aerospace Conference Paper "Vision beyond Earth: Synthetic Satellite Data for Neural Perception in Orbit" (Under Construction)
 
 ### Developers
 * Basic Developer Tutorial: under construction

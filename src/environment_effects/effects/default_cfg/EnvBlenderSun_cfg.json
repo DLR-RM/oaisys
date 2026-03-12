@@ -1,0 +1,7 @@
+{
+	"stepIntervalOption": "GLOBAL",
+	"stepInterval": 1,
+	"name": "sun",
+	"energy": 15.0,
+    "rotation_rad": [[3.3161255787892263],0,0]
+}
